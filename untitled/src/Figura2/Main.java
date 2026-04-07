@@ -66,7 +66,7 @@ public class Main {
     }
     private void listVentas(){
         for (int i = 0; i < ; i++) {
-            
+
         }
     }
     private void listViajes(){
