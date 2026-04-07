@@ -60,12 +60,18 @@ public class Main {
 
     }
     private void listPasajerosViaje(){
-
+        for (int i = 0; i < ; i++) {
+            
+        }
     }
     private void listVentas(){
-
+        for (int i = 0; i < ; i++) {
+            
+        }
     }
     private void listViajes(){
-
+        for (int i = 0; i < ; i++) {
+            
+        }
     }
 }
