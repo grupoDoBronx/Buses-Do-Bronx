@@ -1,8 +1,10 @@
+package Figura2;
+
 public class Pasaje {
     private long numero;
     private int asiento;
 
-    public Pasaje(int asiento, Viaje viaje, Pasajero pasajero,Venta venta){
+    public Pasaje(int asiento, Viaje viaje, Pasajero pasajero, Venta venta){
         this.asiento=asiento;
         this.viaje=viaje;
         this.pasajero=pasajero;
