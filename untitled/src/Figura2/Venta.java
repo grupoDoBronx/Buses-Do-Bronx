@@ -39,6 +39,6 @@ public class Venta {
 
     }
     public int getMonto(){
-
+        return monto;
     }
 }
