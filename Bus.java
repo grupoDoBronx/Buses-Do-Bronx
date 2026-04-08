@@ -6,6 +6,7 @@ public class Bus {
     private String modelo;
     private int nroAsientos;
 
+
     public Bus(String patente, String marca, String modelo, int nroAsientos) {
         this.patente= patente;
         this.marca= marca;
