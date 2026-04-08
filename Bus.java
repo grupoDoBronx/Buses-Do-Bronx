@@ -14,4 +14,8 @@ public class Bus {
         this.nroAsientos= nroAsientos;
 
     }
+
+    public String getPatente() {
+        return patente;
+    }
 }
