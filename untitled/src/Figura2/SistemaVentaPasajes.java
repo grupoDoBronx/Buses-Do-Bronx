@@ -1,3 +1,7 @@
+package Figura2;
+
+import enums.TipoDocumento;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
