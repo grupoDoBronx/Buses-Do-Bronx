@@ -3,6 +3,7 @@ package Figura2;
 import enums.TipoDocumento;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Venta {
     private String idDocumento;
@@ -16,4 +17,28 @@ public class Venta {
         this.cliente = cli;
     }
 
+    public String getIdDocumento() {
+        return idDocumento;
+    }
+
+    public TipoDocumento getTipo() {
+        return tipo;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+    public Cliente getCliente(){
+
+    }
+
+    public void createPasaje(int asiento, Viaje viaje, Pasajero pasajero){
+
+    }
+    public Pasaje[] getPasaje(){
+
+    }
+    public int getMonto(){
+
+    }
 }
