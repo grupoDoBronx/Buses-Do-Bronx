@@ -1,4 +1,4 @@
-package Figura2;
+package Figura2.untitled.src.Figura2;
 
 public class Bus {
     private String patente;
