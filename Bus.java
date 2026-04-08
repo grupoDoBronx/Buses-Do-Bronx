@@ -11,5 +11,6 @@ public class Bus {
         this.marca= marca;
         this.modelo=modelo;
         this.nroAsientos= nroAsientos;
+
     }
 }
