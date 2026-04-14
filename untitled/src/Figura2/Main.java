@@ -2,6 +2,7 @@ package Figura2;
 import  java.util.Scanner;
 public class Main {
     Scanner sc = new Scanner(System.in);
+    SistemaVentaPasajes sistem = new SistemaVentaPasajes;
     public static void main(String[] args) {
 
 
@@ -59,27 +60,20 @@ public class Main {
         } else if (identificador == 2) {
             System.out.println("Ingrese el pasaporte del cliente: ");
             pasaportecliente = sc.nextLine();
-        }else{
-            return;
         }
-        for (int i = 0; i < ; i++) {
-            if(String )
-        }
-        if (existecliente = false){
-            System.out.println("Ingrese si es Sr.(1) o Sra.(2):");
-            int srsra = sc.nextInt();
-            System.out.println("Ingrese los nombres del  cliente:");
-            String nombres = sc.nextLine();
-            System.out.println("Ingrese el Apellido Paterno del cliente:");
-            String apepaterno = sc.next();
-            System.out.println("Ingrese el Apellido Materno del cliente:");
-            String apematerno = sc.next();
-            System.out.println("Ingrese el numero telefonico del cliente:");
-            String telefonoCliente = sc.nextLine();
-            System.out.println("Ingrese el email del cliente:");
-            String emailCliente = sc.nextLine();
-
-
+        System.out.println("Ingrese si es Sr.(1) o Sra.(2):");
+        int srsra = sc.nextInt();
+        System.out.println("Ingrese los nombres del  cliente:");
+        String nom = sc.nextLine();
+        System.out.println("Ingrese el Apellido Paterno del cliente:");
+        String apepaterno = sc.next();
+        System.out.println("Ingrese el Apellido Materno del cliente:");
+        String apematerno = sc.next();
+        System.out.println("Ingrese el numero telefonico del cliente:");
+        String fono = sc.nextLine();
+        System.out.println("Ingrese el email del cliente:");
+        String emailCliente = sc.nextLine();
+        if (sistem.createCliente(identificador, nom,fono,emailCliente) = false){
             System.out.println("   ...:::: Crear un nuevo Cliente ::::....");
             System.out.println("Rut[1] o Pasaporte[2] : " + identificador);
             if (identificador == 1){
@@ -88,10 +82,10 @@ public class Main {
                 System.out.println("Pasaporte Cliente : " + pasaportecliente);
             }
             System.out.println("Sr.[1] o Sra. [2] : " + srsra);
-            System.out.println("Nombres : " + nombres);
+            System.out.println("Nombres : " + nom);
             System.out.println("Apellido Paterno : " + apepaterno);
             System.out.println("Apellido Materno : " + apematerno);
-            System.out.println("Telefono movil : " + telefonoCliente);
+            System.out.println("Telefono movil : " + fono);
             System.out.println("Email : " + emailCliente +"\n");
             System.out.println("...:::: Cliente guardado exitosamente ::::....");
         }else{
@@ -102,6 +96,9 @@ public class Main {
     }
     private void createBus(){
         System.out.println("Ingrese la patente del bus: ");
+        String patente = sc.nextLine();
+        for (patente : )
+
 
     }
     private void createViaje(){
