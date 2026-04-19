@@ -6,7 +6,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class SistemaVentaPasajes {
-
     public boolean createCliente (IdPersona id, Nombre nom, String fono, String email){
         return true;
     }
