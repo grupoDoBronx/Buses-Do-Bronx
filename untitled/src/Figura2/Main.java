@@ -181,19 +181,32 @@ public class Main {
         }
     }
     private void listVentas(){
-        if (sistem.listViajes() == null) {
-            
+        if (sistem.listVentas() == null) {
+            System.out.println("\t\t...:::: Listado de ventas ::::....");
+            System.out.println("*------------*----------*------------*------------------*--------------------------------*--------------*--------------*");
+            System.out.println("| ID DOCUMENT| TIPO DOCU|      FECHA |    RUT/PASAPORTE | CLIENTE                        | CANT BOLETOS |  TOTAL VENTA |");
+            System.out.println("+------------+----------+------------+------------------+--------------------------------+--------------+--------------+");
+            for (String[] ventas: sistem.listVentas()){
+                System.out.println("|            |          |            |                  |                                |              |              |");
+            }
+            System.out.println("*------------*----------*------------*------------------*--------------------------------*--------------*--------------*");
         }else {
-
+            System.out.println("No existen ventas registradas");
         }
-        System.out.println("\n\n...:::: Listado de ventas ::::....");
-        System.out.println("*------------*----------*------------*");
-        for (int i = 0; i < ; i++) {
 
-
-        }
     }
     private void listViajes(){
-
+        if (sistem.listViajes() == null) {
+            System.out.println("\t\t...:::: Listado de viajes ::::....\n");
+            System.out.println("*--------------*--------------*--------------*--------------*--------------*");
+            System.out.println("|        FECHA |         HORA |       PRECIO |  DISPONIBLES | PATENTE      |");
+            for (String[] viajes : sistem.listViajes()){
+                System.out.println("|--------------+--------------+--------------+--------------+--------------|");
+                System.out.println("|              |              |              |              |              |");
+            }
+            System.out.println("*--------------*--------------*--------------*--------------*--------------*");
+        }else {
+            System.out.println("No existen viajes registrados");
+        }
     }
 }

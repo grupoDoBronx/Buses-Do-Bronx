@@ -29,10 +29,17 @@ public class SistemaVentaPasajes {
     public boolean iniciaVenta (String idDoc, TipoDocumento tipo, LocalDate fechaVenta, IdPersona idCliente){
         return true;
     }
+    public String [][] listVentas(){
+        return listViajes();
+    }
     public String [][] listViajes(){
         return listViajes();
     }
-    public String getHorarios
+    public String getHorarios{
+        return horarios;
+    }
+
+
 
 
 
