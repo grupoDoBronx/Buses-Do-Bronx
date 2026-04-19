@@ -2,6 +2,7 @@ package Figura2;
 
 import enums.TipoDocumento;
 
+import javax.swing.plaf.PanelUI;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -30,7 +31,9 @@ public class SistemaVentaPasajes {
         return true;
     }
 
-
+    public String [][] listViajes(){
+        return listViajes();
+    }
 
 
 }
