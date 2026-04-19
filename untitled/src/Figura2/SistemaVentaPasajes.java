@@ -35,6 +35,7 @@ public class SistemaVentaPasajes {
     public String [][] listViajes(){
         return listViajes();
     }
+
     public String getHorarios{
         return horarios;
     }

@@ -13,6 +13,7 @@ public class Persona {
     }
 
     public Nombre getNombreCompleto() {
+
         return nombreCompleto;
     }
 
@@ -30,11 +31,7 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "Persona{" +
-                "idPersona=" + idPersona +
-                ", nombreCompleto=" + nombreCompleto +
-                ", telefono='" + telefono + '\'' +
-                '}';
+        return "|\t" + idPersona + " | " + nombreCompleto + " | " + telefono +"  |";
     }
 
     @Override

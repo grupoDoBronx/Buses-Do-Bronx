@@ -1,6 +1,10 @@
-public class Pasajero {
+public class Pasajero extends Persona{
     private Nombre nomContacto;
     private String fonoContacto;
+
+    public Pasajero(idPersona idPersona, Nombre nombre) {
+        super(idPersona, nombre);
+    }
 
     public Nombre nomContacto() {
         return nomContacto;

@@ -6,8 +6,10 @@ import  java.util.Scanner;
 public class Main {
     Scanner sc = new Scanner(System.in);
     SistemaVentaPasajes sistem = new SistemaVentaPasajes;
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
+        Main main1 = new Main();
+        main1.menu();
 
 
 

@@ -1,3 +1,5 @@
+import enums.Tratamiento;
+
 public class Nombre {
     private Tratamiento tratamiento;
     private String nombre;
@@ -38,12 +40,7 @@ public class Nombre {
 
     @Override
     public String toString() {
-        return "Nombre{" +
-                "tratamiento=" + tratamiento +
-                ", nombre='" + nombre + '\'' +
-                ", apellido_parterno='" + apellido_parterno + '\'' +
-                ", apellido_materno='" + apellido_materno + '\'' +
-                '}';
+        return tratamiento + " " + nombre + " " + apellido_parterno + " " + apellido_materno  + ' ';
     }
 
     @Override
