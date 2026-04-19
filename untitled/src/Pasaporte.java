@@ -16,5 +16,7 @@ public class Pasaporte {
     }
     public static Pasaporte of(String num,String nacionalidad){
         return new Pasaporte(num, nacionalidad);
+
+
     }
 }

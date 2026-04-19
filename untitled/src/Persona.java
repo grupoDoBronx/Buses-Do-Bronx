@@ -32,6 +32,7 @@ public class Persona {
     @Override
     public String toString() {
         return "|\t" + idPersona + " | " + nombreCompleto + " | " + telefono +"  |";
+
     }
 
     @Override

@@ -38,6 +38,7 @@ public class Nombre {
         this.apellido_materno = apellido_materno;
     }
 
+
     @Override
     public String toString() {
         return tratamiento + " " + nombre + " " + apellido_parterno + " " + apellido_materno  + ' ';
