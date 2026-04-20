@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class SistemaVentaPasajes {
-    public boolean createCliente (IdPersona id, Nombre nom, String fono, String email){
+    public boolean createCliente (IdPersona id, Nombre nombre, String fono, String email){
         return true;
     }
 
@@ -36,8 +36,9 @@ public class SistemaVentaPasajes {
         return listViajes();
     }
 
-    public String getHorarios{
-        return horarios;
+
+    public String[][] getHorariosDisponibles(LocalDate fechaViaje){
+        return horariosDisponibles();
     }
 
 

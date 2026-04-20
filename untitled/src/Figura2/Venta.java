@@ -36,7 +36,7 @@ public class Venta {
 
     }
     public Pasaje[] getPasaje(){
-
+        return getPasaje();
     }
     public int getMonto(){
         return monto;

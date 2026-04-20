@@ -21,6 +21,5 @@ public class Rut {
         int numero = Integer.parseInt(numCom[0]);
         char dv = numCom[1].toUpperCase().charAt(0);
         return new Rut(numero,dv);
-
     }
 }

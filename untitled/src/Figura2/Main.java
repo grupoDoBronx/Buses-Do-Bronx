@@ -173,6 +173,21 @@ public class Main {
                 System.out.println("Pasaporte Cliente : " + id);
             }
             System.out.println("Nombre Cliente : " + );
+
+            System.out.println("Ingrese cuantos pasajes comprara el cliente: ");
+            int cantPas = sc.nextInt();
+            System.out.println("Ingrese la fecha del viaje");
+            String fechaIngresada2 = sc.nextLine();
+            LocalDate fecha2 = LocalDate.parse(fechaIngresada2,fechaFormato);
+
+            System.out.println(":::: Pasajes a vender\n      Cantidad de pasajes : " + cantPas);
+            System.out.println("Fecha de viaje[dd/mm/yyyy] : " + fecha2 +"\n");
+            System.out.println(":::: Listado de horarios disponibles");
+            for (int i = 0; i < sistem.getHorariosDisponibles; i++) {
+
+            }
+
+
         }else {
             System.out.println("Los datos ingresados son incorrectos");
         }
