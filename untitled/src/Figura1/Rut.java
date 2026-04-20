@@ -1,3 +1,5 @@
+package Figura1;
+
 public class Rut {
     private int numero;
     private char dv;

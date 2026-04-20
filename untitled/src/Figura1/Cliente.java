@@ -1,9 +1,10 @@
-public class Cliente {
+package Figura1;
+
+public class Cliente extends Persona {
     private String email;
 
-    public Cliente(IdPersona id, Nombre nom ,String email) {
-        this.id = id;
-        this.nombre = nom;
+    public Cliente(IdPersona id, Nombre nom , String email) {
+        super(id,nom);
         this.email = email;
     }
 

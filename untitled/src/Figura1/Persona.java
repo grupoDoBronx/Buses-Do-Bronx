@@ -1,14 +1,16 @@
+package Figura1;
+
 public class Persona {
-    private idPersona idPersona;
+    private IdPersona idPersona;
     private Nombre nombreCompleto;
     private String telefono;
 
-    public Persona(idPersona idPersona, Nombre nombre) {
+    public Persona(IdPersona idPersona, Nombre nombre) {
         this.idPersona = idPersona;
         this.nombreCompleto = nombre;
     }
 
-    public idPersona getIdPersona() {
+    public IdPersona getIdPersona() {
         return idPersona;
     }
 

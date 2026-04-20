@@ -1,3 +1,5 @@
+package Figura1;
+
 public class Pasajero {
     private Nombre nomContacto;
     private String fonoContacto;

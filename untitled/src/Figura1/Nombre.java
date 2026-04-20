@@ -1,3 +1,5 @@
+package Figura1;
+
 public class Nombre {
     private Tratamiento tratamiento;
     private String nombre;

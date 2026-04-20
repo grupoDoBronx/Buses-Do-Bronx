@@ -1,3 +1,5 @@
+package Figura2;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 

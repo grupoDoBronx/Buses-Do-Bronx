@@ -1,7 +1,10 @@
+import Figura1.IdPersona;
+import Figura1.Nombre;
+
 public class ClienteF2 {
     private String email;
 
-    public Cliente(IdPersona id, Nombre nom ,String email) {
+    public Cliente(IdPersona id, Nombre nom , String email) {
         this.id = id;
         this.nombre = nom;
         this.email = email;
