@@ -183,8 +183,11 @@ public class Main {
             System.out.println(":::: Pasajes a vender\n      Cantidad de pasajes : " + cantPas);
             System.out.println("Fecha de viaje[dd/mm/yyyy] : " + fecha2 +"\n");
             System.out.println(":::: Listado de horarios disponibles");
-            for (int i = 0; i < sistem.getHorariosDisponibles; i++) {
-
+            System.out.println("     *----------*----------*----------*----------*");
+            System.out.println("     | BUS      |   SALIDA |    VALOR | ASIENTOS |");
+            for (int i = 0; i < sistem.getHorariosDisponibles.lengt; i++) {
+                System.out.println("  " +(i+1) + " ");
+                System.out.println("     |----------|----------|----------|----------|");
             }
 
 

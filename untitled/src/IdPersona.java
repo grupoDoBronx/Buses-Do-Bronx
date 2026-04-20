@@ -1,3 +1,5 @@
 public interface IdPersona {
-    public String toString
+    String toString();
+    boolean equals(Object otro);
+
 }

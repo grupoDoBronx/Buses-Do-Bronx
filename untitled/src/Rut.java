@@ -22,4 +22,21 @@ public class Rut {
         char dv = numCom[1].toUpperCase().charAt(0);
         return new Rut(numero,dv);
     }
+
+    @Override
+    public String toString() {
+        return numero + "-" + dv;
+    }
+
+    @Override
+    public boolean equals(Object otro) {
+
+        if (!(otro instanceof Rut)) {
+            return false;
+        }
+
+        Rut r = (Rut) otro;
+
+        return this.numero == r.numero && this.dv == r.dv;
+    }
 }
