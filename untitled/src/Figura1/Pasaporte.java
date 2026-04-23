@@ -1,6 +1,6 @@
 package Figura1;
 
-public class Pasaporte {
+public class Pasaporte implements IdPersona {
     private String numero;
     private String nacionalidad;
 
@@ -17,6 +17,25 @@ public class Pasaporte {
         return nacionalidad;
     }
     public static Pasaporte of(String num,String nacionalidad){
-       return ;
+        return new Pasaporte(num, nacionalidad);
     }
+
+
+    @Override
+    public String toString() {
+        return numero + " (" + nacionalidad + ")";
+    }
+
+    @Override
+    public boolean equals(Object otro) {
+
+        if (!(otro instanceof Pasaporte)) {
+            return false;
+        }
+
+        Pasaporte p = (Pasaporte) otro;
+
+        return this.numero.equals(p.numero) && this.nacionalidad.equals(p.nacionalidad);
+    }
+
 }
