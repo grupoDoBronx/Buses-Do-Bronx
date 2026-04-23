@@ -1,9 +1,11 @@
-public class Pasajero extends Persona{
+package Figura1;
+
+public class Pasajero extends Persona {
     private Nombre nomContacto;
     private String fonoContacto;
 
-    public Pasajero(idPersona idPersona, Nombre nombre) {
-        super(idPersona, nombre);
+    public Pasajero(IdPersona id, Nombre nombre) {
+        super(id, nombre);
     }
 
     public Nombre nomContacto() {
@@ -22,4 +24,13 @@ public class Pasajero extends Persona{
         this.fonoContacto = fonoContacto;
     }
 
+    @Override
+    public String toString() {
+        return  nomContacto + fonoContacto;
+    }
+    @Override
+    public boolean equals(Object otro) {
+
+        return false;
+    }
 }

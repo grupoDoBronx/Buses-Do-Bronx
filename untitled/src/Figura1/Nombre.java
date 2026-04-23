@@ -1,3 +1,5 @@
+package Figura1;
+
 import enums.Tratamiento;
 
 public class Nombre {
