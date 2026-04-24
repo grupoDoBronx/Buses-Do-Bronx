@@ -4,10 +4,12 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Viaje {
+
     private LocalDate fecha;
     private LocalTime hora;
     private int precio;
-
+    private Bus bus;
+    Pasajero [] pasajeros;
     public Viaje(LocalDate fecha, LocalTime hora, int precio, Bus bus) {
         this.fecha = fecha;
         this.hora = hora;
@@ -33,8 +35,18 @@ public class Viaje {
     public Bus getBus(){
         return bus;
     }
+
+    int totalAsientos = bus.getNroAsientos();
     public String[][] getAsientos(){
-        return asientos;
+        String[][] asientos;
+        for (int i = 0; i < totalAsientos; i++) {
+
+            if (pasajeros[i] != null){
+                asientos[i][0] = pasajeros
+
+            }
+        }
+
     }
     public void addPasaje(Pasaje pasaje){
 
@@ -48,16 +60,14 @@ public class Viaje {
         return listaPasajeros;
     }
     public boolean existeDisponibilidad(){
-        for (int i = 0; i < ; i++) {
-            for (int j = 0; j < ; j++) {
-                
-            }    
-        }
+
         
-        return false;
+        return true;
     }
-    public getNroAsientosDisponibles(){
+    public int getNroAsientosDisponibles(){
         int nroAsientosDisponibles = 0;
+
+
         return nroAsientosDisponibles;
     }
 }
