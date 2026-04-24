@@ -6,10 +6,11 @@ import Figura1.Persona;
 
 public class Cliente extends Persona {
     private String email;
-
+    private Venta[] ventas;
     public Cliente(IdPersona id, Nombre nom,String email) {
         super(id,nom);
         this.email = email;
+
     }
 
     public String getEmail() {
@@ -25,15 +26,17 @@ public class Cliente extends Persona {
 
     }
     public Venta [] getVentas(){
+
         return ventas;
     }
     @Override
     public String toString() {
-        return "";
+        return getIdPersona() +" | " + getNombreCompleto();
     }
 
     @Override
     public boolean equals(Object otro) {
+
         return false;
     }
 }
