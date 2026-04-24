@@ -1,10 +1,16 @@
 package Figura2;
 
+import Figura1.IdPersona;
 import Figura1.Nombre;
+import Figura1.Persona;
 
-public class Pasajero {
+public class Pasajero extends Persona {
     private Nombre nomContacto;
     private String fonoContacto;
+
+    public Pasajero(IdPersona id, Nombre nombre) {
+        super(id, nombre);
+    }
 
     public String getFonoContacto() {
         return fonoContacto;
@@ -20,5 +26,14 @@ public class Pasajero {
 
     public void setNomContacto(Nombre nomContacto) {
         this.nomContacto = nomContacto;
+    }
+    @Override
+    public String toString() {
+        return  nomContacto + fonoContacto;
+    }
+    @Override
+    public boolean equals(Object otro) {
+
+        return false;
     }
 }

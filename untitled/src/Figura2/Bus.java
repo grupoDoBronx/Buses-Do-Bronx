@@ -5,7 +5,7 @@ public class Bus {
     private String marca;
     private String modelo;
     private int nroAsientos;
-
+    private Viaje[] viajes;
     public Bus(int nroAsientos, String patente) {
         this.nroAsientos = nroAsientos;
         this.patente = patente;
@@ -35,6 +35,6 @@ public class Bus {
         return nroAsientos;
     }
     public void addViaje(Viaje viaje){
-        
+
     }
 }
