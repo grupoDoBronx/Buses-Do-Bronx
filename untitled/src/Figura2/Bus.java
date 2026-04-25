@@ -35,6 +35,6 @@ public class Bus {
         return nroAsientos;
     }
     public void addViaje(Viaje viaje){
-
+        for ()
     }
 }

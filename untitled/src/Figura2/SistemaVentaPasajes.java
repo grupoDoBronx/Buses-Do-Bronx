@@ -11,11 +11,13 @@ public class SistemaVentaPasajes {
     Main main = new Main();
 
     public boolean createCliente (IdPersona id, Nombre nombre, String fono, String email){
+        findCliente()
         return true;
     }
 
 
     public boolean createPasajero (IdPersona id, Nombre nom, String fono, Nombre nomContacto, String fonoContacto){
+
         return true;
     }
 
@@ -42,18 +44,46 @@ public class SistemaVentaPasajes {
 
         }
     }
+    public int getMontoVenta(String idDocumento, TipoDocumento tipo){
+        int montoVenta = 0;
+        return montoVenta;
+    }
+    public String getNombrePasajero(IdPersona idPasajero){
 
+        String nombrePasajero =
+        return nombrePasajero
+    }
+    public boolean vendePasaje(String idDoc,LocalDate fecha,LocalTime hora,String patBus,int asiento){
+        findVenta();
+        findCliente();
+        return true;
+    }
     public String [][] listVentas(){
         return listViajes();
     }
     public String [][] listViajes(){
         return listViajes();
     }
+    public String [][] listPasajeros(LocalDate fecha,LocalTime hora, String patBus){
 
-
-    public String[][] getHorariosDisponibles(LocalDate fechaViaje){
-        return horariosDisponibles();
     }
+    private Cliente findCliente(IdPersona id){
+        return findCliente(id);
+    }
+    private Venta findVenta(String idDocumento,TipoDocumento tipoDocumento){
+
+    }
+    private Bus findBus(String patente){
+
+    }
+    private Viaje findViaje(String fecha, String hora, String patenteBus){
+
+    }
+    private Pasajero findPasajero(IdPersona idPersona){
+
+    }
+
+
 
 
 
