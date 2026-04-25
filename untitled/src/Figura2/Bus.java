@@ -1,14 +1,17 @@
 package Figura2;
 
+import java.util.ArrayList;
+
 public class Bus {
     private String patente;
     private String marca;
     private String modelo;
     private int nroAsientos;
-    private Viaje[] viajes;
+    ArrayList<Viaje> viajes = new ArrayList<>();
     public Bus(int nroAsientos, String patente) {
         this.nroAsientos = nroAsientos;
         this.patente = patente;
+        this.viajes = new ArrayList<>();
     }
 
     public String getPatente() {
@@ -35,6 +38,11 @@ public class Bus {
         return nroAsientos;
     }
     public void addViaje(Viaje viaje){
-        for ()
+        for (Viaje via : viajes){
+            if (via.equals(viaje)){
+                return;
+            }
+        }
+        viajes.add(viaje);
     }
 }
