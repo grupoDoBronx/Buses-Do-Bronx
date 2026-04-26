@@ -19,4 +19,7 @@ public class Pasajero extends Persona {
         this.nomContacto = nom;
     }
 
+    public String getFonoContacto() {
+        return fonoContacto;
+    }
 }
