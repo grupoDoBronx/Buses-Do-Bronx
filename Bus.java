@@ -25,4 +25,5 @@ public class Bus {
     public int getNroAsientos () {
         return nroAsientos;
     }
+
 }
