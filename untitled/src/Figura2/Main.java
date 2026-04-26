@@ -186,7 +186,7 @@ public class Main {
             System.out.println("     *----------*----------*----------*----------*");
             System.out.println("     | BUS      |   SALIDA |    VALOR | ASIENTOS |");
             for (int i = 0; i < sistem.getHorariosDisponibles.lengt; i++) {
-                System.out.println("  " +(i+1) + " ");
+                System.out.println("  " +(i+1) + " " + sistem.listAsientosDeViaje() + " "+ sistem.getHorariosDisponibles());
                 System.out.println("     |----------|----------|----------|----------|");
             }
             System.out.println("     *----------*----------*----------*----------*\n\n");

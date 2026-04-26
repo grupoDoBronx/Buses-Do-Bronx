@@ -10,7 +10,6 @@ public class Cliente extends Persona {
     public Cliente(IdPersona id, Nombre nom,String email) {
         super(id,nom);
         this.email = email;
-
     }
 
     public String getEmail() {

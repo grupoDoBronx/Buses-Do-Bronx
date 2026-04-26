@@ -15,6 +15,7 @@ public class Viaje {
         this.hora = hora;
         this.precio = precio;
         this.bus = bus;
+        this.pasajeros = pasajeros;
     }
 
     public LocalDate getFecha() {
@@ -38,15 +39,7 @@ public class Viaje {
 
     int totalAsientos = bus.getNroAsientos();
     public String[][] getAsientos(){
-        String[][] asientos;
-        for (int i = 0; i < totalAsientos; i++) {
-
-            if (pasajeros[i] != null){
-                asientos[i][0] = pasajeros
-
-            }
-        }
-
+        return asientos;
     }
     public void addPasaje(Pasaje pasaje){
 
@@ -60,9 +53,11 @@ public class Viaje {
         return listaPasajeros;
     }
     public boolean existeDisponibilidad(){
+        for (){
+            return true;
+        }
+        return false;
 
-        
-        return true;
     }
     public int getNroAsientosDisponibles(){
         int nroAsientosDisponibles = 0;

@@ -28,6 +28,7 @@ public class SistemaVentaPasajes {
 
 
     public boolean createViaje (LocalDate fecha, LocalTime hora, int precio, String patBus){
+
         return true;
     }
 
@@ -36,8 +37,8 @@ public class SistemaVentaPasajes {
         return true;
     }
     public String[][] getHorariosDisponibles(LocalDate fechaViaje){
-        String[] horariosDisponibles;
-        return horariosDisponibles;
+
+        return horariosDisponibles();
     }
     public String[][] listAsientosDeViaje(LocalDate fecha,LocalTime hora,String patBus){
         for (int i = 0; i < ; i++) {
