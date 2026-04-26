@@ -1,9 +1,9 @@
-public class Cliente {
-    private String email;
+package Figura1;
 
-    public Cliente(IdPersona id, Nombre nom ,String email) {
-        this.id = id;
-        this.nombre = nom;
+public class Cliente extends Persona{
+    String email;
+    public Cliente(IdPersona id, Nombre nom,String email) {
+        super(id,nom);
         this.email = email;
     }
 
@@ -14,5 +14,4 @@ public class Cliente {
     public void setEmail(String email) {
         this.email = email;
     }
-
 }

@@ -2,7 +2,6 @@ package Figura2;
 
 import enums.TipoDocumento;
 
-import javax.swing.plaf.PanelUI;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -30,10 +29,19 @@ public class SistemaVentaPasajes {
     public boolean iniciaVenta (String idDoc, TipoDocumento tipo, LocalDate fechaVenta, IdPersona idCliente){
         return true;
     }
-
+    public String [][] listVentas(){
+        return listViajes();
+    }
     public String [][] listViajes(){
         return listViajes();
     }
+    public String getHorarios{
+        return horarios;
+    }
+
+
+
+
 
 
 }
