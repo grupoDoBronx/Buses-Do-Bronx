@@ -1,8 +1,14 @@
-public class Pasajero {
+package Figura1;
+
+public class Pasajero extends Persona{
     private Nombre nomContacto;
     private String fonoContacto;
 
-    public Nombre nomContacto() {
+    public Pasajero(IdPersona id, Nombre nombre) {
+        super(id, nombre);
+    }
+
+    public Nombre getNomContacto() {
         return nomContacto;
     }
 
@@ -17,5 +23,4 @@ public class Pasajero {
     public void setFonoContacto(String fonoContacto) {
         this.fonoContacto = fonoContacto;
     }
-
 }

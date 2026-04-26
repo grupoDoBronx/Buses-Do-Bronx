@@ -6,8 +6,10 @@ import  java.util.Scanner;
 public class Main {
     Scanner sc = new Scanner(System.in);
     SistemaVentaPasajes sistem = new SistemaVentaPasajes;
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
+        Main main1 = new Main();
+        main1.menu();
 
 
 
@@ -54,7 +56,7 @@ public class Main {
     private void createCliente(){
         IdPersona id;
         boolean existecliente = false;
-        System.out.println("Ingrese el tipo de identificador del cliente: \n1. Rut\n2. Pasaporte");
+        System.out.println("Ingrese el tipo de identificador del cliente: \n1. Figura1.Rut\n2. Figura1.Pasaporte");
         int identificador = sc.nextInt();
         if (identificador == 1){
             System.out.println("Ingrese el rut del cliente: ");
@@ -76,12 +78,12 @@ public class Main {
         System.out.println("Ingrese el email del cliente:");
         String emailCliente = sc.nextLine();
         if (sistem.createCliente(id, nom,fono,emailCliente) == false){
-            System.out.println("   ...:::: Crear un nuevo Cliente ::::....");
-            System.out.println("Rut[1] o Pasaporte[2] : " + identificador);
+            System.out.println("   ...:::: Crear un nuevo Figura1.Cliente ::::....");
+            System.out.println("Figura1.Rut[1] o Figura1.Pasaporte[2] : " + identificador);
             if (identificador == 1){
                 System.out.println("R.U.T : " + id);
             } else if (identificador == 2) {
-                System.out.println("Pasaporte Cliente : " + id);
+                System.out.println("Figura1.Pasaporte Figura1.Cliente : " + id);
             }
             System.out.println("Sr.[1] o Sra. [2] : " + srsra);
             System.out.println("Nombres : " + nom);
@@ -89,7 +91,7 @@ public class Main {
             System.out.println("Apellido Materno : " + apematerno);
             System.out.println("Telefono movil : " + fono);
             System.out.println("Email : " + emailCliente +"\n");
-            System.out.println("...:::: Cliente guardado exitosamente ::::....");
+            System.out.println("...:::: Figura1.Cliente guardado exitosamente ::::....");
         }else{
             System.out.println("Ya existe un cliente con esta identificacion");
             return;
@@ -149,7 +151,7 @@ public class Main {
         System.out.println("Ingrse la fecha de venta [dd/mm/yyyy]: ");
         String fechaIngresada = sc.nextLine();
         LocalDate fecha = LocalDate.parse(fechaIngresada,fechaFormato);
-        System.out.println("Ingrese el tipo de identificador del cliente: \n1. Rut\n2. Pasaporte");
+        System.out.println("Ingrese el tipo de identificador del cliente: \n1. Figura1.Rut\n2. Figura1.Pasaporte");
         int tipoIdentificador = sc.nextInt();
         if (tipoIdentificador == 1){
             System.out.println("Ingrese el rut del cliente: ");
@@ -164,13 +166,32 @@ public class Main {
             System.out.println("Tipo documento: [1] Boleta [2] Factura : " + tipoDoc);
             System.out.println("Fecha de venta[dd/mm/yyyy] : " + fecha);
             System.out.println(":::: Datos del cliente\n");
-            System.out.println("Rut[1] o Pasaporte[2] : " + tipoIdentificador);
+            System.out.println("Figura1.Rut[1] o Figura1.Pasaporte[2] : " + tipoIdentificador);
             if (tipoIdentificador == 1){
                 System.out.println("R.U.T : " + id);
             } else if (tipoIdentificador == 2) {
-                System.out.println("Pasaporte Cliente : " + id);
+                System.out.println("Figura1.Pasaporte Figura1.Cliente : " + id);
             }
-            System.out.println("Nombre Cliente : " + );
+            System.out.println("Figura1.Nombre Figura1.Cliente : " + );
+
+            System.out.println("Ingrese cuantos pasajes comprara el cliente: ");
+            int cantPas = sc.nextInt();
+            System.out.println("Ingrese la fecha del viaje");
+            String fechaIngresada2 = sc.nextLine();
+            LocalDate fecha2 = LocalDate.parse(fechaIngresada2,fechaFormato);
+
+            System.out.println(":::: Pasajes a vender\n      Cantidad de pasajes : " + cantPas);
+            System.out.println("Fecha de viaje[dd/mm/yyyy] : " + fecha2 +"\n");
+            System.out.println(":::: Listado de horarios disponibles");
+            System.out.println("     *----------*----------*----------*----------*");
+            System.out.println("     | BUS      |   SALIDA |    VALOR | ASIENTOS |");
+            for (int i = 0; i < sistem.getHorariosDisponibles.lengt; i++) {
+                System.out.println("  " +(i+1) + " ");
+                System.out.println("     |----------|----------|----------|----------|");
+            }
+            System.out.println("     *----------*----------*----------*----------*\n\n");
+
+
         }else {
             System.out.println("Los datos ingresados son incorrectos");
         }

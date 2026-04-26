@@ -3,25 +3,34 @@ package Figura2;
 public class Pasaje {
     private long numero;
     private int asiento;
+    private Viaje viaje;
+    private Pasajero pasajero;
+    private Venta venta;
 
-    public Pasaje(int asiento, Viaje viaje, Pasajero pasajero, Venta venta){
-        this.asiento=asiento;
-        this.viaje=viaje;
-        this.pasajero=pasajero;
-        this.venta=venta;
+    public Pasaje(int asiento, Pasajero pasajero, Venta venta, Viaje viaje) {
+        this.asiento = asiento;
+        this.pasajero = pasajero;
+        this.venta = venta;
+        this.viaje = viaje;
     }
-    public int getNumero(){
+
+    public long getNumero() {
         return numero;
     }
-    public int getAsiento(){
+
+    public int getAsiento() {
         return asiento;
     }
-    public Viaje getViaje(){
+
+    public Viaje getViaje() {
         return viaje;
     }
-    public Pasajero getPasajero(){
+
+    public Pasajero getPasajero() {
         return pasajero;
     }
-    public Venta getVenta(){
+
+    public Venta getVenta() {
         return venta;
     }
+}
