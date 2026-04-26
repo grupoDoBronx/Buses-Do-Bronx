@@ -1,4 +1,4 @@
-package Figura2;
+}package Figura2;
 public class Bus {
     private String patente;
     private String marca;
