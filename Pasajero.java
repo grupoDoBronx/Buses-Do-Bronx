@@ -19,5 +19,4 @@ public class Pasajero extends Persona {
         this.nomContacto = nom;
     }
 
-
 }
