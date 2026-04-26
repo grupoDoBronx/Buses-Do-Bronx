@@ -1,4 +1,6 @@
 package Figura2;
+import Figura1.IdPersona;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -49,6 +51,8 @@ public class Main {
                 case 8:
                     break;
                 default:
+                    System.out.println("Opcion numerica ingresada incorrecta");
+                    return;
             }
         }
 
@@ -188,6 +192,7 @@ public class Main {
             for (int i = 0; i < sistem.getHorariosDisponibles.lengt; i++) {
                 System.out.println("  " +(i+1) + " " + sistem.listAsientosDeViaje() + " "+ sistem.getHorariosDisponibles());
                 System.out.println("     |----------|----------|----------|----------|");
+
             }
             System.out.println("     *----------*----------*----------*----------*\n\n");
 

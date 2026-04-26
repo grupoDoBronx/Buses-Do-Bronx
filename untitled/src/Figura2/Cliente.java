@@ -4,9 +4,12 @@ import Figura1.IdPersona;
 import Figura1.Nombre;
 import Figura1.Persona;
 
+import java.util.ArrayList;
+
 public class Cliente extends Persona {
     private String email;
-    private Venta[] ventas;
+    private ArrayList<Venta> venta = new ArrayList<>();
+    Venta [] ventas;
     public Cliente(IdPersona id, Nombre nom,String email) {
         super(id,nom);
         this.email = email;
@@ -28,14 +31,5 @@ public class Cliente extends Persona {
 
         return ventas;
     }
-    @Override
-    public String toString() {
-        return getIdPersona() +" | " + getNombreCompleto();
-    }
 
-    @Override
-    public boolean equals(Object otro) {
-
-        return false;
-    }
 }
