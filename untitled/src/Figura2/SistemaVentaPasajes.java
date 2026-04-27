@@ -115,14 +115,14 @@ public class SistemaVentaPasajes {
 
     }
 
-    public Cliente findCliente(String id) {
+    private Cliente findCliente(String id) {
         for (Cliente c : clientes) {
             if (c.getIdPersona().equals(id)) return c;
         }
         return null;
     }
 
-    public Bus findBus(String patente) {
+    private Bus findBus(String patente) {
         for (Bus b : buses) {
             if (b.getPatente().equals(patente)) return b;
         }
