@@ -9,7 +9,6 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class SistemaVentaPasajes {
-    Main main = new Main();
 
     ArrayList<Cliente> clientes = new ArrayList<>();
     ArrayList<Pasajero> pasajeros = new ArrayList<>();
@@ -73,16 +72,16 @@ public class SistemaVentaPasajes {
 
     public String[][] getHorariosDisponibles(LocalDate fechaViaje){
 
-        ArrayList<Viaje> filtrados = new ArrayList<>();
+        ArrayList<Viaje> vs = new ArrayList<>();
         for (Viaje v : viajes) {
             if (v.getFecha().equals(fechaViaje)) {
-                filtrados.add(v);
+                vs.add(v);
             }
         }
 
-        String[][] resultado = new String[filtrados.size()][4];
-        for (int i = 0; i < filtrados.size(); i++) {
-            Viaje v = filtrados.get(i);
+        String[][] resultado = new String[vs.size()][4];
+        for (int i = 0; i < vs.size(); i++) {
+            Viaje v = vs.get(i);
             resultado[i][0] = v.getBus().getPatente();
             resultado[i][1] = String.valueOf(v.getHora());
             resultado[i][2] = String.valueOf(v.getPrecio());
@@ -103,9 +102,12 @@ public class SistemaVentaPasajes {
     }
 
     public String getNombrePasajero(IdPersona idPasajero){
+        Pasajero p = findPasajero(idPasajero);
+        if(p == null){
+            return null;
+        }
 
-        String nombrePasajero =
-        return nombrePasajero
+        return p.getNombreCompleto().toString();
     }
 
     public boolean vendePasaje(String idDocumento, String fecha, String hora, String patente,int asiento, String idPasajero) {
@@ -157,18 +159,11 @@ public class SistemaVentaPasajes {
     }
 }
     public String [][] listPasajeros(LocalDate fecha,LocalTime hora, String patenteBus){
-
-        String[][] datosPasajero = new String[pasajeros.size()][4];
-        for (int i = 0; i < pasajeros.size(); i++) {
-            Pasajero p = pasajeros.get(i);
-            datosPasajero[i][0] = String.valueOf(p.get());
-            datosPasajero[i][1] = String.valueOf(p.getHora());
-            datosPasajero[i][2] = String.valueOf(p.getPrecio());
-            datosPasajero[i][3] = String.valueOf(p.getNroAsientosDisponibles());
-            datosPasajero[i][4] = p.getBus().getPatente();
+        Viaje encontrarViaje = findViaje(fecha, hora, patenteBus);
+        if(encontrarViaje == null){
+            return new String[0][0];
         }
-        return datos;
-
+        return encontrarViaje.getListaPasajeros();
     }
 
     private Cliente findCliente(IdPersona id) {
@@ -207,4 +202,16 @@ public class SistemaVentaPasajes {
         }
         return null;
     }
-}
+
+    @Override
+    public String[][] mostrarViajesFecha() {
+        String[][] datos = new String[viajes.size()][3];
+        for (int i = 0; i < viajes.size(); i++) {
+           Viaje v = viajes.get(i);
+           datos[i][0] = String.valueOf(v.getHora());
+           datos[i][1] = String.valueOf(v.getPrecio());
+           datos[i][2] = String.valueOf(v.getNroAsientosDisponibles());
+           datos[i][3] = v.getBus().getPatente();
+        }
+        return datos;
+    }
