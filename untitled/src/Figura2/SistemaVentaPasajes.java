@@ -9,8 +9,6 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class SistemaVentaPasajes implements ViajesPorFecha{
-    Main main = new Main();
-
     ArrayList<Cliente> clientes = new ArrayList<>();
     ArrayList<Pasajero> pasajeros = new ArrayList<>();
     ArrayList<Bus> buses = new ArrayList<>();

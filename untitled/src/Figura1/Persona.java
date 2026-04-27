@@ -31,13 +31,10 @@ public class Persona {
         this.telefono = telefono;
     }
 
-    @Override
+
     public String toString() {
         return "|\t" + idPersona + " | " + nombreCompleto + " | " + telefono +"  |";
-
     }
-
-    @Override
     public boolean equals(Object obj) {
         return super.equals(obj);
     }
