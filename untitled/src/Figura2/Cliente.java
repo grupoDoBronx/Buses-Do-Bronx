@@ -8,8 +8,7 @@ import java.util.ArrayList;
 
 public class Cliente extends Persona {
     private String email;
-    private ArrayList<Venta> venta = new ArrayList<>();
-    Venta [] ventas;
+    private ArrayList<Venta> ventas = new ArrayList<>();
     public Cliente(IdPersona id, Nombre nom,String email) {
         super(id,nom);
         this.email = email;
@@ -25,11 +24,11 @@ public class Cliente extends Persona {
 
 
     public void add(Venta venta){
-
+        ventas.add(venta);
     }
     public Venta [] getVentas(){
-
-        return ventas;
+        Venta [] regresarVentas = new Venta[ventas.size()];
+        return ventas.toArray(regresarVentas);
     }
 
 }

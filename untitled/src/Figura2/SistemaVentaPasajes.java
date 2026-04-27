@@ -18,10 +18,10 @@ public class SistemaVentaPasajes {
     ArrayList<Venta> ventas = new ArrayList<>();
 
     public boolean createCliente (IdPersona id, Nombre nombre, String telefono, String email){
-        if(findCliente(id) != null){
+        if(findCliente(String.valueOf(id)) != null){
             return false;
         }
-        Cliente nuevoCliente = new Cliente(id, nombre, telefono, email);
+        Cliente nuevoCliente = new Cliente(IdPersona id, nombre, telefono, email);
         clientes.add(nuevoCliente);
         return true;
     }

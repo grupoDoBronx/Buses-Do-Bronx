@@ -189,7 +189,7 @@ public class Main {
             System.out.println(":::: Listado de horarios disponibles");
             System.out.println("     *----------*----------*----------*----------*");
             System.out.println("     | BUS      |   SALIDA |    VALOR | ASIENTOS |");
-            for (int i = 0; i < sistem.getHorariosDisponibles.lengt; i++) {
+            for (int i = 0; i < sistem.getHorariosDisponibles(fecha2).length; i++) {
                 System.out.println("  " +(i+1) + " " + sistem.listAsientosDeViaje() + " "+ sistem.getHorariosDisponibles());
                 System.out.println("     |----------|----------|----------|----------|");
 
