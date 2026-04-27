@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 public class SistemaVentaPasajes {
     Main main = new Main();
-    Nombre classNombre = new Nombre();
 
     ArrayList<Cliente> clientes = new ArrayList<>();
     ArrayList<Pasajero> pasajeros = new ArrayList<>();
@@ -90,8 +89,8 @@ public class SistemaVentaPasajes {
 
     public String getNombrePasajero(IdPersona idPasajero){
 
-        String nombrePasajero = classNombre.toString();
-        return nombrePasajero;
+        String nombrePasajero =
+        return nombrePasajero
     }
 
     public boolean vendePasaje(String idDocumento, String tipoDocumento, String fecha, String hora, String patente, String idPasajero) {
@@ -102,7 +101,7 @@ public class SistemaVentaPasajes {
         if (venta == null || viaje == null || pasajero == null) {
             return false;
         }
-        venta.createPasaje(int asiento, Viaje viaje,Pasajero pasajero);
+        venta.createPasaje(viaje, pasajero);
         return true;
     }
 
@@ -112,19 +111,18 @@ public class SistemaVentaPasajes {
     public String [][] listViajes(){
         return listViajes();
     }
-
     public String [][] listPasajeros(LocalDate fecha,LocalTime hora, String patBus){
 
     }
 
-    public Cliente findCliente(String id) {
+    private Cliente findCliente(String id) {
         for (Cliente c : clientes) {
             if (c.getIdPersona().equals(id)) return c;
         }
         return null;
     }
 
-    public Bus findBus(String patente) {
+    private Bus findBus(String patente) {
         for (Bus b : buses) {
             if (b.getPatente().equals(patente)) return b;
         }
@@ -140,9 +138,7 @@ public class SistemaVentaPasajes {
 
     private Pasajero findPasajero(String id) {
         for (Pasajero p : pasajeros) {
-            if (p.getIdPersona().equals(id)) {
-                return p;
-            }
+            if (p.getIdPersona().equals(id)) return p;
         }
         return null;
     }
@@ -155,13 +151,5 @@ public class SistemaVentaPasajes {
         }
         return null;
     }
-
-}
-
-
-
-
-
-
 
 }
