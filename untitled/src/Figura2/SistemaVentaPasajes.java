@@ -90,15 +90,31 @@ public class SistemaVentaPasajes {
         return resultado;
     }
 
-    public String[][] listAsientosDeViaje(LocalDate fecha,LocalTime hora,String patBus){
-        for (int i = 0; i < ; i++) {
+    public String[] listAsientosDeViaje(LocalDate fecha, LocalTime hora, String patenteBus) {
 
+        Viaje viaje = findViaje(fecha, hora, patenteBus);
+
+        if (viaje == null) {
+            return new String[0];
         }
+
+        String[][] asientos = viaje.getAsientos();
+
+        String[] estadosAsientos = new String[asientos.length];
+
+        for (int i = 0; i < asientos.length; i++) {
+            estadosAsientos[i] = asientos[i][1];
+        }
+
+        return estadosAsientos;
     }
 
     public int getMontoVenta(String idDocumento, TipoDocumento tipo){
-        int montoVenta = 0;
-        return montoVenta;
+       Venta v = findVenta(idDocumento, tipo);
+       if(v == null){
+           return 0;
+       }
+       return v.getMonto();
     }
 
     public String getNombrePasajero(IdPersona idPasajero){
@@ -195,6 +211,7 @@ public class SistemaVentaPasajes {
     }
 
     private Viaje findViaje(String fecha, String hora, String patente) {
+
         for (Viaje v : viajes) {
             if (v.getFecha().equals(fecha) && v.getHora().equals(hora) && v.getBus().getPatente().equals(patente)) {
                 return v;
