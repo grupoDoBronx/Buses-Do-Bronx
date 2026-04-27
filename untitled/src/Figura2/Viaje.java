@@ -2,6 +2,7 @@ package Figura2;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class Viaje {
 
@@ -9,13 +10,12 @@ public class Viaje {
     private LocalTime hora;
     private int precio;
     private Bus bus;
-    Pasajero [] pasajeros;
+    private ArrayList<Pasaje> pasajes = new ArrayList<>();
     public Viaje(LocalDate fecha, LocalTime hora, int precio, Bus bus) {
         this.fecha = fecha;
         this.hora = hora;
         this.precio = precio;
         this.bus = bus;
-        this.pasajeros = pasajeros;
     }
 
     public LocalDate getFecha() {
@@ -37,32 +37,27 @@ public class Viaje {
         return bus;
     }
 
-    int totalAsientos = bus.getNroAsientos();
     public String[][] getAsientos(){
+        int totalAsientos = bus.getNroAsientos();
+
         return asientos;
     }
     public void addPasaje(Pasaje pasaje){
 
     }
+
     public String[][] getListaPassajeros(){
         for (int i = 0; i < ; i++) {
-            for (int j = 0; j < ; j++) {
-                
-            }
-        }
-        return listaPasajeros;
-    }
-    public boolean existeDisponibilidad(){
-        for (){
-            return true;
-        }
-        return false;
 
+        }
+        return ;
     }
     public int getNroAsientosDisponibles(){
-        int nroAsientosDisponibles = 0;
-
-
+        int nroAsientosDisponibles;
+        nroAsientosDisponibles = bus.getNroAsientos()-pasajes.size();
         return nroAsientosDisponibles;
+    }
+    public boolean existeDisponibilidad(){
+        return getNroAsientosDisponibles()>0;
     }
 }

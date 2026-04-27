@@ -7,7 +7,8 @@ public class Pasaje {
     private Pasajero pasajero;
     private Venta venta;
 
-    public Pasaje(int asiento, Pasajero pasajero, Venta venta, Viaje viaje) {
+    public Pasaje(long numero, int asiento, Pasajero pasajero, Venta venta, Viaje viaje) {
+        this.numero=numero;
         this.asiento = asiento;
         this.pasajero = pasajero;
         this.venta = venta;

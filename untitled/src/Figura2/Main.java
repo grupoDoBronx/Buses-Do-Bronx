@@ -20,11 +20,9 @@ public class Main {
     private void menu(){
         int opcion=0;
         while (opcion!=8){
-            System.out.println("============================");
-            System.out.println("...::: Menú principal :::...");
-            System.out.println("\n  1) Crear cliente\n  2) Crear bus\n  3) Crear viaje\n  4) Vender pasajes\n  5) Lista de pasajeros\n  6) Lista de ventas\n  7) Lista de viajes\n  8) Salir");
-            System.out.println("----------------------------");
-            System.out.println("..:: Ingrese número de opción:");
+            System.out.println("============================\n\t   ...::: Menú principal :::...");
+            System.out.println("\n  1) Crear cliente\n  2) Crear bus\n  3) Crear viaje\n  4) Vender pasajes\n  5) Lista de pasajeros\n  6) Lista de ventas\n  7) Lista de viajes\n  8) Consulta Viajes disponibles por fecha\n  9) Salir");
+            System.out.println("----------------------------\n..:: Ingrese número de opción:");
             opcion = sc.nextInt();
             switch (opcion){
                 case 1:
@@ -49,6 +47,9 @@ public class Main {
                     listViajes();
                     break;
                 case 8:
+
+                    break;
+                case 9:
                     break;
                 default:
                     System.out.println("Opcion numerica ingresada incorrecta");
@@ -207,7 +208,7 @@ public class Main {
         }
     }
     private void listVentas(){
-        if (sistem.listVentas() == null) {
+        if (sistem.listVentas() != null) {
             System.out.println("\t\t...:::: Listado de ventas ::::....");
             System.out.println("*------------*----------*------------*------------------*--------------------------------*--------------*--------------*");
             System.out.println("| ID DOCUMENT| TIPO DOCU|      FECHA |    RUT/PASAPORTE | CLIENTE                        | CANT BOLETOS |  TOTAL VENTA |");
@@ -234,5 +235,12 @@ public class Main {
         }else {
             System.out.println("No existen viajes registrados");
         }
+    }
+    private void listViajesFecha(){
+
+        System.out.println("...:::: Listado de viajes por fecha ::::....");
+        System.out.println("*--------------*--------------*--------------*--------------*");
+        System.out.println("|         HORA |       PRECIO |  DISPONIBLES | PATENTE      |");
+
     }
 }

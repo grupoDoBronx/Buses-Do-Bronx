@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-public class SistemaVentaPasajes {
+public class SistemaVentaPasajes implements ViajesPorFecha{
     Main main = new Main();
 
     ArrayList<Cliente> clientes = new ArrayList<>();
@@ -152,4 +152,16 @@ public class SistemaVentaPasajes {
         return null;
     }
 
+    @Override
+    public String[][] mostrarViajesFecha() {
+        String[][] datos = new String[viajes.size()][3];
+        for (int i = 0; i < viajes.size(); i++) {
+            Viaje v = viajes.get(i);
+            datos[i][0] = String.valueOf(v.getHora());
+            datos[i][1] = String.valueOf(v.getPrecio());
+            datos[i][2] = String.valueOf(v.getNroAsientosDisponibles());
+            datos[i][3] = v.getBus().getPatente();
+        }
+        return datos;
+    }
 }
