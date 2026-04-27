@@ -1,6 +1,6 @@
 package Figura1;
 
-public class Rut {
+public class Rut implements IdPersona {
     private int numero;
     private char dv;
     // recive el rut y lo desglosa en dos partes

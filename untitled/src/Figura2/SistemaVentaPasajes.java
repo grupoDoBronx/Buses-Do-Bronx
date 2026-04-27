@@ -1,5 +1,6 @@
 package Figura2;
 
+
 import Figura1.IdPersona;
 import Figura1.Nombre;
 import enums.TipoDocumento;
@@ -14,7 +15,7 @@ public class SistemaVentaPasajes {
     ArrayList<Pasajero> pasajeros = new ArrayList<>();
     ArrayList<Bus> buses = new ArrayList<>();
     ArrayList<Viaje> viajes = new ArrayList<>();
-    ArrayList<Venta> ventas = new ArrayList<>();
+    ArrayList<Venta> venta = new ArrayList<>();
 
     public boolean createCliente (IdPersona id, Nombre nombre, String fono, String email){
         if(findCliente(id) != null){
@@ -67,7 +68,7 @@ public class SistemaVentaPasajes {
         Cliente cliente = findCliente(idCliente);
 
         Venta nuevaVenta = new Venta(idDocumento, tipoDoc, fechaVenta,cliente);
-        return ventas.add(nuevaVenta);
+        return venta.add(nuevaVenta);
     }
 
     public String[][] getHorariosDisponibles(LocalDate fechaViaje){
@@ -139,14 +140,14 @@ public class SistemaVentaPasajes {
     }
 
     public String[][] listVentas() {
-        if (ventas == null || ventas.isEmpty()) {
+        if (venta == null || venta.isEmpty()) {
             return new String[0][0];
         }
 
-        String[][] matrizVentas = new String[ventas.size()][7];
+        String[][] matrizVentas = new String[venta.size()][7];
 
-        for (int i = 0; i < ventas.size(); i++) {
-            Venta v = ventas.get(i);
+        for (int i = 0; i < venta.size(); i++) {
+            Venta v = venta.get(i);
             Cliente c = v.getCliente();
 
             matrizVentas[i][0] = v.getIdDocumento();
@@ -173,7 +174,6 @@ public class SistemaVentaPasajes {
             }
             return datos;
     }
-}
     public String [][] listPasajeros(LocalDate fecha,LocalTime hora, String patenteBus){
         Viaje encontrarViaje = findViaje(fecha, hora, patenteBus);
         if(encontrarViaje == null){
@@ -197,7 +197,7 @@ public class SistemaVentaPasajes {
     }
 
     private Venta findVenta(String idDocumento, TipoDocumento tipoDoc) {
-        for (Venta v : ventas) {
+        for (Venta v : venta) {
             if (v.getIdDocumento().equals(idDocumento) && v.getTipo().equals(tipoDoc)) return v;
         }
         return null;
@@ -224,11 +224,12 @@ public class SistemaVentaPasajes {
     public String[][] mostrarViajesFecha() {
         String[][] datos = new String[viajes.size()][3];
         for (int i = 0; i < viajes.size(); i++) {
-           Viaje v = viajes.get(i);
-           datos[i][0] = String.valueOf(v.getHora());
-           datos[i][1] = String.valueOf(v.getPrecio());
-           datos[i][2] = String.valueOf(v.getNroAsientosDisponibles());
-           datos[i][3] = v.getBus().getPatente();
+            Viaje v = viajes.get(i);
+            datos[i][0] = String.valueOf(v.getHora());
+            datos[i][1] = String.valueOf(v.getPrecio());
+            datos[i][2] = String.valueOf(v.getNroAsientosDisponibles());
+            datos[i][3] = v.getBus().getPatente();
         }
         return datos;
     }
+}

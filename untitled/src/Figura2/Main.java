@@ -1,5 +1,7 @@
 package Figura2;
 import Figura1.IdPersona;
+import Figura1.Pasaporte;
+import Figura1.Rut;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -65,10 +67,14 @@ public class Main {
         int identificador = sc.nextInt();
         if (identificador == 1){
             System.out.println("Ingrese el rut del cliente: ");
-            id = sc.next();
+            String ingreso = sc.next();
+            id = Rut.of(ingreso);
         } else if (identificador == 2) {
             System.out.println("Ingrese el pasaporte del cliente: ");
-            id = sc.next();
+            String ingreso = sc.next();
+            System.out.println("Ingrese la nacionalidad: ");
+            String nacionalidad = sc.next();
+            id = Pasaporte.of(ingreso,nacionalidad);
         }
         System.out.println("Ingrese si es Sr.(1) o Sra.(2):");
         int srsra = sc.nextInt();
