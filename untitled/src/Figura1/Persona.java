@@ -1,18 +1,22 @@
+package Figura1;
+
 public class Persona {
-    private idPersona idPersona;
+    private IdPersona idPersona;
     private Nombre nombreCompleto;
     private String telefono;
 
-    public Persona(idPersona idPersona, Nombre nombre) {
-        this.idPersona = idPersona;
+    public Persona(IdPersona id, Nombre nombre, String telefono) {
+        this.idPersona = id;
         this.nombreCompleto = nombre;
+        this.telefono = telefono;
     }
 
-    public idPersona getIdPersona() {
+    public IdPersona getIdPersona() {
         return idPersona;
     }
 
     public Nombre getNombreCompleto() {
+
         return nombreCompleto;
     }
 
@@ -28,16 +32,10 @@ public class Persona {
         this.telefono = telefono;
     }
 
-    @Override
-    public String toString() {
-        return "Persona{" +
-                "idPersona=" + idPersona +
-                ", nombreCompleto=" + nombreCompleto +
-                ", telefono='" + telefono + '\'' +
-                '}';
-    }
 
-    @Override
+    public String toString() {
+        return "|\t" + idPersona + " | " + nombreCompleto + " | " + telefono +"  |";
+    }
     public boolean equals(Object obj) {
         return super.equals(obj);
     }
