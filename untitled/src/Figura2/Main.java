@@ -14,10 +14,6 @@ public class Main {
     public static void main(String[] args) {
         Main main1 = new Main();
         main1.menu();
-
-
-
-
     }
     private void menu(){
         int opcion=0;
@@ -166,10 +162,14 @@ public class Main {
         int tipoIdentificador = sc.nextInt();
         if (tipoIdentificador == 1){
             System.out.println("Ingrese el rut del cliente: ");
-            id = sc.next();
+            String ingreso = sc.next();
+            id = Rut.of(ingreso);
         } else if (tipoIdentificador == 2) {
             System.out.println("Ingrese el pasaporte del cliente: ");
-            id = sc.next();
+            String ingreso = sc.next();
+            System.out.println("Ingrese la nacionalidad: ");
+            String nacionalidad = sc.next();
+            id = Pasaporte.of(ingreso,nacionalidad);
         }
         if (sistem.iniciaVenta()==false){
             System.out.println("        ...:::: Venta de Pasajes ::::....\n\n\n:::: Datos de la Venta ");
@@ -179,11 +179,11 @@ public class Main {
             System.out.println(":::: Datos del cliente\n");
             System.out.println("Figura1.Rut[1] o Figura1.Pasaporte[2] : " + tipoIdentificador);
             if (tipoIdentificador == 1){
-                System.out.println("R.U.T : " + id);
+                System.out.println("R.U.T : " );
             } else if (tipoIdentificador == 2) {
-                System.out.println("Figura1.Pasaporte Figura1.Cliente : " + id);
+                System.out.println("Figura1.Pasaporte Figura1.Cliente : ");
             }
-            System.out.println("Figura1.Nombre Figura1.Cliente : " + );
+            System.out.println("Figura1.Nombre Figura1.Cliente : "  );
 
             System.out.println("Ingrese cuantos pasajes comprara el cliente: ");
             int cantPas = sc.nextInt();
@@ -197,8 +197,6 @@ public class Main {
             System.out.println("     *----------*----------*----------*----------*");
             System.out.println("     | BUS      |   SALIDA |    VALOR | ASIENTOS |");
             for (int i = 0; i < sistem.getHorariosDisponibles(fecha2).length; i++) {
-                System.out.println("  " +(i+1) + " " + sistem.listAsientosDeViaje() + " "+ sistem.getHorariosDisponibles());
-                System.out.println("     |----------|----------|----------|----------|");
 
             }
             System.out.println("     *----------*----------*----------*----------*\n\n");
@@ -209,9 +207,7 @@ public class Main {
         }
     }
     private void listPasajerosViaje(){
-        for (int i = 0; i < ; i++) {
-            
-        }
+
     }
     private void listVentas(){
         if (sistem.listVentas() != null) {
