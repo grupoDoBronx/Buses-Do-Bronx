@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 import  java.util.Scanner;
 public class Main {
     Scanner sc = new Scanner(System.in);
-    SistemaVentaPasajes sistem = new SistemaVentaPasajes;
+    SistemaVentaPasajes sistem = new SistemaVentaPasajes();
 
     public static void main(String[] args) {
         Main main1 = new Main();
@@ -57,8 +57,7 @@ public class Main {
 
     }
     private void createCliente(){
-        IdPersona id;
-        boolean existecliente = false;
+        IdPersona id = null;
         System.out.println("Ingrese el tipo de identificador del cliente: \n1. Figura1.Rut\n2. Figura1.Pasaporte");
         int identificador = sc.nextInt();
         if (identificador == 1){
@@ -75,7 +74,7 @@ public class Main {
         System.out.println("Ingrese si es Sr.(1) o Sra.(2):");
         int srsra = sc.nextInt();
         System.out.println("Ingrese los nombres del  cliente:");
-        String nom = sc.nextLine();
+        String nombre = sc.nextLine();
         System.out.println("Ingrese el Apellido Paterno del cliente:");
         String apepaterno = sc.next();
         System.out.println("Ingrese el Apellido Materno del cliente:");
@@ -84,7 +83,7 @@ public class Main {
         String fono = sc.nextLine();
         System.out.println("Ingrese el email del cliente:");
         String emailCliente = sc.nextLine();
-        if (sistem.createCliente(id, nom,fono,emailCliente) == false){
+        if (sistem.createCliente(id, nombre,fono,emailCliente) == false){
             System.out.println("   ...:::: Crear un nuevo Figura1.Cliente ::::....");
             System.out.println("Figura1.Rut[1] o Figura1.Pasaporte[2] : " + identificador);
             if (identificador == 1){
@@ -93,7 +92,7 @@ public class Main {
                 System.out.println("Figura1.Pasaporte Figura1.Cliente : " + id);
             }
             System.out.println("Sr.[1] o Sra. [2] : " + srsra);
-            System.out.println("Nombres : " + nom);
+            System.out.println("Nombres : " + nombre);
             System.out.println("Apellido Paterno : " + apepaterno);
             System.out.println("Apellido Materno : " + apematerno);
             System.out.println("Telefono movil : " + fono);

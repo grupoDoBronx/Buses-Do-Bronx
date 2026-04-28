@@ -5,9 +5,10 @@ public class Persona {
     private Nombre nombreCompleto;
     private String telefono;
 
-    public Persona(IdPersona id, Nombre nombre) {
+    public Persona(IdPersona id, Nombre nombre, String telefono) {
         this.idPersona = id;
         this.nombreCompleto = nombre;
+        this.telefono = telefono;
     }
 
     public IdPersona getIdPersona() {

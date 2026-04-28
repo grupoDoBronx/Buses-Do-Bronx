@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-public class SistemaVentaPasajes {
+public class SistemaVentaPasajes implements ViajesPorFecha{
 
     ArrayList<Cliente> clientes = new ArrayList<>();
     ArrayList<Pasajero> pasajeros = new ArrayList<>();
@@ -31,7 +31,7 @@ public class SistemaVentaPasajes {
             return false;
         }
 
-        Pasajero nuevoPasajero = new Pasajero(id, nombre, fono, nombreContacto, fonoContacto);
+        Pasajero nuevoPasajero = new Pasajero(id, nombre, fono, nombreContacto);
         pasajeros.add(nuevoPasajero);
         return true;
     }
