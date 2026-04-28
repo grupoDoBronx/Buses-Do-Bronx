@@ -31,7 +31,7 @@ public class SistemaVentaPasajes implements ViajesPorFecha{
             return false;
         }
 
-        Pasajero nuevoPasajero = new Pasajero(id, nombre, fono, nombreContacto);
+        Pasajero nuevoPasajero = new Pasajero(id, nombre, fono, nombreContacto, fonoContacto);
         pasajeros.add(nuevoPasajero);
         return true;
     }
@@ -49,14 +49,15 @@ public class SistemaVentaPasajes implements ViajesPorFecha{
     public boolean createViaje (LocalDate fecha, LocalTime hora, int precio, String patenteBus){
 
         Bus bus = findBus(patenteBus);
-        if (bus == null) return false;
+        if (bus == null) {return false;}
 
         for (Viaje v:  viajes){
-            if(v.getFecha.equals(fecha) && v.getHora.equals(hora)){
+            if(v.getFecha().equals(fecha) && v.getHora().equals(hora)){
                 return false;
             }
         }
-        Viaje nuevoViaje = new Viaje(fecha, hora, precio, patenteBus);
+
+        Viaje nuevoViaje = new Viaje(fecha, hora, precio, bus);
         viajes.add(nuevoViaje);
         return true;
     }
@@ -128,9 +129,9 @@ public class SistemaVentaPasajes implements ViajesPorFecha{
     }
 
     public boolean vendePasaje(String idDocumento, String fecha, String hora, String patente,int asiento, String idPasajero) {
-        Venta venta = findVenta(idDocumento);
-        Viaje viaje = findViaje(fecha, hora, patente);
-        Pasajero pasajero = findPasajero(idPasajero);
+        Venta venta = findVentaId(idDocumento);
+        Viaje viaje = findViajeString(fecha, hora, patente);
+        Pasajero pasajero = findPasajeroString(idPasajero);
 
         if (venta == null || viaje == null || pasajero == null) {
             return false;
@@ -195,10 +196,23 @@ public class SistemaVentaPasajes implements ViajesPorFecha{
         }
         return null;
     }
+    private Venta findVentaId(String idDocumento){
+        for(Venta v : venta){
+            if(v.getIdDocumento().equals(idDocumento));
+            return v;
+        }
+        return null;
+    }
 
     private Venta findVenta(String idDocumento, TipoDocumento tipoDoc) {
         for (Venta v : venta) {
             if (v.getIdDocumento().equals(idDocumento) && v.getTipo().equals(tipoDoc)) return v;
+        }
+        return null;
+    }
+    private Pasajero findPasajeroString (String idPersona) {
+        for (Pasajero p : pasajeros) {
+            if (p.getIdPersona().equals(idPersona)) return p;
         }
         return null;
     }
@@ -209,8 +223,17 @@ public class SistemaVentaPasajes implements ViajesPorFecha{
         }
         return null;
     }
+    private Viaje findViajeString(String fecha, String hora, String patente) {
 
-    private Viaje findViaje(String fecha, String hora, String patente) {
+        for (Viaje v : viajes) {
+            if (v.getFecha().equals(fecha) && v.getHora().equals(hora) && v.getBus().getPatente().equals(patente)) {
+                return v;
+            }
+        }
+        return null;
+    }
+
+    private Viaje findViaje(LocalDate fecha, LocalTime hora, String patente) {
 
         for (Viaje v : viajes) {
             if (v.getFecha().equals(fecha) && v.getHora().equals(hora) && v.getBus().getPatente().equals(patente)) {

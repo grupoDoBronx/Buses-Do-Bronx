@@ -8,8 +8,10 @@ public class Pasajero extends Persona {
     private Nombre nomContacto;
     private String fonoContacto;
 
-    public Pasajero(IdPersona id, Nombre nombre) {
-        super(id, nombre);
+    public Pasajero(IdPersona id, Nombre nombre, String fono, Nombre nomContacto, String fonoContacto) {
+        super(id, nombre, fono);
+        this.nomContacto = nomContacto;
+        this.fonoContacto = fonoContacto;
     }
 
     public String getFonoContacto() {

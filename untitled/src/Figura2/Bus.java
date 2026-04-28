@@ -8,9 +8,12 @@ public class Bus {
     private String modelo;
     private int nroAsientos;
     ArrayList<Viaje> viajes = new ArrayList<>();
-    public Bus(int nroAsientos, String patente) {
-        this.nroAsientos = nroAsientos;
+
+    public Bus(String patente, String marca, String modelo, int nroAsientos) {
         this.patente = patente;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.nroAsientos = nroAsientos;
         this.viajes = new ArrayList<>();
     }
 

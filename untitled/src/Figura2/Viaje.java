@@ -8,9 +8,10 @@ public class Viaje {
 
     private LocalDate fecha;
     private LocalTime hora;
-    private int precio;
     private Bus bus;
+    private int precio;
     private ArrayList<Pasaje> pasajes = new ArrayList<>();
+
     public Viaje(LocalDate fecha, LocalTime hora, int precio, Bus bus) {
         this.fecha = fecha;
         this.hora = hora;
@@ -33,6 +34,7 @@ public class Viaje {
     public void setPrecio(int precio) {
         this.precio = precio;
     }
+
     public Bus getBus(){
         return bus;
     }
@@ -72,7 +74,7 @@ public class Viaje {
         }
     }
 
-    public String[][] getListaPassajeros(){
+    public String[][] getListaPasajeros(){
         String[][] listaPasajeros = new String[pasajes.size()][5];
 
         for (int i = 0; i < pasajes.size(); i++) {
