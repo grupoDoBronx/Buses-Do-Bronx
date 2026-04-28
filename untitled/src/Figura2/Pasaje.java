@@ -15,8 +15,8 @@ public class Pasaje {
         this.viaje = viaje;
     }
 
-    public long getNumero() {
-        return numero;
+    public int getNumero() {
+        return (int)numero;
     }
 
     public int getAsiento() {

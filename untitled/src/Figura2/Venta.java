@@ -32,7 +32,7 @@ public class Venta {
     }
 
     public void createPasaje(int asiento, Viaje viaje, Pasajero pasajero){
-        Pasaje pasaje=new Pasaje (asiento, viaje, pasajero);
+        Pasaje pasaje= new Pasaje (asiento, viaje, pasajero);
         pasajes.add(pasaje);
     }
     public Pasaje[] getPasaje(){
