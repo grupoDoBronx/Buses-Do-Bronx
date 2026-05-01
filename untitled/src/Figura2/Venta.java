@@ -31,9 +31,9 @@ public class Venta {
         return cliente;
     }
 
-    public void createPasaje(int asiento, Viaje viaje, Pasajero pasajero){
-        Pasaje pasaje= new Pasaje (asiento, viaje, pasajero);
-        pasajes.add(pasaje);
+    public void createPasaje(int asiento, Viaje viaje, Pasajero pasajero, Venta venta){
+        Pasaje pasaje = new Pasaje (asiento,pasajero, venta, viaje);
+        viaje.addPasaje(pasaje);
     }
     public Pasaje[] getPasaje(){
         return pasajes.toArray(new Pasaje[0]);

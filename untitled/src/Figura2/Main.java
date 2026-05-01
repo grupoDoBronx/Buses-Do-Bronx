@@ -83,7 +83,8 @@ public class Main {
         String fono = sc.nextLine();
         System.out.println("Ingrese el email del cliente:");
         String emailCliente = sc.nextLine();
-        if (sistem.createCliente(id, nombre,fono,emailCliente) == true){
+
+        if (sistem.createCliente(id,nombre,fono,emailCliente) == true){
             System.out.println("   ...:::: Crear un nuevo Figura1.Cliente ::::....");
             System.out.println("Figura1.Rut[1] o Figura1.Pasaporte[2] : " + identificador);
             if (identificador == 1){
@@ -113,7 +114,7 @@ public class Main {
         String modelo = sc.nextLine();
         System.out.println("Ingrese el Número de asientos del bus");
         int nroasientos = sc.nextInt();
-        if (sistem.createBus(patente, marca, modelo, nroasientos) == true){
+        if (sistem.createBus(patente, marca, modelo, nroasientos) == false){
             System.out.println("...:::: Creación de un nuevo Bus ::::....");
             System.out.println("\nPatente : " + patente);
             System.out.println("Marca : " + marca);
@@ -138,7 +139,7 @@ public class Main {
         System.out.println("Ingrese la patente del bus para el viaje:");
         String patente = sc.nextLine();
 
-        if (sistem.createViaje(fecha,hora,precio,patente)==true){
+        if (sistem.createViaje(fecha,hora,precio,patente)==false){
             System.out.println("...:::: Creación  de un nuevo Viaje ::::....\n");
             System.out.println("Fecha[dd/mm/yyyy : " + fecha);
             System.out.println("Precio : "+ precio);
@@ -170,7 +171,7 @@ public class Main {
             String nacionalidad = sc.next();
             id = Pasaporte.of(ingreso,nacionalidad);
         }
-        if (sistem.iniciaVenta(idDocumento,tipoDoc, fechaIngresada, id)==true){
+        if (sistem.iniciaVenta()==false){
             System.out.println("        ...:::: Venta de Pasajes ::::....\n\n\n:::: Datos de la Venta ");
             System.out.println("\t\t\tID Documento : " + idDocumento);
             System.out.println("Tipo documento: [1] Boleta [2] Factura : " + tipoDoc);
