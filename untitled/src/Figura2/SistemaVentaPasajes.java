@@ -185,7 +185,7 @@ public class SistemaVentaPasajes implements ViajesPorFecha{
         if(encontrarViaje == null){
             return new String[0][0];
         }
-        return encontrarViaje.getListaPassajeros();
+        return encontrarViaje.getListaPasajeros();
     }
 
     private Cliente findCliente(IdPersona id) {
