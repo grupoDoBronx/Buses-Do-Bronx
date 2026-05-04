@@ -1,4 +1,4 @@
-package Figura1;
+package utilidades;
 
 public class Rut implements IdPersona {
     private int numero;

@@ -1,6 +1,4 @@
-package Figura2;
-
-import java.time.LocalDate;
+package modelo;
 
 public interface ViajesPorFecha {
     String[][] mostrarViajesFecha();

@@ -1,7 +1,8 @@
-package Figura2;
-import Figura1.IdPersona;
-import Figura1.Pasaporte;
-import Figura1.Rut;
+package vista;
+import utilidades.IdPersona;
+import utilidades.Pasaporte;
+import utilidades.Rut;
+import controlador.SistemaVentaPasajes;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -58,7 +59,7 @@ public class Main {
     }
     private void createCliente(){
         IdPersona id = null;
-        System.out.println("Ingrese el tipo de identificador del cliente: \n1. Figura1.Rut\n2. Figura1.Pasaporte");
+        System.out.println("Ingrese el tipo de identificador del cliente: \n1. utilidades.Rut\n2. utilidades.Pasaporte");
         int identificador = sc.nextInt();
         if (identificador == 1){
             System.out.println("Ingrese el rut del cliente: ");
@@ -86,11 +87,11 @@ public class Main {
 
         if (sistem.createCliente(id,nombre,fono,emailCliente) == true){
             System.out.println("   ...:::: Crear un nuevo Figura1.Cliente ::::....");
-            System.out.println("Figura1.Rut[1] o Figura1.Pasaporte[2] : " + identificador);
+            System.out.println("utilidades.Rut[1] o utilidades.Pasaporte[2] : " + identificador);
             if (identificador == 1){
                 System.out.println("R.U.T : " + id);
             } else if (identificador == 2) {
-                System.out.println("Figura1.Pasaporte Figura1.Cliente : " + id);
+                System.out.println("utilidades.Pasaporte Figura1.Cliente : " + id);
             }
             System.out.println("Sr.[1] o Sra. [2] : " + srsra);
             System.out.println("Nombres : " + nombre);
@@ -158,7 +159,7 @@ public class Main {
         System.out.println("Ingrse la fecha de venta [dd/mm/yyyy]: ");
         String fechaIngresada = sc.nextLine();
         LocalDate fecha = LocalDate.parse(fechaIngresada,fechaFormato);
-        System.out.println("Ingrese el tipo de identificador del cliente: \n1. Figura1.Rut\n2. Figura1.Pasaporte");
+        System.out.println("Ingrese el tipo de identificador del cliente: \n1. utilidades.Rut\n2. utilidades.Pasaporte");
         int tipoIdentificador = sc.nextInt();
         if (tipoIdentificador == 1){
             System.out.println("Ingrese el rut del cliente: ");
@@ -177,13 +178,13 @@ public class Main {
             System.out.println("Tipo documento: [1] Boleta [2] Factura : " + tipoDoc);
             System.out.println("Fecha de venta[dd/mm/yyyy] : " + fecha);
             System.out.println(":::: Datos del cliente\n");
-            System.out.println("Figura1.Rut[1] o Figura1.Pasaporte[2] : " + tipoIdentificador);
+            System.out.println("utilidades.Rut[1] o utilidades.Pasaporte[2] : " + tipoIdentificador);
             if (tipoIdentificador == 1){
                 System.out.println("R.U.T : " );
             } else if (tipoIdentificador == 2) {
-                System.out.println("Figura1.Pasaporte Figura1.Cliente : ");
+                System.out.println("utilidades.Pasaporte Figura1.Cliente : ");
             }
-            System.out.println("Figura1.Nombre Figura1.Cliente : "  );
+            System.out.println("utilidades.Nombre Figura1.Cliente : "  );
 
             System.out.println("Ingrese cuantos pasajes comprara el cliente: ");
             int cantPas = sc.nextInt();

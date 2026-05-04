@@ -1,6 +1,4 @@
-package Figura1;
-
-import enums.Tratamiento;
+package utilidades;
 
 public class Nombre {
     private Tratamiento tratamiento;

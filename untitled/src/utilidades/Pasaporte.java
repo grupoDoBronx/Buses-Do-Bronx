@@ -1,4 +1,4 @@
-package Figura1;
+package utilidades;
 
 public class Pasaporte implements IdPersona {
     private String numero;

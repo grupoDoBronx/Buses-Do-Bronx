@@ -1,4 +1,7 @@
-package Figura1;
+package modelo;
+
+import utilidades.IdPersona;
+import utilidades.Nombre;
 
 public class Persona {
     private IdPersona id;

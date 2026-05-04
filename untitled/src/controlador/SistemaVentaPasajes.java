@@ -1,16 +1,17 @@
-package Figura2;
+package controlador;
 
 
-import Figura1.IdPersona;
-import Figura1.Nombre;
-import enums.TipoDocumento;
+import utilidades.IdPersona;
+import utilidades.Nombre;
+import modelo.TipoDocumento;
+import modelo.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class SistemaVentaPasajes implements ViajesPorFecha{
+public class SistemaVentaPasajes implements ViajesPorFecha {
 
     ArrayList<Cliente> clientes = new ArrayList<>();
     ArrayList<Pasajero> pasajeros = new ArrayList<>();

@@ -1,4 +1,4 @@
-package enums;
+package modelo;
 
 public enum TipoDocumento {
 }

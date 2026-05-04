@@ -1,8 +1,7 @@
-package Figura2;
+package modelo;
 
-import Figura1.IdPersona;
-import Figura1.Nombre;
-import Figura1.Persona;
+import utilidades.IdPersona;
+import utilidades.Nombre;
 
 public class Pasajero extends Persona {
     private Nombre nomContacto;

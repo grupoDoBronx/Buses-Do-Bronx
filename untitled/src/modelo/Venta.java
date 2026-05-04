@@ -1,5 +1,5 @@
-package Figura2;
-import enums.TipoDocumento;
+package modelo;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 

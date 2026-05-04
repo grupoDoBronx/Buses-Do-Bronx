@@ -1,4 +1,4 @@
-package Figura2;
+package modelo;
 
 public class Pasaje {
     private long numero;

@@ -1,4 +1,4 @@
-package Figura1;
+package utilidades;
 
 public interface IdPersona {
     String toString();
