@@ -1,6 +1,7 @@
 package controlador;
 
 
+import excepciones.SistemaVentaPasajesException;
 import utilidades.IdPersona;
 import utilidades.Nombre;
 import modelo.TipoDocumento;
@@ -10,23 +11,27 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class SistemaVentaPasajes implements ViajesPorFecha {
 
     ArrayList<Cliente> clientes = new ArrayList<>();
     ArrayList<Pasajero> pasajeros = new ArrayList<>();
-    ArrayList<Bus> buses = new ArrayList<>();
     ArrayList<Viaje> viajes = new ArrayList<>();
     ArrayList<Venta> venta = new ArrayList<>();
     // establece el tipo formato de las fechas
     DateTimeFormatter fechaFormato =DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    public boolean createCliente (IdPersona id, Nombre nombre, String fono, String email){
-        if(findCliente(id) != null){
-            return false;
+    public void createCliente (IdPersona id, Nombre nombre, String fono, String email){
+        try {
+            if(findCliente(id).isPresent()){
+                throw new RuntimeException("Ya existe cliente con el id indicado");
+            }
+        }catch (SistemaVentaPasajesException e){
+            System.out.println("ERROR: " + e.getMessage());
         }
         Cliente nuevoCliente = new Cliente(id, nombre, email, fono);
         clientes.add(nuevoCliente);
-        return true;
+
     }
 
     public boolean createPasajero (IdPersona id, Nombre nombre, String fono, Nombre nombreContacto, String fonoContacto){
@@ -39,39 +44,35 @@ public class SistemaVentaPasajes implements ViajesPorFecha {
         return true;
     }
 
-    public boolean createBus (String patente, String marca, String modelo, int numeroDeAsientos){
-        if(findBus(patente) != null){
-            return false;
+
+
+    public void createViaje (LocalDate fecha, LocalTime hora, int precio, String patenteBus){
+        ControladorEmpresas controlEmpre = new ControladorEmpresas();
+        Optional<Bus> bus = controlEmpre.findBus(patenteBus);
+        if (bus.isEmpty()){
+
         }
-
-        Bus nuevoBus = new Bus(numeroDeAsientos, patente);
-        buses.add(nuevoBus);
-        return true;
-    }
-
-    public boolean createViaje (LocalDate fecha, LocalTime hora, int precio, String patenteBus){
-
-        Bus bus = findBus(patenteBus);
-        if (bus == null) return false;
 
         for (Viaje v:  viajes){
             if(v.getFecha().equals(fecha) && v.getHora().equals(hora)){
-                return false;
+
             }
         }
-        Viaje nuevoViaje = new Viaje(fecha, hora, precio, bus);
+        Viaje nuevoViaje = new Viaje(fecha, hora, precio, bus.orElse(null));
         viajes.add(nuevoViaje);
-        return true;
-    }
 
-    public boolean iniciaVenta(String idDocumento, TipoDocumento tipoDoc, LocalDate fechaVenta, IdPersona idCliente) {
+    }
+    
+
+    public void iniciaVenta(String idDocumento, TipoDocumento tipoDoc, LocalDate fechaVenta, IdPersona idCliente) {
         if (findVenta(idDocumento, tipoDoc) != null|| findCliente(idCliente) == null) {
-            return false;
+            ;
         }
         Cliente cliente = findCliente(idCliente);
 
         Venta nuevaVenta = new Venta(idDocumento, tipoDoc, fechaVenta,cliente);
-        return venta.add(nuevaVenta);
+        
+        venta.add(nuevaVenta);
     }
 
     public String[][] getHorariosDisponibles(LocalDate fechaViaje){
@@ -189,19 +190,14 @@ public class SistemaVentaPasajes implements ViajesPorFecha {
         return encontrarViaje.getListaPasajeros();
     }
 
-    private Cliente findCliente(IdPersona id) {
+    private Optional <Cliente> findCliente(IdPersona id) {
         for (Cliente c : clientes) {
-            if (c.getIdPersona().equals(id)) return c;
+            if (c.getIdPersona().equals(id)) return Optional.of(c);
         }
         return null;
     }
 
-    private Bus findBus(String patente) {
-        for (Bus b : buses) {
-            if (b.getPatente().equals(patente)) return b;
-        }
-        return null;
-    }
+
 
     private Venta findVenta(String idDocumento, TipoDocumento tipoDoc) {
         for (Venta v : venta) {
@@ -240,11 +236,4 @@ public class SistemaVentaPasajes implements ViajesPorFecha {
         return datos;
     }
 
-    public boolean createCliente(IdPersona id, String nombre, String fono, String emailCliente) {
-        return false;
-    }
-
-    public boolean iniciaVenta() {
-        return true;
-    }
 }

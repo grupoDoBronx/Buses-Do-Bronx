@@ -1,5 +1,6 @@
 package vista;
 
+import controlador.ControladorEmpresas;
 import controlador.SistemaVentaPasajes;
 import utilidades.IdPersona;
 import utilidades.Pasaporte;
@@ -13,6 +14,7 @@ import java.util.Scanner;
 public class UISVP {
     Scanner sc = new Scanner(System.in);
     SistemaVentaPasajes sistem = new SistemaVentaPasajes();
+    ControladorEmpresas controlador = new ControladorEmpresas();
     public void menu(){
         int opcion=0;
         while (opcion!=8){
@@ -133,7 +135,7 @@ public class UISVP {
         String modelo = sc.nextLine();
         System.out.println("Ingrese el Número de asientos del bus");
         int nroasientos = sc.nextInt();
-        if (sistem.createBus(patente, marca, modelo, nroasientos) == false){
+        if (controlador.createBus(patente, marca, modelo, nroasientos)){
             System.out.println("...:::: Creación de un nuevo Bus ::::....");
             System.out.println("\nPatente : " + patente);
             System.out.println("Marca : " + marca);
@@ -225,7 +227,7 @@ public class UISVP {
             System.out.println("Los datos ingresados son incorrectos");
         }
     }
-    private void pagaVentaPasajes(){
+    private void pagaVentaPasajes() {
 
     }
 
