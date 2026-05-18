@@ -41,6 +41,5 @@ public class Terminal {
     }
     public Viaje[] getSalidas(){
         return salidas.toArray(new Viaje[0]);
-
     }
 }

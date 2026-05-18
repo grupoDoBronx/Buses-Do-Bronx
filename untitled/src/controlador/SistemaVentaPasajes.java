@@ -21,27 +21,31 @@ public class SistemaVentaPasajes implements ViajesPorFecha {
     ArrayList<Venta> venta = new ArrayList<>();
     // establece el tipo formato de las fechas
     DateTimeFormatter fechaFormato =DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    public void createCliente (IdPersona id, Nombre nombre, String fono, String email){
+    public void createCliente (IdPersona id, Nombre nombre, String email){
         try {
             if(findCliente(id).isPresent()){
                 throw new RuntimeException("Ya existe cliente con el id indicado");
+            }else {
+                Cliente nuevoCliente = new Cliente(id, nombre, email);
+                clientes.add(nuevoCliente);
             }
         }catch (SistemaVentaPasajesException e){
             System.out.println("ERROR: " + e.getMessage());
         }
-        Cliente nuevoCliente = new Cliente(id, nombre, email, fono);
-        clientes.add(nuevoCliente);
 
     }
 
-    public boolean createPasajero (IdPersona id, Nombre nombre, String fono, Nombre nombreContacto, String fonoContacto){
-        if(findPasajero(id) != null){
-            return false;
+    public void createPasajero (IdPersona id, Nombre nombre, String fono, Nombre nombreContacto, String fonoContacto){
+        try {
+            if(findPasajero(id) != null){
+                throw new SistemaVentaPasajesException("Ya existe pasajero con el id indicado");
+            }else {
+                Pasajero nuevoPasajero = new Pasajero(id, nombre, fono, nombreContacto);
+                pasajeros.add(nuevoPasajero);
+            }
+        }catch (SistemaVentaPasajesException e){
+            System.out.println("ERROR: " + e.getMessage());
         }
-
-        Pasajero nuevoPasajero = new Pasajero(id, nombre, fono, nombreContacto);
-        pasajeros.add(nuevoPasajero);
-        return true;
     }
 
 
@@ -66,11 +70,11 @@ public class SistemaVentaPasajes implements ViajesPorFecha {
 
     public void iniciaVenta(String idDocumento, TipoDocumento tipoDoc, LocalDate fechaVenta, IdPersona idCliente) {
         if (findVenta(idDocumento, tipoDoc) != null|| findCliente(idCliente) == null) {
-            ;
-        }
-        Cliente cliente = findCliente(idCliente);
 
-        Venta nuevaVenta = new Venta(idDocumento, tipoDoc, fechaVenta,cliente);
+        }
+        Optional<Cliente> cliente = findCliente(idCliente);
+
+        Venta nuevaVenta = new Venta(idDocumento, tipoDoc, fechaVenta, cliente.orElse(null));
         
         venta.add(nuevaVenta);
     }

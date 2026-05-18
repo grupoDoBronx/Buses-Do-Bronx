@@ -27,6 +27,14 @@ public class Venta {
     public LocalDate getFecha() {
         return fecha;
     }
+    public int getMonto(){
+        int monto= 0;
+
+        for (Pasaje p: pasajes){
+            monto += p.getViaje().getPrecio();
+        }
+        return monto;
+    }
     public Cliente getCliente(){
         return cliente;
     }
@@ -38,12 +46,25 @@ public class Venta {
     public Pasaje[] getPasaje(){
         return pasajes.toArray(new Pasaje[0]);
     }
-    public int getMonto(){
-        int monto= 0;
+    public int getMontoPagado(){
 
-        for (Pasaje p: pasajes){
-            monto += p.getViaje().getPrecio();
+    }
+    public boolean pagaMonto(){
+        return true;
+    }
+    public boolean pagaMonto(long nroTarjeta){
+        return true;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+    public String getTipoPago(){
+        String tipoPago;
+        if (){
+
         }
-        return monto;
+        return tipoPago;
     }
 }

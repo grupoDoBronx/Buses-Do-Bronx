@@ -1,45 +1,62 @@
 package modelo;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.sql.Time;
+
 import java.util.ArrayList;
+import java.util.Date;
+import java.time.LocalTime;
 
 public class Viaje {
 
-    private LocalDate fecha;
-    private LocalTime hora;
+    private Date fecha;
+    private Time hora;
     private Bus bus;
     private int precio;
+    private int duracion;
     private ArrayList<Pasaje> pasajes = new ArrayList<>();
 
-    public Viaje(LocalDate fecha, LocalTime hora, int precio, Bus bus) {
+    public Viaje(Date fecha, Time hora, int precio,int dur, Bus bus, Auxiliar aux,Conductor cond, Terminal sale, Terminal llega) {
         this.fecha = fecha;
         this.hora = hora;
         this.precio = precio;
         this.bus = bus;
+        this.duracion = dur;
+
     }
 
-    public LocalDate getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public LocalTime getHora() {
+    public Time getHora() {
         return hora;
-    }
-
-    public int getPrecio() {
-        return precio;
     }
 
     public void setPrecio(int precio) {
         this.precio = precio;
     }
 
-    public Bus getBus(){
-        return bus;
+    public void setDuracion(int duracion) {
+        this.duracion = duracion;
+    }
+    public DateTime getFechaHoraTermino(){
+
     }
 
-    public String[][] getAsientos(){
+    public void addPasaje(Pasaje pasaje){
+        if (existeDisponibilidad()) {
+            pasajes.add(pasaje);
+        }
+    }
+
+    public boolean existeDisponibilidad(){
+        if (getNroAsientosDisponibles()>0){
+            return true;
+        }
+        return false;
+    }
+
+    public String[] getAsientos(){
         int totalAsientos = bus.getNroAsientos();
         int filas = (int)Math.ceil(totalAsientos / 4.0);
         String[][] asientos = new String[totalAsientos][4];
@@ -68,11 +85,19 @@ public class Viaje {
         }
         return asientos;
     }
-    public void addPasaje(Pasaje pasaje){
-        if (existeDisponibilidad()) {
-            pasajes.add(pasaje);
-        }
+
+    public int getPrecio() {
+        return precio;
     }
+
+
+
+    public Bus getBus(){
+        return bus;
+    }
+
+
+
 
     public String[][] getListaPasajeros(){
         String[][] listaPasajeros = new String[pasajes.size()][5];
@@ -94,10 +119,6 @@ public class Viaje {
         nroAsientosDisponibles = bus.getNroAsientos()-pasajes.size();
         return nroAsientosDisponibles;
     }
-    public boolean existeDisponibilidad(){
-        if (getNroAsientosDisponibles()>0){
-            return true;
-        }
-        return false;
-    }
+
+
 }

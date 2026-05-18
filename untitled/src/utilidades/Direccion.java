@@ -38,7 +38,7 @@ public class Direccion {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Direccion direccion = (Direccion) o;
-        return numero == direccion.numero && Objects.equals(calle, direccion.calle) && Objects.equals(comuna, direccion.comuna);
+        return Objects.equals(comuna, direccion.comuna);
     }
 
 }

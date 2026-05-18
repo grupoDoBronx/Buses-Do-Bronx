@@ -5,14 +5,17 @@ import utilidades.IdPersona;
 import utilidades.Nombre;
 import utilidades.Rut;
 
+import java.util.ArrayList;
+
 public class Empresa {
     private Rut rut;
     private String nombre;
     private String url;
-
+    ArrayList<Bus> buses = new ArrayList<>();
     public Empresa(String nombre, Rut rut) {
         this.nombre = nombre;
         this.rut = rut;
+        this.buses = new ArrayList<>();
     }
 
     public Rut getRut() {
@@ -31,7 +34,12 @@ public class Empresa {
         this.url = url;
     }
     public void addBus(Bus bus){
-
+        for (Bus b : buses){
+            if (b.equals(bus)){
+                return;
+            }
+            buses.add(bus);
+        }
     }
     public Bus[] getBuses(){
 
@@ -45,7 +53,7 @@ public class Empresa {
     public Tripulante[] getTripulante(){
 
     }
-    public Venta[] getVenta(){
+    public Venta[] getVentas(){
 
     }
 }

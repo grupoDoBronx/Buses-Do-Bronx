@@ -8,10 +8,9 @@ public class Persona {
     private Nombre nombre;
     private String telefono;
 
-    public Persona(IdPersona id, Nombre nombre, String telefono) {
+    public Persona(IdPersona id, Nombre nombre) {
         this.id = id;
         this.nombre = nombre;
-        this.telefono = telefono;
     }
 
 

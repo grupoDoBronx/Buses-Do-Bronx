@@ -46,4 +46,7 @@ public class Bus {
         }
         viajes.add(viaje);
     }
+    public Viaje[] getViajes(){
+
+    }
 }
