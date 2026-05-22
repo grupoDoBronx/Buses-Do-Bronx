@@ -1,16 +1,20 @@
 package modelo;
 
-import java.time.LocalDate;
+import java.sql.Time;
+
+
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
+
+
 import controlador.*;
 import utilidades.*;
 
 public class Viaje {
 
-    private LocalDate fecha;
-    private LocalTime hora;
+    private Date fecha;
+    private Time hora;
     private Bus bus;
     private int precio;
     private int duracion;
@@ -21,7 +25,7 @@ public class Viaje {
     private Tripulante[] tripulantes;
     private ArrayList<Pasaje> pasajes = new ArrayList<>();
 
-    public Viaje(LocalDate fecha, LocalTime hora, int precio, Bus bus,int duracion,Auxiliar aux,Conductor cond,Terminal sale,Terminal llega) {
+    public Viaje(Date fecha, Time hora, int precio, Bus bus,int duracion,Auxiliar aux,Conductor cond,Terminal sale,Terminal llega) {
         this.fecha = fecha;
         this.hora = hora;
         this.precio = precio;
@@ -34,11 +38,11 @@ public class Viaje {
         this.llega=llega;
     }
 
-    public LocalDate getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public LocalTime getHora() {
+    public Time getHora() {
         return hora;
     }
 
