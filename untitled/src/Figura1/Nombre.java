@@ -41,11 +41,12 @@ public class Nombre {
     }
 
 
-
+    @Override
     public String toString() {
         return tratamiento + " " + nombre + " " + apellido_parterno + " " + apellido_materno  + ' ';
     }
 
+    @Override
     public boolean equals(Object obj) {
         return super.equals(obj);
     }
