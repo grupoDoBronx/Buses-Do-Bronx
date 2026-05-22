@@ -39,7 +39,7 @@ public class Viaje {
     public void setDuracion(int duracion) {
         this.duracion = duracion;
     }
-    public DateTime getFechaHoraTermino(){
+    public Date getFechaHoraTermino(){
 
     }
 

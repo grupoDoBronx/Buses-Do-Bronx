@@ -11,11 +11,14 @@ public class Empresa {
     private Rut rut;
     private String nombre;
     private String url;
-    ArrayList<Bus> buses = new ArrayList<>();
+    private ArrayList<Bus> buses;
+    private ArrayList<Tripulante> tripulantes;
+    private ArrayList<Venta> ventasEmpresa;
     public Empresa(String nombre, Rut rut) {
         this.nombre = nombre;
         this.rut = rut;
         this.buses = new ArrayList<>();
+        this.tripulantes = new ArrayList<>();
     }
 
     public Rut getRut() {
@@ -42,18 +45,46 @@ public class Empresa {
         }
     }
     public Bus[] getBuses(){
-
+        return buses.toArray(new Bus[0]);
     }
     public boolean addConductor(IdPersona id, Nombre nom, Direccion dir){
-        return false;
+        for (Tripulante t : tripulantes){
+            if (t.equals(id)){
+                return false;
+            }
+        }
+        Tripulante tripulante = new Tripulante(id, nom, dir);
+        tripulantes.add(tripulante);
+        return true;
     }
     public boolean addAuxiliar(IdPersona id, Nombre nom, Direccion dir) {
-        return false;
+        for (Tripulante t : tripulantes){
+            if (t.equals(id)){
+                return false;
+            }
+        }
+        Tripulante tripulante = new Tripulante(id, nom, dir);
+        tripulantes.add(tripulante);
+        return true;
     }
     public Tripulante[] getTripulante(){
-
+        return tripulantes.toArray(new Tripulante[0]);
     }
     public Venta[] getVentas(){
+        ArrayList<Venta> listaVentas = new ArrayList<>();
 
+        for(Bus bus : buses){
+
+            for(Viaje viaje : bus.getViajes()){
+
+                for(Venta venta : viaje.getVentas()){
+
+                    listaVentas.add(venta);
+
+                }
+            }
+        }
+
+        return listaVentas.toArray(new Venta[0]);
     }
 }

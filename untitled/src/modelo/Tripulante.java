@@ -9,11 +9,11 @@ import java.util.ArrayList;
 public class Tripulante extends Persona{
     private Direccion direccion;
 
-    ArrayList<Viaje> viajes = new ArrayList<>();
+    ArrayList<Viaje> viajes;
     public Tripulante(IdPersona id, Nombre nombre, Direccion direccion) {
         super(id, nombre);
         this.direccion = direccion;
-        ArrayList<Viaje> viajes;
+        this.viajes = new ArrayList<>();
     }
 
     public Direccion getDireccion() {

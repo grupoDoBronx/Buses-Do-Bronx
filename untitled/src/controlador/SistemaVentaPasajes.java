@@ -156,17 +156,20 @@ public class SistemaVentaPasajes implements ViajesPorFecha {
         return p.getNombreCompleto().toString();
     }
 
-    public boolean vendePasaje(String idDocumento, String fecha, String hora, String patente,int asiento, IdPersona idPasajero, TipoDocumento tipoDocumento) {
+    public void vendePasaje(String idDocumento, String fecha, String hora, String patente,int asiento, IdPersona idPasajero, TipoDocumento tipoDocumento) {
         Venta venta = findVenta(idDocumento, tipoDocumento);
         Viaje viaje = findViaje(fecha, hora,patente);
 
         Pasajero pasajero = findPasajero(idPasajero);
 
         if (venta == null || viaje == null || pasajero == null) {
-            return false;
+
         }
         venta.createPasaje(asiento,viaje,pasajero,venta);
-        return true;
+
+    }
+    public void pagaVenta (String idDocumento, TipoDocumento tipo){
+
     }
 
     public String[][] listVentas() {
@@ -205,7 +208,7 @@ public class SistemaVentaPasajes implements ViajesPorFecha {
             return datos;
     }
     public String [][] listPasajeros(Date fecha,Time hora, String patenteBus){
-        String fechaSt = fecha.format(fechaFormato);
+        String fechaSt = fechaFormato.format(fecha);
         String horaSt = hora.toString();
         Viaje encontrarViaje = findViaje(fechaSt, horaSt, patenteBus);
         if(encontrarViaje == null){
@@ -245,19 +248,6 @@ public class SistemaVentaPasajes implements ViajesPorFecha {
             }
         }
         return null;
-    }
-
-    @Override
-    public String[][] mostrarViajesFecha() {
-        String[][] datos = new String[viajes.size()][3];
-        for (int i = 0; i < viajes.size(); i++) {
-            Viaje v = viajes.get(i);
-            datos[i][0] = String.valueOf(v.getHora());
-            datos[i][1] = String.valueOf(v.getPrecio());
-            datos[i][2] = String.valueOf(v.getNroAsientosDisponibles());
-            datos[i][3] = v.getBus().getPatente();
-        }
-        return datos;
     }
 
 }
