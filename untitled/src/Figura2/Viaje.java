@@ -8,9 +8,10 @@ public class Viaje {
 
     private LocalDate fecha;
     private LocalTime hora;
-    private int precio;
     private Bus bus;
+    private int precio;
     private ArrayList<Pasaje> pasajes = new ArrayList<>();
+
     public Viaje(LocalDate fecha, LocalTime hora, int precio, Bus bus) {
         this.fecha = fecha;
         this.hora = hora;
@@ -33,6 +34,7 @@ public class Viaje {
     public void setPrecio(int precio) {
         this.precio = precio;
     }
+
     public Bus getBus(){
         return bus;
     }
@@ -67,34 +69,22 @@ public class Viaje {
         return asientos;
     }
     public void addPasaje(Pasaje pasaje){
-        if (pasaje == null) {
+        if (existeDisponibilidad()) {
             pasajes.add(pasaje);
         }
     }
 
-    public String[][] getListaPassajeros(){
+    public String[][] getListaPasajeros(){
         String[][] listaPasajeros = new String[pasajes.size()][5];
 
         for (int i = 0; i < pasajes.size(); i++) {
 
             Pasaje p = pasajes.get(i);
-
             listaPasajeros[i][0] = String.valueOf(p.getAsiento());
-
-            listaPasajeros[i][1] = p.getPasajero()
-                    .getIdPersona()
-                    .toString();
-
-            listaPasajeros[i][2] = p.getPasajero()
-                    .getNombreCompleto()
-                    .toString();
-
-            listaPasajeros[i][3] = p.getPasajero()
-                    .getNomContacto()
-                    .toString();
-
-            listaPasajeros[i][4] = p.getPasajero()
-                    .getFonoContacto();
+            listaPasajeros[i][1] = p.getPasajero().getIdPersona().toString();
+            listaPasajeros[i][2] = p.getPasajero().getNombreCompleto().toString();
+            listaPasajeros[i][3] = p.getPasajero().getNomContacto().toString();
+            listaPasajeros[i][4] = p.getPasajero().getFonoContacto();
         }
 
         return listaPasajeros;
@@ -105,6 +95,9 @@ public class Viaje {
         return nroAsientosDisponibles;
     }
     public boolean existeDisponibilidad(){
-        return getNroAsientosDisponibles()>0;
+        if (getNroAsientosDisponibles()>0){
+            return true;
+        }
+        return false;
     }
 }

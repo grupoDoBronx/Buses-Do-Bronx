@@ -7,16 +7,15 @@ public class Pasaje {
     private Pasajero pasajero;
     private Venta venta;
 
-    public Pasaje(long numero, int asiento, Pasajero pasajero, Venta venta, Viaje viaje) {
-        this.numero=numero;
+    public Pasaje( int asiento, Pasajero pasajero, Venta venta, Viaje viaje) {
         this.asiento = asiento;
         this.pasajero = pasajero;
         this.venta = venta;
         this.viaje = viaje;
     }
 
-    public long getNumero() {
-        return numero;
+    public int getNumero() {
+        return (int)numero;
     }
 
     public int getAsiento() {

@@ -7,21 +7,23 @@ import enums.TipoDocumento;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class SistemaVentaPasajes {
+public class SistemaVentaPasajes implements ViajesPorFecha{
 
     ArrayList<Cliente> clientes = new ArrayList<>();
     ArrayList<Pasajero> pasajeros = new ArrayList<>();
     ArrayList<Bus> buses = new ArrayList<>();
     ArrayList<Viaje> viajes = new ArrayList<>();
     ArrayList<Venta> venta = new ArrayList<>();
-
+    // establece el tipo formato de las fechas
+    DateTimeFormatter fechaFormato =DateTimeFormatter.ofPattern("dd/MM/yyyy");
     public boolean createCliente (IdPersona id, Nombre nombre, String fono, String email){
         if(findCliente(id) != null){
             return false;
         }
-        Cliente nuevoCliente = new Cliente(id, nombre, fono, email);
+        Cliente nuevoCliente = new Cliente(id, nombre, email, fono);
         clientes.add(nuevoCliente);
         return true;
     }
@@ -31,7 +33,7 @@ public class SistemaVentaPasajes {
             return false;
         }
 
-        Pasajero nuevoPasajero = new Pasajero(id, nombre, fono, nombreContacto, fonoContacto);
+        Pasajero nuevoPasajero = new Pasajero(id, nombre, fono, nombreContacto);
         pasajeros.add(nuevoPasajero);
         return true;
     }
@@ -41,7 +43,7 @@ public class SistemaVentaPasajes {
             return false;
         }
 
-        Bus nuevoBus = new Bus(patente, marca, modelo, numeroDeAsientos);
+        Bus nuevoBus = new Bus(numeroDeAsientos, patente);
         buses.add(nuevoBus);
         return true;
     }
@@ -52,11 +54,11 @@ public class SistemaVentaPasajes {
         if (bus == null) return false;
 
         for (Viaje v:  viajes){
-            if(v.getFecha.equals(fecha) && v.getHora.equals(hora)){
+            if(v.getFecha().equals(fecha) && v.getHora().equals(hora)){
                 return false;
             }
         }
-        Viaje nuevoViaje = new Viaje(fecha, hora, precio, patenteBus);
+        Viaje nuevoViaje = new Viaje(fecha, hora, precio, bus);
         viajes.add(nuevoViaje);
         return true;
     }
@@ -92,8 +94,9 @@ public class SistemaVentaPasajes {
     }
 
     public String[] listAsientosDeViaje(LocalDate fecha, LocalTime hora, String patenteBus) {
-
-        Viaje viaje = findViaje(fecha, hora, patenteBus);
+        String fechaString = fecha.format(fechaFormato);
+        String horaSting = hora.toString();
+        Viaje viaje = findViaje(fechaString, horaSting, patenteBus);
 
         if (viaje == null) {
             return new String[0];
@@ -127,15 +130,16 @@ public class SistemaVentaPasajes {
         return p.getNombreCompleto().toString();
     }
 
-    public boolean vendePasaje(String idDocumento, String fecha, String hora, String patente,int asiento, String idPasajero) {
-        Venta venta = findVenta(idDocumento);
-        Viaje viaje = findViaje(fecha, hora, patente);
+    public boolean vendePasaje(String idDocumento, String fecha, String hora, String patente,int asiento, IdPersona idPasajero, TipoDocumento tipoDocumento) {
+        Venta venta = findVenta(idDocumento, tipoDocumento);
+        Viaje viaje = findViaje(fecha, hora,patente);
+
         Pasajero pasajero = findPasajero(idPasajero);
 
         if (venta == null || viaje == null || pasajero == null) {
             return false;
         }
-        venta.createPasaje(asiento,viaje, pasajero);
+        venta.createPasaje(asiento,viaje,pasajero,venta);
         return true;
     }
 
@@ -175,7 +179,9 @@ public class SistemaVentaPasajes {
             return datos;
     }
     public String [][] listPasajeros(LocalDate fecha,LocalTime hora, String patenteBus){
-        Viaje encontrarViaje = findViaje(fecha, hora, patenteBus);
+        String fechaSt = fecha.format(fechaFormato);
+        String horaSt = hora.toString();
+        Viaje encontrarViaje = findViaje(fechaSt, horaSt, patenteBus);
         if(encontrarViaje == null){
             return new String[0][0];
         }
@@ -210,7 +216,7 @@ public class SistemaVentaPasajes {
         return null;
     }
 
-    private Viaje findViaje(String fecha, String hora, String patente) {
+    private Viaje findViaje(String  fecha, String  hora, String patente) {
 
         for (Viaje v : viajes) {
             if (v.getFecha().equals(fecha) && v.getHora().equals(hora) && v.getBus().getPatente().equals(patente)) {
@@ -231,5 +237,13 @@ public class SistemaVentaPasajes {
             datos[i][3] = v.getBus().getPatente();
         }
         return datos;
+    }
+
+    public boolean createCliente(IdPersona id, String nombre, String fono, String emailCliente) {
+        return false;
+    }
+
+    public boolean iniciaVenta() {
+        return true;
     }
 }
