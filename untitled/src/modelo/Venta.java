@@ -2,15 +2,16 @@ package modelo;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Venta {
     private String idDocumento;
     private TipoDocumento tipo;
-    private LocalDate fecha;
+    private Date fecha;
     private Cliente cliente;
     private ArrayList<Pasaje> pasajes; //Javier: Ahora se almacenan los pasajes de la venta.
 
-    public Venta(String idDocumento, TipoDocumento tipo, LocalDate fecha, Cliente cli) {
+    public Venta(String idDocumento, TipoDocumento tipo, Date fecha, Cliente cli) {
         this.idDocumento = idDocumento;
         this.tipo = tipo;
         this.fecha = fecha;
@@ -24,7 +25,7 @@ public class Venta {
     public TipoDocumento getTipo() {
         return tipo;
     }
-    public LocalDate getFecha() {
+    public Date getFecha() {
         return fecha;
     }
     public int getMonto(){

@@ -19,7 +19,11 @@ public class ControladorEmpresas {
     ArrayList<Empresa> empresas = new ArrayList<>();
     public void createEmpresa(Rut rut, String nombre,String url){
         try {
-            throw new SistemaVentaPasajesException("Ya existe empresa con el rut indicado");
+            if (){
+                throw new SistemaVentaPasajesException("Ya existe empresa con el rut indicado");
+            }
+
+            System.out.println("\n...:::: Empresa guardada exitosamente ::::....");
         }catch (SistemaVentaPasajesException e){
             System.out.println("ERROR: " + e.getMessage());
             return;
@@ -33,6 +37,7 @@ public class ControladorEmpresas {
             if(findBus(patente).isPresent()){
                 throw new SistemaVentaPasajesException("Ya existe bus con la patente indicada");
             }
+            System.out.print("\n...:::: Bus guardado exitosamente ::::....");
         }catch (SistemaVentaPasajesException e){
             System.out.println("ERROR: " + e.getMessage());
             return;
@@ -47,15 +52,22 @@ public class ControladorEmpresas {
                 throw new SistemaVentaPasajesException("Ya existe terminal en la comuna indicada");
             }
 
+            System.out.println("\n...:::: Terminal guardado exitosamente ::::....");
 
         }catch (SistemaVentaPasajesException e){
             System.out.println("ERROR: " + e.getMessage());
             return;
         }
     }
-    public void hireConstructorForEmpresa (Rut rutEmp, IdPersona id, Nombre nom, Direccion dir){
+    public void hireConductorForEmpresa (Rut rutEmp, IdPersona id, Nombre nom, Direccion dir){
         try {
-            throw new SistemaVentaPasajesException("");
+            if (){
+                throw new SistemaVentaPasajesException("No existe empresa con el rut indicado");
+            }
+            if () {
+                throw new SistemaVentaPasajesException("Ya está contratado auxiliar/conductor con el id dado en la empresa señalada");
+            }
+
         }catch (SistemaVentaPasajesException e){
             System.out.println("ERROR: " + e.getMessage());
             return;
@@ -67,7 +79,10 @@ public class ControladorEmpresas {
             if (){
                 throw new SistemaVentaPasajesException("No existe empresa con el rut indicado");
             }
-            throw new SistemaVentaPasajesException("Ya está contratado auxiliar/conductor con el id dado en la empresa señalada");
+            if () {
+                throw new SistemaVentaPasajesException("Ya está contratado auxiliar/conductor con el id dado en la empresa señalada");
+            }
+            System.out.println("...:::: Auxiliar contratado exitosamente ::::....");
         }catch (SistemaVentaPasajesException e){
             System.out.println("ERROR: " + e.getMessage());
             return;
@@ -91,7 +106,14 @@ public class ControladorEmpresas {
         }
     }
     public String[][] listVentasEmpresa(Rut rut){
-
+        try {
+            if (){
+                throw new SistemaVentaPasajesException("No existe empresa con el rut indicado");
+            }
+            System.out.println();
+        }catch (SistemaVentaPasajesException e){
+            System.out.println("ERROR : " + e.getMessage());
+        }
         return null;
     }
     protected Optional <Empresa> findEmpresa(Rut rut){

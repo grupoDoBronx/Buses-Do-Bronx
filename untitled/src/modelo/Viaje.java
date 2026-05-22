@@ -99,7 +99,7 @@ public class Viaje {
 
 
 
-    public String[][] getListaPasajeros(){
+    public String[][] getListaPasajeros() {
         String[][] listaPasajeros = new String[pasajes.size()][5];
 
         for (int i = 0; i < pasajes.size(); i++) {
