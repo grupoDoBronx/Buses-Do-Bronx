@@ -28,4 +28,11 @@ public class SistemaVentaPasajes {
         }
         return instancia;
     }
+    public void createCliente (IdPersona id, Nombre nombre, String fono, String email){
+        if(findCliente(id) != null){
+            throw new SistemaVentaPasajesException("Ya existe cliente con el id indicado");
+        }
+        Cliente nuevoCliente = new Cliente(id, nombre,fono,email);
+        clientes.add(nuevoCliente);
+    }
 }
