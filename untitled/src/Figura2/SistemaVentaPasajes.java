@@ -53,4 +53,12 @@ public class SistemaVentaPasajes {
             throw new SistemaVentaPasajesException("No existe bus con la patente indicada");
         }
     }
+    public void iniciaVenta(String idDocumento, TipoDocumento tipo, Date fechaViaje, String comSalida, String comLlegada, IdPersona idCliente, int nroPasajes) {
+        if (findVenta(idDocumento, tipo) != null) {
+            throw new SistemaVentaPasajesException("Ya existe venta con el id y tipo de documento indicados");
+        }
+        if(findCliente(idCliente) == null){
+            throw new SistemaVentaPasajesException("No existe cliente con el id indicado");
+        }
+    }
 }
