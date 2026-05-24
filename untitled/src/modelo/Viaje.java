@@ -79,58 +79,26 @@ public class Viaje {
 
         return ventas.toArray(new Venta[0]);
     }
-    //use ia para el getBus
+
     public Bus getBus(){
         return bus;
     }
-
-    public String[][] getAsientos() {
+    //use ia para el getAsientos
+    public String[] getAsientos(){
 
         int totalAsientos =
                 bus.getNroAsientos();
 
-        int filas =
-                (int) Math.ceil(
-                        totalAsientos / 4.0
-                );
+        String[] asientos =
+                new String[totalAsientos];
 
-        String[][] asientos =
-                new String[filas][4];
-
-        int num = 1;
-
-        for (int i = 0; i < filas; i++) {
-
-            for (int j = 0; j < 4; j++) {
-
-                if (num <= totalAsientos) {
-
-                    asientos[i][j] =
-                            String.valueOf(num);
-
-                    num++;
-
-                } else {
-
-                    asientos[i][j] =
-                            " ";
-                }
-            }
+        for(int i=0;i<totalAsientos; i++){
+            asientos[i] =
+                    String.valueOf(i+1);
         }
-
-        for (Pasaje p : pasajes) {
-
-            int asiento =
-                    p.getAsiento();
-
-            int fila =
-                    (asiento - 1) / 4;
-
-            int col =
-                    (asiento - 1) % 4;
-
-            asientos[fila][col] =
-                    "*";
+        for(Pasaje p : pasajes){
+            int asiento = p.getAsiento();
+            asientos[asiento-1]="*";
         }
 
         return asientos;
@@ -164,7 +132,7 @@ public class Viaje {
                 - pasajes.size();
     }
     public boolean existeDisponibilidad(int nroAsientos){
-        return getNroAsientosDisponibles() > 0;
+        return getNroAsientosDisponibles() > nroAsientos;
     }
     //hecho por el harold
     public void addConductor(Conductor conductor) {

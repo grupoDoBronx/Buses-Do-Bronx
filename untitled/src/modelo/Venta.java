@@ -33,8 +33,8 @@ public class Venta {
         return cliente;
     }
 
-    public void createPasaje(int asiento, Viaje viaje, Pasajero pasajero, Venta venta){
-        Pasaje pasaje = new Pasaje (asiento,pasajero, venta, viaje);
+    public void createPasaje(int asiento, Viaje viaje, Pasajero pasajero,Venta venta){
+        Pasaje pasaje = new Pasaje (asiento,pasajero, viaje,venta);
         pasajes.add(pasaje);
         viaje.addPasaje(pasaje);
     }
@@ -71,12 +71,24 @@ public class Venta {
         return pago.getMonto() == getMonto();
     }
 
-    public boolean equals(Object otro){
-        return false;
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        if (!(obj instanceof Venta)) {
+            return false;
+        }
+
+
+
+        Venta otro = (Venta) obj;
+        return idDocumento.equals(otro.idDocumento);
     }
     public String getTipoPago(){
         if (pago == null) {
-            return "no";
+            return null;
         }
 
         return pago.getClass().getSimpleName();
