@@ -35,4 +35,12 @@ public class SistemaVentaPasajes {
         Cliente nuevoCliente = new Cliente(id, nombre,fono,email);
         clientes.add(nuevoCliente);
     }
+    public void createPasajero (IdPersona id, Nombre nombre, String fono, Nombre nombreContacto, String fonoContacto){
+        if(findPasajero(id) != null){
+            throw new SistemaVentaPasajesException("Ya existe pasajero con el id ingresado");
+        }
+
+        Pasajero nuevoPasajero = new Pasajero(id, nombre, fono, nombreContacto, fonoContacto);
+        pasajeros.add(nuevoPasajero);
+    }
 }
