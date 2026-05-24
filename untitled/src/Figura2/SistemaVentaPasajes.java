@@ -43,4 +43,14 @@ public class SistemaVentaPasajes {
         Pasajero nuevoPasajero = new Pasajero(id, nombre, fono, nombreContacto, fonoContacto);
         pasajeros.add(nuevoPasajero);
     }
+    public void createViaje(LocalDate fecha, LocalTime hora, int precio, int duracion, String patenteBus, IdPersona[] idsTripulantes, String[] comunas) {
+        if (findViaje(fecha, hora, patenteBus) != null) {
+            throw new SistemaVentaPasajesException("Ya existe viaje con fecha, hora y patente de bus indicados");
+        }
+
+        Optional<Bus> busOpt = ControladorEmpresas.getInstance().findBus(patenteBus);
+        if (busOpt == null) {
+            throw new SistemaVentaPasajesException("No existe bus con la patente indicada");
+        }
+    }
 }
