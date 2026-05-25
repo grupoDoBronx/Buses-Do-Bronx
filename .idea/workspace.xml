@@ -4,7 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3761bfaa-1dd7-4017-89ff-f96a4653b510" name="Changes" comment="" />
+    <list default="true" id="3761bfaa-1dd7-4017-89ff-f96a4653b510" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/controlador/ControladorEmpresas.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/controlador/SistemaVentaPasajes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/excepciones/SistemaVentaPasajesException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/Auxiliar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/Bus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/Cliente.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/Conductor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/Empresa.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/Pago.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/PagoEfectivo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/PagoTarjeta.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/Pasaje.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/Pasajero.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/Persona.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/Terminal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/TipoDocumento.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/Tripulante.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/Venta.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/Viaje.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/ViajesPorFecha.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/utilidades/Direccion.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/utilidades/IdPersona.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/utilidades/Nombre.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/utilidades/Pasaporte.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/utilidades/Rut.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/utilidades/Tratamiento.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/vista/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/vista/UISVP.class" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,47 +49,47 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "brooklex"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;brooklex&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/grupoDoBronx/Buses-Do-Bronx.git",
-    "accountId": "6eb1437d-96be-4e62-965d-f66500c399ab"
+    "accountId": "337a45f5-4c4f-475c-a69d-5a44a55d751c"
   }
 }]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0,
-  "fromUser": false
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0,
+  &quot;fromUser&quot;: false
+}</component>
   <component name="ProjectId" id="3CxGK9axt8NoREiGpuN0EjCdVp4" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "RamaJavier",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;RamaJavier&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\sepul\IdeaProjects\Buses-Do-Bronx" />
