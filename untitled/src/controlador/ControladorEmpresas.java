@@ -30,77 +30,61 @@ public class ControladorEmpresas {
     }
 
     public void createEmpresa(Rut rut, String nombre,String url){
-        try {
-            if (findEmpresa(rut).isEmpty()){
-                throw new SistemaVentaPasajesException("Ya existe empresa con el rut indicado");
-            }
-            Empresa empresa = new Empresa(nombre,rut);
 
-            System.out.println("\n...:::: Empresa guardada exitosamente ::::....");
-        }catch (SistemaVentaPasajesException e){
-            System.out.println("ERROR: " + e.getMessage());
-            return;
+        if (findEmpresa(rut).isEmpty()){
+            throw new SistemaVentaPasajesException("Ya existe empresa con el rut indicado");
         }
+        Empresa empresa = new Empresa(nombre,rut);
+
+        System.out.println("\n...:::: Empresa guardada exitosamente ::::....");
+
     }
     public void createBus (String patente, String marca, String modelo, int numeroDeAsientos, Rut rutEmp){
-        try {
-            if (findEmpresa(rutEmp).isPresent()){
-                throw new SistemaVentaPasajesException("No existe empresa con el rut indicado");
-            }
-            if(findBus(patente).isPresent()){
-                throw new SistemaVentaPasajesException("Ya existe bus con la patente indicada");
-            }
-            System.out.print("\n...:::: Bus guardado exitosamente ::::....");
-        }catch (SistemaVentaPasajesException e){
-            System.out.println("ERROR: " + e.getMessage());
-            return;
+
+        if (findEmpresa(rutEmp).isPresent()){
+            throw new SistemaVentaPasajesException("No existe empresa con el rut indicado");
         }
+        if(findBus(patente).isPresent()){
+            throw new SistemaVentaPasajesException("Ya existe bus con la patente indicada");
+        }
+        System.out.print("\n...:::: Bus guardado exitosamente ::::....");
+
         Empresa empresacontrata = findEmpresa(rutEmp).get();
         Bus nuevoBus = new Bus(numeroDeAsientos, patente, empresacontrata);
         buses.add(nuevoBus);
     }
     public void createTerminal(String nombre, Direccion direccion){
-        try {
-            if (findTerminal(nombre).isEmpty()){
-                throw new SistemaVentaPasajesException("Ya existe terminal en la comuna indicada");
-            }
-            Terminal terminal = new Terminal(nombre, direccion);
-            System.out.println("\n...:::: Terminal guardado exitosamente ::::....");
 
-        }catch (SistemaVentaPasajesException e){
-            System.out.println("ERROR: " + e.getMessage());
-            return;
+        if (findTerminal(nombre).isEmpty()){
+            throw new SistemaVentaPasajesException("Ya existe terminal en la comuna indicada");
         }
+        Terminal terminal = new Terminal(nombre, direccion);
+        System.out.println("\n...:::: Terminal guardado exitosamente ::::....");
+
+
     }
     public void hireConductorForEmpresa (Rut rutEmp, IdPersona id, Nombre nom, Direccion dir){
-        try {
-            if (findEmpresa(rutEmp).isEmpty()){
-                throw new SistemaVentaPasajesException("No existe empresa con el rut indicado");
-            }
-            if (findConductor(id,rutEmp).isEmpty()) {
-                throw new SistemaVentaPasajesException("Ya está contratado auxiliar/conductor con el id dado en la empresa señalada");
-            }
 
-        }catch (SistemaVentaPasajesException e){
-            System.out.println("ERROR: " + e.getMessage());
-            return;
+        if (findEmpresa(rutEmp).isEmpty()){
+            throw new SistemaVentaPasajesException("No existe empresa con el rut indicado");
         }
+        if (findConductor(id,rutEmp).isEmpty()) {
+            throw new SistemaVentaPasajesException("Ya está contratado auxiliar/conductor con el id dado en la empresa señalada");
+        }
+
+
     }
     public void hireAuxiliarForEmpresa (Rut rutEmp,IdPersona id, Nombre nom, Direccion dir) {
-        try {
 
-            if (findEmpresa(rutEmp).isEmpty()){
-                throw new SistemaVentaPasajesException("No existe empresa con el rut indicado");
-            }
-            if (findAuxiliar(id,rutEmp).isEmpty()) {
-                throw new SistemaVentaPasajesException("Ya está contratado auxiliar/conductor con el id dado en la empresa señalada");
-            }
 
-            System.out.println("...:::: Auxiliar contratado exitosamente ::::....");
-        }catch (SistemaVentaPasajesException e){
-            System.out.println("ERROR: " + e.getMessage());
-            return;
+        if (findEmpresa(rutEmp).isEmpty()){
+            throw new SistemaVentaPasajesException("No existe empresa con el rut indicado");
         }
+        if (findAuxiliar(id,rutEmp).isEmpty()) {
+            throw new SistemaVentaPasajesException("Ya está contratado auxiliar/conductor con el id dado en la empresa señalada");
+        }
+
+        System.out.println("...:::: Auxiliar contratado exitosamente ::::....");
     }
     public String[][] listEmpresas(){
         ArrayList<String []> lista = new ArrayList<>();
