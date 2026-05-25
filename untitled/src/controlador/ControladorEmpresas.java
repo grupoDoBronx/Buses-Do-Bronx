@@ -6,6 +6,7 @@ import utilidades.Direccion;
 import utilidades.IdPersona;
 import utilidades.Nombre;
 import utilidades.Rut;
+import vista.UISVP;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,11 +18,23 @@ public class ControladorEmpresas {
     ArrayList<Terminal> terminales = new ArrayList<>();
     ArrayList<Bus> buses = new ArrayList<>();
     ArrayList<Empresa> empresas = new ArrayList<>();
+    ArrayList<Tripulante> tripulantes = new ArrayList<>();
+
+    private static ControladorEmpresas instance;
+
+    public static ControladorEmpresas getInstance(){
+        if (instance == null){
+            return instance = new ControladorEmpresas();
+        }
+        return instance;
+    }
+
     public void createEmpresa(Rut rut, String nombre,String url){
         try {
-            if (){
+            if (findEmpresa(rut).isEmpty()){
                 throw new SistemaVentaPasajesException("Ya existe empresa con el rut indicado");
             }
+            Empresa empresa = new Empresa(nombre,rut);
 
             System.out.println("\n...:::: Empresa guardada exitosamente ::::....");
         }catch (SistemaVentaPasajesException e){
@@ -42,16 +55,16 @@ public class ControladorEmpresas {
             System.out.println("ERROR: " + e.getMessage());
             return;
         }
-
-        Bus nuevoBus = new Bus(numeroDeAsientos, patente);
+        Empresa empresacontrata = findEmpresa(rutEmp).get();
+        Bus nuevoBus = new Bus(numeroDeAsientos, patente, empresacontrata);
         buses.add(nuevoBus);
     }
     public void createTerminal(String nombre, Direccion direccion){
         try {
-            if (){
+            if (findTerminal(nombre).isEmpty()){
                 throw new SistemaVentaPasajesException("Ya existe terminal en la comuna indicada");
             }
-
+            Terminal terminal = new Terminal(nombre, direccion);
             System.out.println("\n...:::: Terminal guardado exitosamente ::::....");
 
         }catch (SistemaVentaPasajesException e){
@@ -61,10 +74,10 @@ public class ControladorEmpresas {
     }
     public void hireConductorForEmpresa (Rut rutEmp, IdPersona id, Nombre nom, Direccion dir){
         try {
-            if (){
+            if (findEmpresa(rutEmp).isEmpty()){
                 throw new SistemaVentaPasajesException("No existe empresa con el rut indicado");
             }
-            if () {
+            if (findConductor(id,rutEmp).isEmpty()) {
                 throw new SistemaVentaPasajesException("Ya está contratado auxiliar/conductor con el id dado en la empresa señalada");
             }
 
@@ -76,12 +89,13 @@ public class ControladorEmpresas {
     public void hireAuxiliarForEmpresa (Rut rutEmp,IdPersona id, Nombre nom, Direccion dir) {
         try {
 
-            if (){
+            if (findEmpresa(rutEmp).isEmpty()){
                 throw new SistemaVentaPasajesException("No existe empresa con el rut indicado");
             }
-            if () {
+            if (findAuxiliar(id,rutEmp).isEmpty()) {
                 throw new SistemaVentaPasajesException("Ya está contratado auxiliar/conductor con el id dado en la empresa señalada");
             }
+
             System.out.println("...:::: Auxiliar contratado exitosamente ::::....");
         }catch (SistemaVentaPasajesException e){
             System.out.println("ERROR: " + e.getMessage());
@@ -97,48 +111,86 @@ public class ControladorEmpresas {
         }
         return lista.toArray(new String[0][0]);
     }
-    public String[][] listLLegadasSalidasTerminal(String nombre, Date fecha){
+    public String[][] listLlegadasSalidasTerminal(String nombre, Date fecha){
         try {
-            throw new SistemaVentaPasajesException("No existe terminal con el nombre indicado");
+            ArrayList<String[]> listaLlegadasSalidasTerminal = new ArrayList<>();
+            if (findTerminal(nombre).isEmpty()) {
+                throw new SistemaVentaPasajesException("No existe un terminal con el nombre dado ***");
+            }
+
+            for (Viaje v : findTerminal(nombre).get().getSalidas()){
+                String[] listado = {v.getHora().toString(),v.getBus().getPatente(),};
+            }
+            return listaLlegadasSalidasTerminal.toArray(new String[0][0]);
         }catch (SistemaVentaPasajesException e){
-            System.out.println("ERROR: " + e.getMessage());
+            System.out.println("*** ERROR: " + e.getMessage());
             return null;
         }
     }
     public String[][] listVentasEmpresa(Rut rut){
         try {
-            if (){
+            ArrayList<String[]> lisVentasEmp = new ArrayList<>();
+            if (findEmpresa(rut).isEmpty()){
                 throw new SistemaVentaPasajesException("No existe empresa con el rut indicado");
             }
-            System.out.println();
+
+            for (Venta v : findEmpresa(rut).get().getVentas()){
+                String[] fila ={v.getFecha().toString(), v.getTipo().toString(), String.valueOf(v.getMontoPagado()), v.getTipoPago()};
+                lisVentasEmp.add(fila);
+            }
+            return lisVentasEmp.toArray(new String[0][0]);
+
         }catch (SistemaVentaPasajesException e){
-            System.out.println("ERROR : " + e.getMessage());
+            System.out.println("*** ERROR : " + e.getMessage());
+            return null;
         }
-        return null;
+
     }
     protected Optional <Empresa> findEmpresa(Rut rut){
-        for (Rut r : ruts){
-            if (Objects.equals(r.getDv(), rut)) return Optional.of(r) ;
+        for (Empresa e : empresas){
+            if (e.getRut().equals(rut)) return Optional.of(e) ;
         }
-        return null;
+        return Optional.empty();
     }
     protected Optional<Terminal> findTerminal(String nombre){
-        return null;
+        for (Terminal t : terminales){
+            if (t.getNombre().equals(nombre)) return Optional.of(t);
+        }
+        return Optional.empty();
     }
     protected Optional<Terminal> findTerminalPorComuna(String comuna){
-        return null;
+        for (Terminal t : terminales){
+            if (t.getNombre().equals(comuna)) return Optional.of(t);
+        }
+        return Optional.empty();
     }
     protected Optional <Bus> findBus(String patente) {
         for (Bus b : buses) {
             if (b.getPatente().equals(patente)) return Optional.of(b);
         }
-        return null;
+        return Optional.empty();
     }
     protected Optional<Conductor> findConductor(IdPersona idPersona, Rut rutEmpresa){
-        return null;
+        for (Empresa e : empresas){
+            if (e.getRut().equals(rutEmpresa)){
+                for (Tripulante t : tripulantes){
+                    if ((t instanceof Conductor) && t.getIdPersona().equals(idPersona)) {
+                        return Optional.of((Conductor)t);}
+                }
+            }
+        }
+        return Optional.empty();
     }
     protected Optional<Auxiliar> findAuxiliar(IdPersona idPersona, Rut rutEmpresa){
-        return null;
+        for (Empresa e : empresas){
+            if (e.getRut().equals(rutEmpresa)){
+                for (Tripulante t : tripulantes){
+                    if ((t instanceof Auxiliar) && t.getIdPersona().equals(idPersona)) {
+                        return Optional.of((Auxiliar)t);}
+                }
+            }
+        }
+        return Optional.empty();
     }
 
 

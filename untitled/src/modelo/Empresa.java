@@ -13,7 +13,7 @@ public class Empresa {
     private String url;
     private ArrayList<Bus> buses;
     private ArrayList<Tripulante> tripulantes;
-    private ArrayList<Venta> ventasEmpresa;
+    private ArrayList<Venta> listaVentas;
     public Empresa(String nombre, Rut rut) {
         this.nombre = nombre;
         this.rut = rut;
@@ -72,15 +72,10 @@ public class Empresa {
     }
     public Venta[] getVentas(){
         ArrayList<Venta> listaVentas = new ArrayList<>();
-
         for(Bus bus : buses){
-
             for(Viaje viaje : bus.getViajes()){
-
                 for(Venta venta : viaje.getVentas()){
-
                     listaVentas.add(venta);
-
                 }
             }
         }

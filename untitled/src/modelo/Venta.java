@@ -1,6 +1,5 @@
 package modelo;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -9,6 +8,7 @@ public class Venta {
     private TipoDocumento tipo;
     private Date fecha;
     private Cliente cliente;
+    private Pago pago;
     private ArrayList<Pasaje> pasajes; //Javier: Ahora se almacenan los pasajes de la venta.
 
     public Venta(String idDocumento, TipoDocumento tipo, Date fecha, Cliente cli) {
@@ -28,43 +28,56 @@ public class Venta {
     public Date getFecha() {
         return fecha;
     }
-    public int getMonto(){
-        int monto= 0;
-
-        for (Pasaje p: pasajes){
-            monto += p.getViaje().getPrecio();
-        }
-        return monto;
-    }
     public Cliente getCliente(){
         return cliente;
     }
 
     public void createPasaje(int asiento, Viaje viaje, Pasajero pasajero, Venta venta){
         Pasaje pasaje = new Pasaje (asiento,pasajero, venta, viaje);
+        pasajes.add(pasaje);
         viaje.addPasaje(pasaje);
     }
-    public Pasaje[] getPasaje(){
+    public Pasaje[] getPasajes(){
         return pasajes.toArray(new Pasaje[0]);
     }
+    public int getMonto(){
+        int monto= 0;
+        for (Pasaje p: pasajes){
+            monto += p.getViaje().getPrecio();
+        }
+        return monto;
+    }
     public int getMontoPagado(){
+        if (pago == null) {
+            return 0;
+        }
 
+        return pago.getMonto();
     }
     public boolean pagaMonto(){
-        return true;
+        if (pago == null) {
+            return false;
+        }
+
+        return pago.getMonto()==getMonto();
     }
     public boolean pagaMonto(long nroTarjeta){
-        return true;
+        if (pago == null) {
+            return false;
+        }
+
+        return pago.getMonto() == getMonto();
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public boolean equals(Object otro){
+        return false;
     }
     public String getTipoPago(){
-        String tipoPago;
-        if (){
-
+        String tipoPago = "";
+        if (pago instanceof PagoEfectivo) {
+            tipoPago = "Pago Efectivo";
+        }else if (pago instanceof PagoTarjeta){
+            tipoPago = "Pago Tarjeta" ;
         }
         return tipoPago;
     }

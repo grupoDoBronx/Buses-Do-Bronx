@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class Terminal {
     private String nombre;
     private Direccion direccion;
+
     //agrego 2 array list para corregir el error
     private ArrayList<Viaje> llegadas;
     private ArrayList<Viaje> salidas;

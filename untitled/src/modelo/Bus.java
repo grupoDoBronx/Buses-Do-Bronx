@@ -6,13 +6,15 @@ public class Bus {
     private String patente;
     private String marca;
     private String modelo;
+    private Empresa empresa;
     private int nroAsientos;
     ArrayList<Viaje> viajes = new ArrayList<>();
 
-    public Bus(int nroAsientos, String patente) {
+    public Bus(int nroAsientos, String patente,Empresa empresa) {
         this.nroAsientos = nroAsientos;
         this.patente = patente;
         this.viajes = new ArrayList<>();
+        this.empresa = empresa;
     }
 
     public String getPatente() {
@@ -37,6 +39,9 @@ public class Bus {
 
     public int getNroAsientos() {
         return nroAsientos;
+    }
+    public Empresa getEmpresa(){
+        return empresa;
     }
     public void addViaje(Viaje viaje){
         for (Viaje via : viajes){
