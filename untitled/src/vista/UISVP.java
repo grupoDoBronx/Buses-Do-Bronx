@@ -24,9 +24,13 @@ public class UISVP {
     private TipoDocumento pagaTipoDocumento;
     private long paganumtarjeta;
     private ControladorEmpresas controlador;
+
     //implementacion del singleton
     private static UISVP instance;
-
+    public UISVP(){
+        controlador = ControladorEmpresas.getInstance();
+        sistem = SistemaVentaPasajes.getInstance();
+    }
     public static UISVP getInstance(){
         if (instance == null){
             return instance = new UISVP();

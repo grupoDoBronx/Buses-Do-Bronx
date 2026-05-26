@@ -24,9 +24,11 @@ public class SistemaVentaPasajes {
     ArrayList<Venta> venta = new ArrayList<>();
     // establece el tipo formato de las fechas
     SimpleDateFormat fechaFormato = new SimpleDateFormat("dd/MM/yyyy");
-
+    private ControladorEmpresas controlEmpre;
     public static SistemaVentaPasajes instance;
-
+    private SistemaVentaPasajes(){
+        controlEmpre = ControladorEmpresas.getInstance();
+    }
     public static SistemaVentaPasajes getInstance(){
         if (instance == null){
             return instance = new SistemaVentaPasajes();
@@ -63,7 +65,7 @@ public class SistemaVentaPasajes {
 
 
     public void createViaje (Date fecha, Time hora, int precio, int duracion,String patenteBus, IdPersona[] idTripulantes, String[] nomComunas){
-        ControladorEmpresas controlEmpre = new ControladorEmpresas();
+
         Optional<Bus> bus = controlEmpre.findBus(patenteBus);
         Optional<Terminal> terminalSalida = controlEmpre.findTerminalPorComuna(nomComunas[0]);
         Optional<Terminal> terminalLlegada = controlEmpre.findTerminalPorComuna(nomComunas[1]);
