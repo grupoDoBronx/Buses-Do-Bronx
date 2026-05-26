@@ -76,8 +76,14 @@ public class SistemaVentaPasajes {
 
             for (Viaje v:  viajes){
                 if(v.getFecha().equals(fecha) && v.getHora().equals(hora)){
-                    throw new SistemaVentaPasajesException("");
+                    throw new SistemaVentaPasajesException("Ya existe viaje con fecha, hora y patente de bus indicados");
                 }
+            }
+            if (controlEmpre.findTerminal(nomComunas[0]).isEmpty()){
+                throw new SistemaVentaPasajesException("No existe terminal de salida en la comuna indicada");
+            }
+            if (controlEmpre.findTerminal(nomComunas[1]).isEmpty()){
+                throw new SistemaVentaPasajesException("No existe terminal de llegada en la comuna indicada");
             }
             Terminal terminal1 = terminalSalida.get();
             Terminal terminal2 = terminalLlegada.get();
@@ -85,6 +91,8 @@ public class SistemaVentaPasajes {
             Auxiliar auxiliar = (Auxiliar) idTripulantes[0];
             Conductor conductor1 = null;
             Conductor conductor2 = null;
+
+
             if (idTripulantes.length==1){
                 conductor1 = (Conductor) idTripulantes[1];
                 conductor2 = (Conductor) idTripulantes[2];
@@ -105,9 +113,13 @@ public class SistemaVentaPasajes {
     
 
     public void iniciaVenta(String idDoc, TipoDocumento tipo, Date fechaViaje, String comSalida, String comLlegada ,IdPersona idCliente, int nroPasajes) {
-
+        // ya no alcanzo a terminar todas las cosas y dudo que en lo que tengo de tiempo avance con algo funcional, prefiero que quede asi a que no compile despues y me quede sin tiempo
+        // al menos se nota la logica que planeaba hacer pero aunque estuve toda la semana casi sin dormir no lo logre
         try {
-            if (findVenta(idDoc, tipo) != null|| findCliente(idCliente) == null) {
+            if (findVenta(idDoc, tipo).isPresent()) {
+                throw new SistemaVentaPasajesException("throw new SistemaVentaPasajesException(\"\");");
+            }
+            if (findCliente(idCliente).isEmpty()){
                 throw new SistemaVentaPasajesException("");
             }
             Optional<Cliente> cliente = findCliente(idCliente);
@@ -118,12 +130,13 @@ public class SistemaVentaPasajes {
             System.out.println(":::: Listado de horarios disponibles");
             System.out.println("     *----------*----------*----------*----------*");
             System.out.println("     | BUS      |   SALIDA |    VALOR | ASIENTOS |");
-
-            for (Viaje v : viajes) {
-
-            }
             System.out.println("     *----------*----------*----------*----------*\n\n");
+            getHorariosDisponibles(fechaViaje);
+            String horaSt = getHorariosDisponibles(fechaViaje)[1][1];
+            String fechaSt = fechaFormato.format(fechaViaje);
+            String patenteSt = getHorariosDisponibles(fechaViaje)[1][0];
 
+            vendePasaje(idDoc,fechaSt,horaSt,patenteSt,1,null,null);
         }catch (SistemaVentaPasajesException e){
             System.out.println("ERROR : " + e.getMessage());
         }
@@ -187,13 +200,21 @@ public class SistemaVentaPasajes {
     }
 
     public void vendePasaje(String idDocumento, String fecha, String hora, String patente,int asiento, IdPersona idPasajero, TipoDocumento tipoDocumento) {
-        Optional <Venta> venta = findVenta(idDocumento, tipoDocumento);
-        Optional <Viaje> viaje = findViaje(fecha, hora,patente);
 
-        Optional <Pasajero> pasajero = findPasajero(idPasajero);
-
-        if (venta == null || viaje == null || pasajero == null) {
-            return;
+        for (Venta v: venta) {
+            if (findVenta(idDocumento, tipoDocumento).isEmpty()) {
+                throw new SistemaVentaPasajesException("No existe venta con el id y tipo de documento indicados\n");
+            }
+        }
+        for (Cliente c: clientes){
+            if (findCliente(idPasajero).isEmpty()){
+                throw new SistemaVentaPasajesException("No existe pasajero con el id indicado");
+            }
+        }
+        for (Viaje v: viajes){
+            if (findViaje(fecha,hora,patente).isEmpty()){
+                throw new SistemaVentaPasajesException("No existe viaje con la fecha, hora y patente de bus indicados");
+            }
         }
 
 
