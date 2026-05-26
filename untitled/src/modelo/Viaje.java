@@ -4,6 +4,7 @@ import java.sql.Time;
 
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -59,9 +60,9 @@ public class Viaje {
     }
 
     public LocalDateTime getFechaHoraTermino() {
-
+//use ia para este get
         LocalDateTime salida =
-                LocalDateTime.of(fecha, hora);
+                fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
 
         return salida.plusMinutes(duracion);
     }
@@ -76,7 +77,6 @@ public class Viaje {
                 ventas.add(p.getVenta());
             }
         }
-
         return ventas.toArray(new Venta[0]);
     }
 
@@ -86,25 +86,19 @@ public class Viaje {
     //use ia para el getAsientos
     public String[] getAsientos(){
 
-        int totalAsientos =
-                bus.getNroAsientos();
+        int totalAsientos=bus.getNroAsientos();
 
-        String[] asientos =
-                new String[totalAsientos];
+        String[] asientos=new String[totalAsientos];
 
         for(int i=0;i<totalAsientos; i++){
-            asientos[i] =
-                    String.valueOf(i+1);
+            asientos[i]=String.valueOf(i+1);
         }
         for(Pasaje p : pasajes){
             int asiento = p.getAsiento();
             asientos[asiento-1]="*";
         }
-
         return asientos;
     }
-
-
 
     public void addPasaje(Pasaje pasaje){
         if (existeDisponibilidad(1)) {
