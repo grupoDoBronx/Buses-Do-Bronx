@@ -43,11 +43,12 @@ public class UISVP {
             try {
                 System.out.println("============================\n\t   ...::: Menú principal :::...");
                 System.out.println("\n  1) Crear Empresa\n  2) Contratar tripulante\n  3) Crear Terminal\n  4) Crear  cliente\n  5) Crear bus\n  6) Crear viaje\n  7) Vender pasajes\n  8) Listar ventas" +
-                        "\n  9) Listar viajes\n  10) Listar pasajeros de viaje\n  11) Listar empresas\n  12) Listar llegadas/salida de terminal\n  13) Listar ventas de empresa\n  14) Salir");
+                        "\n  9) Listar viajes\n  10) Listar pasajeros de viaje\n  11) Listar empresas\n  12) Listar llegadas/salida de terminal\n  13) Listar ventas de empresa\n  14) Generar pasajes venta\n" +
+                        " 15) Leer datos iniciales\n 16) Guardar datos del sistema\n 17) Leer datos del sistema\n 18) Salir");
                 System.out.println("\n----------------------------\n..:: Ingrese número de opción:");
                  int opcion = sc.nextInt();
                 sc.nextLine();
-                if (opcion == 14) {
+                if (opcion == 18) {
                     System.out.println("Saliendo del programa");
                     return;
 
@@ -91,6 +92,12 @@ public class UISVP {
                         break;
                     case 13:
                         listVentasEmpresa();
+                        break;
+                    case 14:
+                        break;
+                    case 15:
+                        break;
+                        
                     default:
                         System.out.println("Opcion numerica ingresada incorrecta");
                 }
