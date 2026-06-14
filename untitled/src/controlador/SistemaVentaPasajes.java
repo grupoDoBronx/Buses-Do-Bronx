@@ -1,7 +1,7 @@
 package controlador;
 
 
-import excepciones.SistemaVentaPasajesException;
+import excepciones.SVPException;
 import utilidades.IdPersona;
 import utilidades.Nombre;
 import modelo.TipoDocumento;
@@ -13,7 +13,6 @@ import java.sql.Time;
 
 import java.util.ArrayList;
 import java.util.Optional;
-import java.util.PrimitiveIterator;
 
 public class SistemaVentaPasajes {
 
@@ -42,7 +41,7 @@ public class SistemaVentaPasajes {
                 clientes.add(nuevoCliente);
                 System.out.println("\n...:::: Cliente guardado exitosamente ::::....");
             }
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR: " + e.getMessage());
         }
 
@@ -51,11 +50,11 @@ public class SistemaVentaPasajes {
     public void createPasajero (IdPersona id, Nombre nom, String fono, Nombre nomContacto, String fonoContacto){
         try {
             if(findPasajero(id) != null){
-                throw new SistemaVentaPasajesException("Ya existe pasajero con el id indicado");
+                throw new SVPException("Ya existe pasajero con el id indicado");
             }
             Pasajero nuevoPasajero = new Pasajero(id, nom, fono, nomContacto);
             pasajeros.add(nuevoPasajero);
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR: " + e.getMessage());
         }
     }
@@ -69,12 +68,12 @@ public class SistemaVentaPasajes {
         Optional<Terminal> terminalLlegada = controlEmpre.findTerminalPorComuna(nomComunas[1]);
         try {
             if (bus.isEmpty()){
-                throw new SistemaVentaPasajesException("No existe bus con la patente indicada");
+                throw new SVPException("No existe bus con la patente indicada");
             }
 
             for (Viaje v:  viajes){
                 if(v.getFecha().equals(fecha) && v.getHora().equals(hora)){
-                    throw new SistemaVentaPasajesException("");
+                    throw new SVPException("");
                 }
             }
             Terminal terminal1 = terminalSalida.get();
@@ -94,7 +93,7 @@ public class SistemaVentaPasajes {
             bus.get().addViaje(viaje);
             viajes.add(viaje);
             System.out.println("\n...:::: Viaje guardado exitosamente ::::....");
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : " +e.getMessage());
             return;
         }
@@ -106,7 +105,7 @@ public class SistemaVentaPasajes {
 
         try {
             if (findVenta(idDoc, tipo) != null|| findCliente(idCliente) == null) {
-                throw new SistemaVentaPasajesException("");
+                throw new SVPException("");
             }
             Optional<Cliente> cliente = findCliente(idCliente);
 
@@ -122,7 +121,7 @@ public class SistemaVentaPasajes {
             }
             System.out.println("     *----------*----------*----------*----------*\n\n");
 
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
         }
     }
@@ -199,10 +198,10 @@ public class SistemaVentaPasajes {
     public void pagaVenta (String idDocumento, TipoDocumento tipo){
         try {
             if (findVenta(idDocumento, tipo).isEmpty()){
-                throw new SistemaVentaPasajesException("No existe venta con el id y tipo de documento indicados");
+                throw new SVPException("No existe venta con el id y tipo de documento indicados");
             }
             System.out.println("  ...:::: Venta realizada exitosamente ::::....");
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : ");
             return;
         }
@@ -210,10 +209,10 @@ public class SistemaVentaPasajes {
     public void pagaVenta (String idDocumento, TipoDocumento tipo,long nroTarjeta){
         try {
             if (findVenta(idDocumento, tipo).isEmpty()){
-                throw new SistemaVentaPasajesException("No existe venta con el id y tipo de documento indicados");
+                throw new SVPException("No existe venta con el id y tipo de documento indicados");
             }
             System.out.println("  ...:::: Venta realizada exitosamente ::::....");
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : ");
             return;
         }
