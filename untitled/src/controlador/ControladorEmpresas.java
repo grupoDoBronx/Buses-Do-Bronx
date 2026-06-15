@@ -31,17 +31,17 @@ public class ControladorEmpresas {
 
     public void createEmpresa(Rut rut, String nombre,String url){
         try {
-            if (findEmpresa(rut).isEmpty()){
+            if (findEmpresa(rut).isPresent()){
                 throw new SistemaVentaPasajesException("Ya existe empresa con el rut indicado");
             }
             Empresa empresa = new Empresa(nombre,rut);
-
+            empresas.add(empresa);
             System.out.println("\n...:::: Empresa guardada exitosamente ::::....");
         }catch (SistemaVentaPasajesException e){
-            System.out.println("ERROR: " + e.getMessage());
-            return;
+            throw new SistemaVentaPasajesException("ERROR: " + e.getMessage());
         }
     }
+
     public void createBus (String patente, String marca, String modelo, int numeroDeAsientos, Rut rutEmp){
         try {
             if (findEmpresa(rutEmp).isPresent()){
