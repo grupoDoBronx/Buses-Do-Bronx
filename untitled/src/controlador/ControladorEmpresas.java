@@ -61,7 +61,7 @@ public class ControladorEmpresas {
     }
     public void createTerminal(String nombre, Direccion direccion){
         try {
-            if (findTerminal(nombre).isEmpty()){
+            if (findTerminal(nombre).isPresent()){
                 throw new SistemaVentaPasajesException("Ya existe terminal en la comuna indicada");
             }
             Terminal terminal = new Terminal(nombre, direccion);
@@ -77,7 +77,7 @@ public class ControladorEmpresas {
             if (findEmpresa(rutEmp).isEmpty()){
                 throw new SistemaVentaPasajesException("No existe empresa con el rut indicado");
             }
-            if (findConductor(id,rutEmp).isEmpty()) {
+            if (findConductor(id,rutEmp).isPresent()) {
                 throw new SistemaVentaPasajesException("Ya está contratado auxiliar/conductor con el id dado en la empresa señalada");
             }
 
@@ -92,7 +92,7 @@ public class ControladorEmpresas {
             if (findEmpresa(rutEmp).isEmpty()){
                 throw new SistemaVentaPasajesException("No existe empresa con el rut indicado");
             }
-            if (findAuxiliar(id,rutEmp).isEmpty()) {
+            if (findAuxiliar(id,rutEmp).isPresent()) {
                 throw new SistemaVentaPasajesException("Ya está contratado auxiliar/conductor con el id dado en la empresa señalada");
             }
 
@@ -192,6 +192,4 @@ public class ControladorEmpresas {
         }
         return Optional.empty();
     }
-
-
 }
