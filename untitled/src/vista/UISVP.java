@@ -3,7 +3,7 @@ package vista;
 import controlador.ControladorEmpresas;
 import controlador.SistemaVentaPasajes;
 
-import excepciones.SistemaVentaPasajesException;
+import excepciones.SVPException;
 import modelo.TipoDocumento;
 import utilidades.*;
 
@@ -120,7 +120,7 @@ public class UISVP {
             System.out.print("                      url : ");
             String urlingresada = sc.nextLine();
             controlador.createEmpresa(id,nomEmp,urlingresada);
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
         }
@@ -222,7 +222,7 @@ public class UISVP {
         }catch (InputMismatchException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
         }
@@ -244,7 +244,7 @@ public class UISVP {
         }catch (InputMismatchException e){
             System.out.println("ERROR: " + e.getMessage());
             return;
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
         }
@@ -317,7 +317,7 @@ public class UISVP {
         }catch (InputMismatchException e){
             System.out.println("ERROR: " + e.getMessage());
             return;
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
         }
@@ -342,7 +342,7 @@ public class UISVP {
         }catch (InputMismatchException e){
             System.out.println("ERROR: " + e.getMessage());
             return;
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
         }
@@ -444,7 +444,7 @@ public class UISVP {
         }catch (ParseException e){
             System.out.println("ERROR: " + e.getMessage());
             return;
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
         }
@@ -516,7 +516,7 @@ public class UISVP {
         }catch (ParseException | InputMismatchException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
         }
@@ -545,7 +545,7 @@ public class UISVP {
                     System.out.println("Opcion invalida");
                 }
             }
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
         }
@@ -571,7 +571,7 @@ public class UISVP {
                 System.out.printf("| %-10s | %-8s | %-10s | %-16s | %-30s | %-12s | %-12s |\n", v[0],v[1],v[2],v[3],v[4],v[5],v[6]);
             }
             System.out.println("*------------*----------*------------*------------------*--------------------------------*--------------*--------------*");
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
         }
@@ -592,7 +592,7 @@ public class UISVP {
                 System.out.printf("| %-12s | %-12s | %-12s | %-6s | %-14s | %-12s | %-15s | %-16s |\n", v[0],v[1],v[2],v[3],v[4],v[5],v[6],v[7]);
             }
             System.out.println("*--------------*--------------*--------------*--------*----------------*--------------*-----------------*------------------*");
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
         }
@@ -623,7 +623,7 @@ public class UISVP {
         }catch (ParseException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
         }
@@ -644,7 +644,7 @@ public class UISVP {
                 System.out.printf("| %-12s | %-30s | %-30s | %-16s | %-10s | %-11s |\n", e[0], e[1], e[2], e[3], e[4], e[5]);
             }
             System.out.println("*--------------*--------------------------------*--------------------------------*------------------*------------*-------------*");
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
         }
@@ -664,7 +664,7 @@ public class UISVP {
         }catch (ParseException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
         }
@@ -687,7 +687,7 @@ public class UISVP {
                 System.out.printf("| %-9s | %-7s | $%-11s | %13s |\n", e[0], e[1],e[2],e[3]);
             }
             System.out.println("*-----------*---------*---------------*---------------*");
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
         }
