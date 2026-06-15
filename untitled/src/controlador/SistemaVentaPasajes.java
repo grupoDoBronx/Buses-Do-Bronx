@@ -22,7 +22,6 @@ public class SistemaVentaPasajes {
     ArrayList<Pasajero> pasajeros = new ArrayList<>();
     ArrayList<Viaje> viajes = new ArrayList<>();
     ArrayList<Venta> venta = new ArrayList<>();
-    // establece el tipo formato de las fechas
     SimpleDateFormat fechaFormato = new SimpleDateFormat("dd/MM/yyyy");
 
     public static SistemaVentaPasajes instance;
@@ -33,6 +32,9 @@ public class SistemaVentaPasajes {
         }
         return instance;
     }
+
+    private ControladorEmpresas controladorEmpresas = ControladorEmpresas.getInstance();
+
     public void createCliente (IdPersona id, Nombre nombre,String fono, String email){
             if(findCliente(id).isPresent()){
                 throw new RuntimeException("Ya existe cliente con el id indicado");
