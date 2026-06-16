@@ -60,7 +60,8 @@ public class Empresa {
     }
     public boolean addAuxiliar(IdPersona id, Nombre nom, Direccion dir) {
         for (Tripulante t : tripulantes){
-            if (t.equals(id)){
+            IdPersona id2 = t.getIdPersona();
+            if (id2 == id){
                 return false;
             }
         }
