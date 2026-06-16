@@ -52,8 +52,7 @@ public class ControladorEmpresas {
             }
             System.out.print("\n...:::: Bus guardado exitosamente ::::....");
         }catch (SistemaVentaPasajesException e){
-            System.out.println("ERROR: " + e.getMessage());
-            return;
+            throw new SistemaVentaPasajesException("ERROR: " + e.getMessage());
         }
         Empresa empresacontrata = findEmpresa(rutEmp).get();
         Bus nuevoBus = new Bus(numeroDeAsientos, patente, empresacontrata);
@@ -68,8 +67,7 @@ public class ControladorEmpresas {
             System.out.println("\n...:::: Terminal guardado exitosamente ::::....");
 
         }catch (SistemaVentaPasajesException e){
-            System.out.println("ERROR: " + e.getMessage());
-            return;
+            throw new SistemaVentaPasajesException ("Error:" + e.getMessage());
         }
     }
     public void hireConductorForEmpresa (Rut rutEmp, IdPersona id, Nombre nom, Direccion dir){
@@ -82,8 +80,7 @@ public class ControladorEmpresas {
             }
 
         }catch (SistemaVentaPasajesException e){
-            System.out.println("ERROR: " + e.getMessage());
-            return;
+            throw new SistemaVentaPasajesException("ERROR: " + e.getMessage());
         }
     }
     public void hireAuxiliarForEmpresa (Rut rutEmp,IdPersona id, Nombre nom, Direccion dir) {
@@ -98,8 +95,7 @@ public class ControladorEmpresas {
 
             System.out.println("...:::: Auxiliar contratado exitosamente ::::....");
         }catch (SistemaVentaPasajesException e){
-            System.out.println("ERROR: " + e.getMessage());
-            return;
+            throw new SistemaVentaPasajesException("ERROR: " + e.getMessage());
         }
     }
     public String[][] listEmpresas(){
@@ -123,8 +119,7 @@ public class ControladorEmpresas {
             }
             return listaLlegadasSalidasTerminal.toArray(new String[0][0]);
         }catch (SistemaVentaPasajesException e){
-            System.out.println("*** ERROR: " + e.getMessage());
-            return null;
+            throw new SistemaVentaPasajesException("ERROR: " + e.getMessage());
         }
     }
     public String[][] listVentasEmpresa(Rut rut){
@@ -141,8 +136,7 @@ public class ControladorEmpresas {
             return lisVentasEmp.toArray(new String[0][0]);
 
         }catch (SistemaVentaPasajesException e){
-            System.out.println("*** ERROR : " + e.getMessage());
-            return null;
+            throw new SistemaVentaPasajesException("ERROR: " + e.getMessage());
         }
 
     }
