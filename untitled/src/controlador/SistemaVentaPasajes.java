@@ -115,7 +115,7 @@ public class SistemaVentaPasajes {
             }
             Optional<Cliente> cliente = findCliente(idCliente);
 
-            if(!findCliente(idCliente).isPresent()){
+            if(findCliente(idCliente).isEmpty()){
                 throw new SistemaVentaPasajesException("No existe cliente con el id indicado");
             }
             Venta nuevaVenta = new Venta(idDoc, tipo, fechaViaje, cliente.orElse(null));
@@ -207,8 +207,7 @@ public class SistemaVentaPasajes {
             }
             System.out.println("  ...:::: Venta realizada exitosamente ::::....");
         }catch (SistemaVentaPasajesException e){
-            System.out.println("ERROR : ");
-            return;
+            throw new SistemaVentaPasajesException("ERROR: " + e.getMessage());
         }
     }
     public void pagaVenta (String idDocumento, TipoDocumento tipo,long nroTarjeta){
@@ -218,8 +217,7 @@ public class SistemaVentaPasajes {
             }
             System.out.println("  ...:::: Venta realizada exitosamente ::::....");
         }catch (SistemaVentaPasajesException e){
-            System.out.println("ERROR : ");
-            return;
+            throw new SistemaVentaPasajesException("ERROR:" + e.getMessage());
         }
     }
 
@@ -267,6 +265,10 @@ public class SistemaVentaPasajes {
         }
         return encontrarViaje.get().getListaPasajeros();
     }
+
+    public void readDatosIniciales(){}
+    public void saveDatosSistema(){}
+    public void readDatosSistema(){}
 
     private Optional <Cliente> findCliente(IdPersona id) {
         for (Cliente c : clientes) {
