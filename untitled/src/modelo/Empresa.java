@@ -13,7 +13,7 @@ public class Empresa {
     private String url;
     private ArrayList<Bus> buses;
     private ArrayList<Tripulante> tripulantes;
-    private ArrayList<Venta> listaVentas;
+
     public Empresa(String nombre, Rut rut) {
         this.nombre = nombre;
         this.rut = rut;
@@ -38,8 +38,8 @@ public class Empresa {
     }
     public void addBus(Bus bus){
         for (Bus b : buses){
-            if (b.equals(bus)){
-                return;
+            if (b == bus){
+                System.out.println("Este bus ya ha sido registrado");
             }
             buses.add(bus);
         }
@@ -49,7 +49,8 @@ public class Empresa {
     }
     public boolean addConductor(IdPersona id, Nombre nom, Direccion dir){
         for (Tripulante t : tripulantes){
-            if (t.equals(id)){
+            IdPersona id2 = t.getIdPersona();
+            if (id2 == id){
                 return false;
             }
         }
