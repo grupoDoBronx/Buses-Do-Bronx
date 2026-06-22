@@ -37,16 +37,16 @@ public class Empresa {
         this.url = url;
     }
     public void addBus(Bus bus){
-        for (Bus b : buses){
-            if (b.equals(bus)){
-                return;
-            }
+
+        if (!buses.contains(bus)){
             buses.add(bus);
         }
+        return;
     }
     public Bus[] getBuses(){
         return buses.toArray(new Bus[0]);
     }
+
     public boolean addConductor(IdPersona id, Nombre nom, Direccion dir){
         for (Tripulante t : tripulantes){
             if (t.equals(id)){
