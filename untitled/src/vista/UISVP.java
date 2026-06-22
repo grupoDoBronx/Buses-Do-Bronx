@@ -3,7 +3,7 @@ package vista;
 import controlador.ControladorEmpresas;
 import controlador.SistemaVentaPasajes;
 
-import excepciones.SistemaVentaPasajesException;
+import excepciones.SVPException;
 import modelo.TipoDocumento;
 import utilidades.*;
 
@@ -24,9 +24,13 @@ public class UISVP {
     private TipoDocumento pagaTipoDocumento;
     private long paganumtarjeta;
     private ControladorEmpresas controlador;
+
     //implementacion del singleton
     private static UISVP instance;
-
+    public UISVP(){
+        controlador = ControladorEmpresas.getInstance();
+        sistem = SistemaVentaPasajes.getInstance();
+    }
     public static UISVP getInstance(){
         if (instance == null){
             return instance = new UISVP();
@@ -39,11 +43,12 @@ public class UISVP {
             try {
                 System.out.println("============================\n\t   ...::: Menú principal :::...");
                 System.out.println("\n  1) Crear Empresa\n  2) Contratar tripulante\n  3) Crear Terminal\n  4) Crear  cliente\n  5) Crear bus\n  6) Crear viaje\n  7) Vender pasajes\n  8) Listar ventas" +
-                        "\n  9) Listar viajes\n  10) Listar pasajeros de viaje\n  11) Listar empresas\n  12) Listar llegadas/salida de terminal\n  13) Listar ventas de empresa\n  14) Salir");
+                        "\n  9) Listar viajes\n  10) Listar pasajeros de viaje\n  11) Listar empresas\n  12) Listar llegadas/salida de terminal\n  13) Listar ventas de empresa\n  14) Generar pasajes venta\n" +
+                        " 15) Leer datos iniciales\n 16) Guardar datos del sistema\n 17) Leer datos del sistema\n 18) Salir");
                 System.out.println("\n----------------------------\n..:: Ingrese número de opción:");
                  int opcion = sc.nextInt();
                 sc.nextLine();
-                if (opcion == 14) {
+                if (opcion == 18) {
                     System.out.println("Saliendo del programa");
                     return;
 
@@ -87,6 +92,12 @@ public class UISVP {
                         break;
                     case 13:
                         listVentasEmpresa();
+                        break;
+                    case 14:
+                        break;
+                    case 15:
+                        break;
+                        
                     default:
                         System.out.println("Opcion numerica ingresada incorrecta");
                 }
@@ -109,7 +120,8 @@ public class UISVP {
             System.out.print("                      url : ");
             String urlingresada = sc.nextLine();
             controlador.createEmpresa(id,nomEmp,urlingresada);
-        }catch (SistemaVentaPasajesException e){
+
+        }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
         }
@@ -211,7 +223,7 @@ public class UISVP {
         }catch (InputMismatchException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
         }
@@ -233,7 +245,7 @@ public class UISVP {
         }catch (InputMismatchException e){
             System.out.println("ERROR: " + e.getMessage());
             return;
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
         }
@@ -306,7 +318,7 @@ public class UISVP {
         }catch (InputMismatchException e){
             System.out.println("ERROR: " + e.getMessage());
             return;
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
         }
@@ -331,7 +343,7 @@ public class UISVP {
         }catch (InputMismatchException e){
             System.out.println("ERROR: " + e.getMessage());
             return;
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
         }
@@ -433,7 +445,7 @@ public class UISVP {
         }catch (ParseException e){
             System.out.println("ERROR: " + e.getMessage());
             return;
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
         }
@@ -505,7 +517,7 @@ public class UISVP {
         }catch (ParseException | InputMismatchException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
         }
@@ -534,7 +546,7 @@ public class UISVP {
                     System.out.println("Opcion invalida");
                 }
             }
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
         }
@@ -560,7 +572,7 @@ public class UISVP {
                 System.out.printf("| %-10s | %-8s | %-10s | %-16s | %-30s | %-12s | %-12s |\n", v[0],v[1],v[2],v[3],v[4],v[5],v[6]);
             }
             System.out.println("*------------*----------*------------*------------------*--------------------------------*--------------*--------------*");
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
         }
@@ -581,7 +593,7 @@ public class UISVP {
                 System.out.printf("| %-12s | %-12s | %-12s | %-6s | %-14s | %-12s | %-15s | %-16s |\n", v[0],v[1],v[2],v[3],v[4],v[5],v[6],v[7]);
             }
             System.out.println("*--------------*--------------*--------------*--------*----------------*--------------*-----------------*------------------*");
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
         }
@@ -612,7 +624,7 @@ public class UISVP {
         }catch (ParseException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
         }
@@ -633,7 +645,7 @@ public class UISVP {
                 System.out.printf("| %-12s | %-30s | %-30s | %-16s | %-10s | %-11s |\n", e[0], e[1], e[2], e[3], e[4], e[5]);
             }
             System.out.println("*--------------*--------------------------------*--------------------------------*------------------*------------*-------------*");
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
         }
@@ -653,7 +665,7 @@ public class UISVP {
         }catch (ParseException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
         }
@@ -676,7 +688,7 @@ public class UISVP {
                 System.out.printf("| %-9s | %-7s | $%-11s | %13s |\n", e[0], e[1],e[2],e[3]);
             }
             System.out.println("*-----------*---------*---------------*---------------*");
-        }catch (SistemaVentaPasajesException e){
+        }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
         }
