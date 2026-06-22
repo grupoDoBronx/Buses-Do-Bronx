@@ -72,7 +72,7 @@ public class ControladorEmpresas {
         if (findEmpresa(rutEmp).isEmpty()){
             throw new SVPException("No existe empresa con el rut indicado");
         }
-        if (findConductor(id,rutEmp).isEmpty()) {
+        if (findConductor(id,rutEmp).isPresent()) {
             throw new SVPException("Ya está contratado auxiliar/conductor con el id dado en la empresa señalada");
         }
         Conductor conductor = new Conductor(id,nom,dir);
@@ -87,7 +87,7 @@ public class ControladorEmpresas {
         if (findEmpresa(rutEmp).isEmpty()){
             throw new SVPException("No existe empresa con el rut indicado");
         }
-        if (findAuxiliar(id,rutEmp).isEmpty()) {
+        if (findAuxiliar(id,rutEmp).isPresent()) {
             throw new SVPException("Ya está contratado auxiliar/conductor con el id dado en la empresa señalada");
         }
         Auxiliar auxiliar = new Auxiliar(id,nom,dir);
