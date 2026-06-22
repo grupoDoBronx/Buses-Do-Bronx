@@ -95,14 +95,16 @@ public class UISVP {
                         listVentasEmpresa();
                         break;
                     case 14:
+
                         break;
                     case 15:
+
                         break;
                     case 16:
+
                         break;
                     case 17:
-                        break;
-                    case 18:
+
                         break;
 
                     default:
@@ -288,6 +290,7 @@ public class UISVP {
                     System.out.println("Opcion invalida");
                 }
             }
+
             boolean opValidaSrSra = false;
             while (!opValidaSrSra){
                 System.out.print("       Sr.(1) o Sra.(2) : ");
@@ -330,6 +333,7 @@ public class UISVP {
             return;
         }
     }
+
     private void createBus(){
         try {
             Rut rut;
@@ -364,7 +368,8 @@ public class UISVP {
             IdPersona[] id = null;
             System.out.print("     Fecha[dd/mm/yyyy : ");
             String fechaIngresada = sc.nextLine();
-            Date fecha = (Date) fechaFormato.parse(fechaIngresada);
+            java.util.Date fechaUtil = fechaFormato.parse(fechaIngresada);
+            Date fecha = new Date(fechaUtil.getTime());
             System.out.print("          Hora[hh:mm] : ");
             String horaIngresada = sc.nextLine();
             LocalTime horaLocal = LocalTime.parse(horaIngresada);
@@ -389,6 +394,7 @@ public class UISVP {
                     System.out.println("Opcion ingresada fuera de rango");
                 }
             }
+            id = new IdPersona[nroConductores + 1];
             System.out.println("     :: Id Auxiliar ::\n");
             boolean opValidaRPTrip = false;
             while (!opValidaRPTrip){
@@ -414,7 +420,7 @@ public class UISVP {
                 }
             }
             for (int i = 1; i <= nroConductores; i++) {
-                i++;
+
                 System.out.println("    :: Id Conductor ::");
                 boolean opValidaRPCond = false;
                 while (!opValidaRPCond){
@@ -446,6 +452,7 @@ public class UISVP {
             System.out.print(" Nombre comuna llegada : ");
             nomcomunas[1] = sc.nextLine();
             sistem.createViaje(fecha,hora,precio,minutos,patente,id,nomcomunas);
+
 
         }catch (InputMismatchException e){
             System.out.println("ERROR: " + e.getMessage());
@@ -485,8 +492,8 @@ public class UISVP {
             }
             System.out.print("Fecha de viaje[dd/mm/yyyy] : ");
             String fechaIngresada = sc.nextLine();
-            Date fechaviaje = (Date) fechaFormato.parse(fechaIngresada);
-            System.out.print("          Origen (comuna) : ");
+            java.util.Date fechaUtil = fechaFormato.parse(fechaIngresada);
+            Date fecha = new Date(fechaUtil.getTime());            System.out.print("          Origen (comuna) : ");
             String comunaOri = sc.nextLine();
             System.out.print("         Destino (comuna) : ");
             String comunaLle = sc.nextLine();
@@ -518,7 +525,7 @@ public class UISVP {
             System.out.print("      Cantidad de pasajes : ");
             int cantPasajes = sc.nextInt();
             sc.nextLine();
-            sistem.iniciaVenta(idDocumento,tipoDocumento,fechaviaje,comunaOri,comunaLle,id,cantPasajes);
+            sistem.iniciaVenta(idDocumento,tipoDocumento,fecha,comunaOri,comunaLle,id,cantPasajes);
             pagaIdDocumento = idDocumento;
             pagaTipoDocumento = tipoDocumento;
 
@@ -544,12 +551,15 @@ public class UISVP {
                 if (opcion==1 || opcion==2){
                     if (opcion ==1){
                         sistem.pagaVenta(pagaIdDocumento,pagaTipoDocumento);
+                        opcionvalida = true;
                     }else {
                         System.out.print("           Numero Tarjeta : ");
                         long numtarjeta = sc.nextLong();
                         sc.nextLine();
                         sistem.pagaVenta(pagaIdDocumento,pagaTipoDocumento,numtarjeta);
+                        opcionvalida = true;
                     }
+
                 }else {
                     System.out.println("Opcion invalida");
                 }
@@ -611,8 +621,8 @@ public class UISVP {
             System.out.println("...:::: Listado de pasajeros de un viaje ::::....\n");
             System.out.println("Fecha del viaje [dd/mm/yyyy] : ");
             String fechaIN = sc.nextLine();
-            Date fecha = (Date) fechaFormato.parse(fechaIN);
-            System.out.println("    Hora del viaje[hh:mm] :");
+            java.util.Date fechaUtil = fechaFormato.parse(fechaIN);
+            Date fecha = new Date(fechaUtil.getTime());            System.out.println("    Hora del viaje[hh:mm] :");
             String horaIN = sc.nextLine();
             Time hora = Time.valueOf(horaIN);
             System.out.println("              Patente bus :");
@@ -626,8 +636,7 @@ public class UISVP {
             System.out.println("| ASIENTO |        RUT/PASS | PASAJERO                       | CONTACTO                       | TELEFONO CONTACTO |");
             for (String[] pV : sistem.listPasajeros(fecha,hora,patente)){
                 System.out.println("|---------+-----------------+--------------------------------+--------------------------------+--------------------|");
-                System.out.printf ("| %-7s | %-15s | %-30s | %-30s | %-18 |", pV[0], pV[1], pV[2], pV[3], pV[4]);
-            }
+                System.out.printf("| %-7s | %-15s | %-30s | %-30s | %-18s |\n",pV[0], pV[1], pV[2], pV[3], pV[4]);            }
             System.out.println("*---------*-----------------*--------------------------------*--------------------------------*--------------------*");
         }catch (ParseException e){
             System.out.println("ERROR : " + e.getMessage());
@@ -642,6 +651,7 @@ public class UISVP {
         try{
             String[][] empresas = controlador.listEmpresas();
             if (empresas.length == 0){
+                System.out.println("No existen empresas registradas");
                 controlador.listEmpresas();
                 return;
             }
@@ -667,7 +677,8 @@ public class UISVP {
             String nomTerminal = sc.nextLine();
             System.out.print("        Fecha[dd/mm/yyyy] : ");
             String fechaIngresada = sc.nextLine();
-            Date fecha = (Date) fechaFormato.parse(fechaIngresada);
+            java.util.Date fechaUtil = fechaFormato.parse(fechaIngresada);
+            Date fecha = new Date(fechaUtil.getTime());
             controlador.listLlegadasSalidasTerminal(nomTerminal,fecha);
             System.out.println();
         }catch (ParseException e){
