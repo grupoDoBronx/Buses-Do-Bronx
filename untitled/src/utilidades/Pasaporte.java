@@ -1,10 +1,10 @@
-package Figura1;
+package utilidades;
 
 public class Pasaporte implements IdPersona {
     private String numero;
     private String nacionalidad;
 
-    public Pasaporte(String num, String nacionalidad) {
+    private Pasaporte(String num, String nacionalidad) {
         this.numero = num;
         this.nacionalidad = nacionalidad;
     }

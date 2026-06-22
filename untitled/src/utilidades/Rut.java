@@ -1,9 +1,10 @@
-package Figura1;
+package utilidades;
 
-public class Rut implements IdPersona{
+public class Rut implements IdPersona {
     private int numero;
     private char dv;
-
+    // recive el rut y lo desglosa en dos partes
+    //la antes del guion y despues del guion ademas de quitar los espacios o puntos si es que el usuario los escribe al ingresar el rut del cliente
     public Rut(int num, char dv) {
         this.numero = num;
         this.dv = dv;

@@ -1,8 +1,8 @@
 package modelo;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import controlador.*;
 
 public class Venta {
     private String idDocumento;
@@ -12,10 +12,10 @@ public class Venta {
     private Pago pago;
     private ArrayList<Pasaje> pasajes; //Javier: Ahora se almacenan los pasajes de la venta.
 
-    public Venta(String idDocumento, TipoDocumento tipo, LocalDate fecha, Cliente cli) {
+    public Venta(String idDocumento, TipoDocumento tipo, Date fecha, Cliente cli) {
         this.idDocumento = idDocumento;
         this.tipo = tipo;
-        this.fecha = fecha;
+        this.fecha = fecha.toLocalDate();
         this.cliente = cli;
         this.pasajes= new ArrayList<>();//Se inicializa pasajes para poder añadir,
     }
@@ -92,6 +92,11 @@ public class Venta {
         }
 
         return pago.getClass().getSimpleName();
+    }
+
+    public Object getPasaje() {
+        Object pasaje = null;
+        return pasaje;
     }
 }
 

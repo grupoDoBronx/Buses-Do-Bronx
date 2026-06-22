@@ -1,4 +1,4 @@
-package Figura1;
+package utilidades;
 
 public class Nombre {
     private Tratamiento tratamiento;
@@ -38,17 +38,12 @@ public class Nombre {
         this.apellido_materno = apellido_materno;
     }
 
-    @Override
+
+
     public String toString() {
-        return "Nombre{" +
-                "tratamiento=" + tratamiento +
-                ", nombre='" + nombre + '\'' +
-                ", apellido_parterno='" + apellido_parterno + '\'' +
-                ", apellido_materno='" + apellido_materno + '\'' +
-                '}';
+        return tratamiento + " " + nombre + " " + apellido_parterno + " " + apellido_materno  + ' ';
     }
 
-    @Override
     public boolean equals(Object obj) {
         return super.equals(obj);
     }
