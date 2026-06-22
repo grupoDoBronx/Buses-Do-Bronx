@@ -76,6 +76,7 @@ public class Empresa {
             for(Viaje viaje : bus.getViajes()){
                 for(Venta venta : viaje.getVentas()){
                     listaVentas.add(venta);
+
                 }
             }
         }
