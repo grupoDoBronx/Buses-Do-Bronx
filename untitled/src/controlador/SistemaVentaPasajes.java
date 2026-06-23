@@ -429,40 +429,29 @@ public class SistemaVentaPasajes implements Serializable {
         }
 
     }
+    public void saveDatosSistema(){
+
+    }
+    public void readDatosSistema(){
+
+    }
 
 
 
     private Optional <Cliente> findCliente(IdPersona id) {
-        for (Cliente c : clientes) {
-            if (c.getIdPersona().equals(id)) return Optional.of(c);
-        }
-        return Optional.empty();
+        return clientes.stream().filter(c -> c.getIdPersona().equals(id)).findFirst();
     }
 
-
-
     private Optional <Venta> findVenta(String idDocumento, TipoDocumento tipoDoc) {
-        for (Venta v : venta) {
-            if (v.getIdDocumento().equals(idDocumento) && v.getTipo().equals(tipoDoc)) return Optional.of(v);
-        }
-        return Optional.empty();
+        return venta.stream().filter(v -> v.getIdDocumento().equals(idDocumento) && v.getTipo().equals(tipoDoc)).findFirst();
     }
 
     private Optional <Pasajero> findPasajero(IdPersona idPersona) {
-        for (Pasajero p : pasajeros) {
-            if (p.getIdPersona().equals(idPersona)) return Optional.of(p);
-        }
-        return Optional.empty();
+        return pasajeros.stream().filter(p -> p.getIdPersona().equals(idPersona)).findFirst();
     }
 
     private Optional <Viaje> findViaje(String  fecha, String  hora, String patente) {
-
-        for (Viaje v : viajes) {
-            if (v.getFecha().equals(fecha) && v.getHora().equals(hora) && v.getBus().getPatente().equals(patente)) {
-                return Optional.of(v);
-            }
-        }
-        return Optional.empty();
+        return viajes.stream().filter(v -> v.getFecha().equals(fecha) && v.getHora().equals(hora) && v.getBus().getPatente().equals(patente)).findFirst();
     }
 
 }

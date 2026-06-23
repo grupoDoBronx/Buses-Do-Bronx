@@ -94,10 +94,14 @@ public class UISVP {
                         listVentasEmpresa();
                         break;
                     case 14:
+
                         break;
                     case 15:
+                        readDatosIniciales();
                         break;
-                        
+                    case 16:
+
+                        break;
                     default:
                         System.out.println("Opcion numerica ingresada incorrecta");
                 }
@@ -691,6 +695,27 @@ public class UISVP {
         }catch (SVPException e){
             System.out.println("ERROR : " + e.getMessage());
             return;
+        }
+    }
+    private void readDatosIniciales(){
+        try {
+            sistem.readDatosIniciales();
+        }catch (SVPException e){
+            System.out.println(e.getMessage());
+        }
+    }
+    private void saveDatosSistema(){
+        try {
+            sistem.saveDatosSistema();
+        }catch (SVPException e){
+            System.out.println(e.getMessage());
+        }
+    }
+    private void readDatosSistema(){
+        try {
+
+        } catch (SVPException e) {
+            System.out.println(e.getMessage());
         }
     }
 }

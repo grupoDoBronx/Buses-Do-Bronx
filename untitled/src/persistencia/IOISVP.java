@@ -65,10 +65,10 @@ public class IOISVP {
         }
         return Optional.empty();
     }
-    // esta usa la clase de arriba acordate weon
+
     private Optional<Tripulante> findTripulante(Empresa empresa, IdPersona id){
-        for (Empresa e : empresa){
-            if (e.getTripulante().equals(id)) return Optional.of(e);
+        for (Tripulante t : empresa.getTripulante()){
+            if (t.getIdPersona().equals(id)) return Optional.of(t);
         }
         return Optional.empty();
     }
