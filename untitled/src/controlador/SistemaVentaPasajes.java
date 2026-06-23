@@ -8,7 +8,7 @@ import modelo.TipoDocumento;
 import modelo.*;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.sql.Time;
@@ -430,6 +430,7 @@ public class SistemaVentaPasajes implements Serializable {
 
     }
     public void saveDatosSistema(){
+
 
     }
     public void readDatosSistema(){

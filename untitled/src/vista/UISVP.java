@@ -8,7 +8,7 @@ import modelo.TipoDocumento;
 import utilidades.*;
 
 import java.text.ParseException;
-import java.sql.Date;
+import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.sql.Time;
 import java.time.LocalTime;
@@ -554,10 +554,6 @@ public class UISVP {
             System.out.println("ERROR : " + e.getMessage());
             return;
         }
-
-
-
-
     }
 
     private void listVentas(){
@@ -713,7 +709,7 @@ public class UISVP {
     }
     private void readDatosSistema(){
         try {
-
+            sistem.readDatosSistema();
         } catch (SVPException e) {
             System.out.println(e.getMessage());
         }
