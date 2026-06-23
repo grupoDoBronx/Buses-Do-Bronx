@@ -29,11 +29,11 @@ public class SistemaVentaPasajes implements Serializable {
     SimpleDateFormat fechaFormato = new SimpleDateFormat("dd/MM/yyyy");
 
     private ControladorEmpresas controlEmpre;
-    private IOISVP IOISVP;
+    private IOISVP iOISVP;
     public static SistemaVentaPasajes instance;
     private SistemaVentaPasajes(){
         controlEmpre = ControladorEmpresas.getInstance();
-        IOISVP = IOISVP.getInstance();
+        iOISVP = IOISVP.getInstance();
     }
     public static SistemaVentaPasajes getInstance(){
         if (instance == null){
@@ -301,8 +301,8 @@ public class SistemaVentaPasajes implements Serializable {
             Rut rutEmpresa = null;
             Rut rutPersona = null;
             ArrayList<String> linea = new ArrayList<>();
-            for (Object obj: IOISVP.readDatosIniciales()){
-                linea.add(Arrays.toString(IOISVP.readDatosIniciales()));
+            for (Object obj: iOISVP.readDatosIniciales()){
+                linea.add(Arrays.toString(iOISVP.readDatosIniciales()));
             }
             int tipoALeer = 0;
             for (String obj: linea){
@@ -430,12 +430,32 @@ public class SistemaVentaPasajes implements Serializable {
 
     }
     public void saveDatosSistema(){
-
-
+        Object[] saveDatosAGuardar= null;
+        saveDatosAGuardar[0] = clientes;
+        saveDatosAGuardar[1] = pasajeros;
+        saveDatosAGuardar[2] = viajes;
+        saveDatosAGuardar[3] = venta;
+        saveDatosAGuardar[4] = controlEmpre.terminales;
+        saveDatosAGuardar[5] = controlEmpre.buses;
+        saveDatosAGuardar[6] = controlEmpre.empresas;
+        saveDatosAGuardar[7] = controlEmpre.tripulantes;
+        iOISVP.saveControladores(saveDatosAGuardar);
     }
     public void readDatosSistema(){
+        Object[] datosCargados = iOISVP.readControladores();
+        this.clientes = (ArrayList<Cliente>) datosCargados[0];
+        this.pasajeros = (ArrayList<Pasajero>) datosCargados[1];
+        this.viajes = (ArrayList<Viaje>) datosCargados[2];
+        this.venta = (ArrayList<Venta>) datosCargados[3];
+
+        // Asignar los datos que pertenecen al objeto controlEmpre
+        this.controlEmpre.terminales = (ArrayList<Terminal>) datosCargados[4];
+        this.controlEmpre.buses = (ArrayList<Bus>) datosCargados[5];
+        this.controlEmpre.empresas = (ArrayList<Empresa>) datosCargados[6];
+        this.controlEmpre.tripulantes = (ArrayList<Tripulante>) datosCargados[7];
 
     }
+
 
 
 

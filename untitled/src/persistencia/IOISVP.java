@@ -55,8 +55,45 @@ public class IOISVP {
             throw new SVPException("No se puede leer el archivo SVPObjetos.obj");
         }
     }
-    public void savePasajesDeVenta(Pasaje[] pasajes, String nombreArchivo){
 
+
+    // esta clase me la paso el seba y no se que chucha hay que hacer con esto
+    public void savePasajesDeVenta(Pasaje[] pasajes,String nombreArchivo)
+            throws SVPException {
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(nombreArchivo))) {
+
+            for (Pasaje p : pasajes) {
+
+                bw.write("PASAJE ELECTRONICO");
+
+                bw.write("nombre empresa: "+p.getViaje().getBus().getEmpresa().getNombre());
+                bw.newLine();
+                bw.write("Numero pasaje : " + p.getNumero());
+                bw.newLine();
+                bw.write("nombre pasajero: "+p.getPasajero().getNombreCompleto());
+                bw.newLine();
+                bw.write("rut/pasaprte: "+p.getPasajero().getIdPersona());
+                bw.newLine();
+                bw.write("patente bus: "+p.getViaje().getBus().getPatente());
+                bw.newLine();
+                bw.write("asiento: "+p.getAsiento());
+                bw.newLine();
+                bw.write("valor pagado: $"+p.getViaje().getPrecio());
+                bw.newLine();
+                bw.write("terminal origen: "+p.getViaje().getTerminalSalida().getNombre());
+                bw.newLine();
+                bw.write("terminal destino: "+p.getViaje().getTerminalLlegada().getNombre());
+                bw.newLine();
+                bw.write("fecha: "+p.getViaje().getFecha());
+                bw.newLine();
+                bw.write("hora: "+p.getViaje().getHora());
+                bw.newLine();
+            }
+
+        } catch (IOException e) {
+            throw new SVPException("no se pudo generar archivo de pasaje");
+        }
     }
 
     private Optional<Empresa> findEmpresa(List<Empresa> empresas, Rut rut){

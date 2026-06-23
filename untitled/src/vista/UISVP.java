@@ -100,7 +100,10 @@ public class UISVP {
                         readDatosIniciales();
                         break;
                     case 16:
-
+                        saveDatosSistema();
+                        break;
+                    case 17:
+                        readDatosSistema();
                         break;
                     default:
                         System.out.println("Opcion numerica ingresada incorrecta");
