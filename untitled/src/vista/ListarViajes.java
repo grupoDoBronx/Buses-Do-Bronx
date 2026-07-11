@@ -1,21 +1,20 @@
-import controlador.ControladorEmpresas;
+package vista;
 
-import java.awt.event.ActionListener;
+import controlador.SistemaVentaPasajes;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.*;
 
-public class ListarEmpresas extends JDialog {
+public class ListarViajes extends JDialog {
     private JPanel contentPane;
     private JButton ButtonBack;
-    private JTable listaEmpresas;
-    private JLabel empresas;
+    private JTable listaViajes;
+    private JLabel viajes;
 
-    public ListarEmpresas(String[] datos) {
+    public ListarViajes(String[] datos) {
         setContentPane(contentPane);
         setModal(true);
-        setLocationRelativeTo(null);
 
         ButtonBack.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -38,28 +37,28 @@ public class ListarEmpresas extends JDialog {
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
 
-        empresas.setText("<html>" +
-                "<span style='font-size:12px; font-weight:bold;'>EMPRESAS</span>" +
+        viajes.setText("<html>" +
+                "<span style='font-size:12px; font-weight:bold;'>VIAJES</span>" +
                 "</html>");
-        String[] columnas = {"Nombre", "Rut"};
+        String[] columnas = {"fecha", "hora", "precio", "bus", "duracion", "auxiliar", "conductor", "T. salida", "T. llegada"};
 
-        String[][] listEmpresas = ControladorEmpresas.getInstance().listEmpresas();
+        String[][] listViajes = SistemaVentaPasajes.getInstance().listViajes();
 
-        DefaultTableModel listarEmpresas = new DefaultTableModel(columnas, 0){
+        DefaultTableModel modelo = new DefaultTableModel(columnas, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false; // ninguna celda editable
             }
         };
-        for (int i=0; i<listEmpresas.length; i++){
-            listarEmpresas.addRow(listEmpresas);
-        }
-        listaEmpresas.setModel(listarEmpresas);
-        listaEmpresas.setPreferredScrollableViewportSize(
-                new Dimension(listaEmpresas.getPreferredSize().width,
-                        listaEmpresas.getRowHeight() * 5)
-        );
 
+        for (int i = 0; i < listViajes.length; i++) {
+            modelo.addRow(listViajes[i]);
+        }
+
+        listaViajes.setModel(modelo);
+        listaViajes.setPreferredScrollableViewportSize(
+                new Dimension(listaViajes.getPreferredSize().width,
+                        listaViajes.getRowHeight() * 5));
     }
 
     private void onCancel() {
@@ -68,9 +67,9 @@ public class ListarEmpresas extends JDialog {
     }
 
     public static void main(String[] datos) {
-        ListarEmpresas dialog;
-        dialog = new ListarEmpresas(datos);
+        ListarViajes dialog = new ListarViajes(datos);
         dialog.pack();
         dialog.setVisible(true);
+        System.exit(0);
     }
 }
