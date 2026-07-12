@@ -13,7 +13,7 @@ public class ListarEmpresas extends JDialog {
     private JTable listaEmpresas;
     private JLabel empresas;
 
-    public ListarEmpresas(String[] datos) {
+    public ListarEmpresas() {
         setContentPane(contentPane);
         setModal(true);
 
@@ -69,7 +69,7 @@ public class ListarEmpresas extends JDialog {
     }
 
     public static void main(String[] datos) {
-        ListarEmpresas dialog = new ListarEmpresas(datos);
+        ListarEmpresas dialog = new ListarEmpresas();
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);

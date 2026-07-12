@@ -12,7 +12,7 @@ public class ListarViajes extends JDialog {
     private JTable listaViajes;
     private JLabel viajes;
 
-    public ListarViajes(String[] datos) {
+    public ListarViajes() {
         setContentPane(contentPane);
         setModal(true);
 
@@ -67,7 +67,7 @@ public class ListarViajes extends JDialog {
     }
 
     public static void main(String[] datos) {
-        ListarViajes dialog = new ListarViajes(datos);
+        ListarViajes dialog = new ListarViajes();
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);

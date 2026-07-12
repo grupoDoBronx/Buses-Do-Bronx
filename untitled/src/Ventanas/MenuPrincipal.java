@@ -2,7 +2,6 @@ package Ventanas;
 
 import javax.swing.*;
 import java.awt.event.*;
-import Ventanas.*;
 
 public class MenuPrincipal extends JDialog {
     private JPanel contentPane;
@@ -11,6 +10,8 @@ public class MenuPrincipal extends JDialog {
     private JButton ventaPasajesButton;
     private JButton creacionViajeButton;
     private JButton listadoButton;
+    private JButton listadoVIajesButton;
+    private JButton listadoBusesEmpresaButton;
 
     private static MenuPrincipal instance = null;
 
@@ -29,6 +30,7 @@ public class MenuPrincipal extends JDialog {
         ventaPasajesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //le tocaba hacer al seba
 
             }
         });
@@ -36,11 +38,25 @@ public class MenuPrincipal extends JDialog {
         creacionViajeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                //le tocaba hacer al javier
             }
         });
 
         listadoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ListarEmpresas empresas = new ListarEmpresas();
+                empresas.setVisible(true);
+            }
+        });
+        listadoVIajesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ListarViajes viajes = new ListarViajes();
+                viajes.setVisible(true);
+            }
+        });
+        listadoBusesEmpresaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
