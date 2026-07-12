@@ -1,7 +1,7 @@
 package modelo;
 
 import java.sql.Time;
-import java.sql.Date;
+import java.util.Date;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -57,7 +57,7 @@ public class Viaje {
     // no encontre una forma de hacer el metodo DateTime
     public LocalDateTime getFechaHoraTermino() {
         LocalTime horaL = hora.toLocalTime();
-        LocalDate fechaL = fecha.toLocalDate();
+        LocalDate fechaL = LocalDate.parse(fecha.toString());
         LocalDateTime salida = LocalDateTime.of(fechaL, horaL);
 
         return salida.plusMinutes(duracion);
