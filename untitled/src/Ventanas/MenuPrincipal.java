@@ -12,6 +12,15 @@ public class MenuPrincipal extends JDialog {
     private JButton creacionViajeButton;
     private JButton listadoButton;
 
+    private static MenuPrincipal instance = null;
+
+    public static MenuPrincipal getInstance() {
+        if (instance == null) {
+            instance = new MenuPrincipal();
+        }
+        return instance;
+
+    }
     public MenuPrincipal() {
         setContentPane(contentPane);
         setModal(true);
