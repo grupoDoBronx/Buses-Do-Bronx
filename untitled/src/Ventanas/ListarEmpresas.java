@@ -1,4 +1,4 @@
-package vista;
+package Ventanas;
 
 import controlador.ControladorEmpresas;
 

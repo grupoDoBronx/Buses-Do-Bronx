@@ -1,4 +1,4 @@
-package vista;
+package Ventanas;
 
 import controlador.SistemaVentaPasajes;
 import javax.swing.*;
