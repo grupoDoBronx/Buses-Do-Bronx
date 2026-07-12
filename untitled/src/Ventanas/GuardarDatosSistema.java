@@ -50,23 +50,29 @@ public class GuardarDatosSistema extends JDialog {
     private void readDatosIniciales(){
         try {
             sistem.readDatosIniciales();
+
         }catch (SVPException e){
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
+        dispose();
     }
     private void saveDatosSistema(){
         try {
             sistem.saveDatosSistema();
+
         }catch (SVPException e){
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
+        dispose();
     }
     private void readDatosSistema(){
         try {
             sistem.readDatosSistema();
+
         } catch (SVPException e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
+        dispose();
     }
     private void onCancel() {
         // add your code here if necessary

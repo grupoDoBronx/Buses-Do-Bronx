@@ -22,7 +22,7 @@ public class IOISVP {
     }
     public Object[] readDatosIniciales(){
         ArrayList<Object> datosIniciales = new ArrayList<>();
-        try(BufferedReader br = new BufferedReader(new FileReader("SVPDatosIniciales.txt"))){
+        try(BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\topph\\OneDrive\\Desktop\\U\\POO\\Buses-Do-Bronx\\untitled\\SVPDatosIniciales.txt"))){
             String linea;
             while ((linea = br.readLine()) != null){
                 datosIniciales.add(linea);

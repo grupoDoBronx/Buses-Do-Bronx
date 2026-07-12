@@ -15,6 +15,7 @@ public class ListarViajes extends JDialog {
     public ListarViajes() {
         setContentPane(contentPane);
         setModal(true);
+        setLocationRelativeTo(null);
 
         ButtonBack.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

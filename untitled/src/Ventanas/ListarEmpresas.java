@@ -16,7 +16,7 @@ public class ListarEmpresas extends JDialog {
     public ListarEmpresas() {
         setContentPane(contentPane);
         setModal(true);
-
+        setLocationRelativeTo(null);
         ButtonBack.addActionListener(e -> onCancel());
 
         // call onCancel() when cross is clicked
