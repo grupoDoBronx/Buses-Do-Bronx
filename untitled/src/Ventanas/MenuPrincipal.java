@@ -31,7 +31,9 @@ public class MenuPrincipal extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //le tocaba hacer al seba
-
+                VentanaVentaPasajes venta = new VentanaVentaPasajes();
+                venta.setVisible(true);
+                venta.setLocationRelativeTo(null);
             }
         });
 
@@ -39,6 +41,9 @@ public class MenuPrincipal extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //le tocaba hacer al javier
+                CreacionViaje creacionViaje = new CreacionViaje();
+                creacionViaje.setLocationRelativeTo(null);
+                creacionViaje.setVisible(true);
             }
         });
 
