@@ -6,11 +6,11 @@ import utilidades.Direccion;
 import utilidades.IdPersona;
 import utilidades.Nombre;
 import utilidades.Rut;
-
+import vista.UISVP;
 
 import java.util.ArrayList;
 import java.util.Date;
-
+import java.util.Objects;
 import java.util.Optional;
 
 public class ControladorEmpresas {
@@ -21,9 +21,7 @@ public class ControladorEmpresas {
     ArrayList<Tripulante> tripulantes = new ArrayList<>();
 
     private static ControladorEmpresas instance;
-    private ControladorEmpresas(){
 
-    }
     public static ControladorEmpresas getInstance(){
         if (instance == null){
             return instance = new ControladorEmpresas();
@@ -32,67 +30,73 @@ public class ControladorEmpresas {
     }
 
     public void createEmpresa(Rut rut, String nombre,String url){
-
-        if (findEmpresa(rut).isPresent()){
-            throw new SVPException("Ya existe empresa con el rut indicado");
+        try {
+            if (findEmpresa(rut).isPresent()){
+                throw new SVPException("Ya existe empresa con el rut indicado");
+            }
+            Empresa empresa = new Empresa(nombre,rut);
+            empresas.add(empresa);
+            System.out.println("\n...:::: Empresa guardada exitosamente ::::....");
+        }catch (SVPException e){
+            throw new SVPException("ERROR: " + e.getMessage());
         }
-        Empresa empresa = new Empresa(nombre,rut);
-        empresas.add(empresa);
-        System.out.println("\n...:::: Empresa guardada exitosamente ::::....");
-
     }
+
     public void createBus (String patente, String marca, String modelo, int numeroDeAsientos, Rut rutEmp){
-
-        if (findEmpresa(rutEmp).isEmpty()){
-            throw new SVPException("No existe empresa con el rut indicado");
+        try {
+            if (findEmpresa(rutEmp).isPresent()){
+                throw new SVPException("No existe empresa con el rut indicado");
+            }
+            if(findBus(patente).isPresent()){
+                throw new SVPException("Ya existe bus con la patente indicada");
+            }
+            System.out.print("\n...:::: Bus guardado exitosamente ::::....");
+        }catch (SVPException e){
+            throw new SVPException("ERROR: " + e.getMessage());
         }
-        if(findBus(patente).isPresent()){
-            throw new SVPException("Ya existe bus con la patente indicada");
-        }
-
-
         Empresa empresacontrata = findEmpresa(rutEmp).get();
         Bus nuevoBus = new Bus(numeroDeAsientos, patente, empresacontrata);
         buses.add(nuevoBus);
-        System.out.print("\n...:::: Bus guardado exitosamente ::::....");
     }
     public void createTerminal(String nombre, Direccion direccion){
+        try {
+            if (findTerminal(nombre).isPresent()){
+                throw new SVPException("Ya existe terminal en la comuna indicada");
+            }
+            Terminal terminal = new Terminal(nombre, direccion);
+            System.out.println("\n...:::: Terminal guardado exitosamente ::::....");
 
-        if (findTerminal(nombre).isPresent()){
-            throw new SVPException("Ya existe terminal en la comuna indicada");
+        }catch (SVPException e){
+            throw new SVPException ("Error:" + e.getMessage());
         }
-        Terminal terminal = new Terminal(nombre, direccion);
-        terminales.add(terminal);
-        System.out.println("\n...:::: Terminal guardado exitosamente ::::....");
-
-
     }
     public void hireConductorForEmpresa (Rut rutEmp, IdPersona id, Nombre nom, Direccion dir){
+        try {
+            if (findEmpresa(rutEmp).isEmpty()){
+                throw new SVPException("No existe empresa con el rut indicado");
+            }
+            if (findConductor(id,rutEmp).isPresent()) {
+                throw new SVPException("Ya está contratado auxiliar/conductor con el id dado en la empresa señalada");
+            }
 
-        if (findEmpresa(rutEmp).isEmpty()){
-            throw new SVPException("No existe empresa con el rut indicado");
+        }catch (SVPException e){
+            throw new SVPException("ERROR: " + e.getMessage());
         }
-        if (findConductor(id,rutEmp).isEmpty()) {
-            throw new SVPException("Ya está contratado auxiliar/conductor con el id dado en la empresa señalada");
-        }
-        Conductor conductor = new Conductor(id,nom,dir);
-        tripulantes.add(conductor);
-        System.out.println("...:::: Auxiliar contratado exitosamente ::::....");
-
-
     }
     public void hireAuxiliarForEmpresa (Rut rutEmp,IdPersona id, Nombre nom, Direccion dir) {
+        try {
 
+            if (findEmpresa(rutEmp).isEmpty()){
+                throw new SVPException("No existe empresa con el rut indicado");
+            }
+            if (findAuxiliar(id,rutEmp).isPresent()) {
+                throw new SVPException("Ya está contratado auxiliar/conductor con el id dado en la empresa señalada");
+            }
 
-        if (findEmpresa(rutEmp).isEmpty()){
-            throw new SVPException("No existe empresa con el rut indicado");
+            System.out.println("...:::: Auxiliar contratado exitosamente ::::....");
+        }catch (SVPException e){
+            throw new SVPException("ERROR: " + e.getMessage());
         }
-        if (findAuxiliar(id,rutEmp).isEmpty()) {
-            throw new SVPException("Ya está contratado auxiliar/conductor con el id dado en la empresa señalada");
-        }
-        Auxiliar auxiliar = new Auxiliar(id,nom,dir);
-        tripulantes.add(auxiliar);
-        System.out.println("...:::: Auxiliar contratado exitosamente ::::....");
     }
     public String[][] listEmpresas(){
         ArrayList<String []> lista = new ArrayList<>();
@@ -112,12 +116,10 @@ public class ControladorEmpresas {
 
             for (Viaje v : findTerminal(nombre).get().getSalidas()){
                 String[] listado = {v.getHora().toString(),v.getBus().getPatente(),};
-                listaLlegadasSalidasTerminal.add(listado);
             }
             return listaLlegadasSalidasTerminal.toArray(new String[0][0]);
         }catch (SVPException e){
-            System.out.println("*** ERROR: " + e.getMessage());
-            return null;
+            throw new SVPException("ERROR: " + e.getMessage());
         }
     }
     public String[][] listVentasEmpresa(Rut rut){
@@ -134,8 +136,7 @@ public class ControladorEmpresas {
             return lisVentasEmp.toArray(new String[0][0]);
 
         }catch (SVPException e){
-            System.out.println("*** ERROR : " + e.getMessage());
-            return null;
+            throw new SVPException("ERROR: " + e.getMessage());
         }
 
     }
@@ -185,6 +186,4 @@ public class ControladorEmpresas {
         }
         return Optional.empty();
     }
-
-
 }
