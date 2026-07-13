@@ -430,7 +430,7 @@ public class SistemaVentaPasajes implements Serializable {
 
     }
     public void saveDatosSistema(){
-        Object[] saveDatosAGuardar= null;
+        Object[] saveDatosAGuardar= new Object[8];
         saveDatosAGuardar[0] = clientes;
         saveDatosAGuardar[1] = pasajeros;
         saveDatosAGuardar[2] = viajes;
