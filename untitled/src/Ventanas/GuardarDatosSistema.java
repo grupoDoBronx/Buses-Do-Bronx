@@ -50,7 +50,7 @@ public class GuardarDatosSistema extends JDialog {
     private void readDatosIniciales(){
         try {
             sistem.readDatosIniciales();
-
+            JOptionPane.showMessageDialog(this,"La Operacion realizada a sido exitosa","Operacion Exitosa",JOptionPane.INFORMATION_MESSAGE);
         }catch (SVPException e){
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -59,7 +59,7 @@ public class GuardarDatosSistema extends JDialog {
     private void saveDatosSistema(){
         try {
             sistem.saveDatosSistema();
-
+            JOptionPane.showMessageDialog(this,"La Operacion realizada a sido exitosa","Operacion Exitosa",JOptionPane.INFORMATION_MESSAGE);
         }catch (SVPException e){
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -68,7 +68,7 @@ public class GuardarDatosSistema extends JDialog {
     private void readDatosSistema(){
         try {
             sistem.readDatosSistema();
-
+            JOptionPane.showMessageDialog(this,"La Operacion realizada a sido exitosa","Operacion Exitosa",JOptionPane.INFORMATION_MESSAGE);
         } catch (SVPException e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
