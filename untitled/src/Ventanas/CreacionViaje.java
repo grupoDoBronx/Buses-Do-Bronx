@@ -1,37 +1,40 @@
 package Ventanas;
 
+import java.util.Scanner;
 import javax.swing.*;
 import java.awt.event.*;
+import java.io.File;
 
 public class CreacionViaje extends JDialog {
     private JPanel contentPane;
-    private JButton buttonOK;
     private JButton buttonCancel;
+    private JButton persistenciasButton;
+    private JButton ventaPasajesButton;
+    private JButton creacionViajeButton;
+    private JButton listadoButton;
+    private JButton listadoVIajesButton;
+    private JButton listadoBusesEmpresaButton;
+    private JTextField fechaViaje;
+    private JTextField horaViaje;
+    private JTextField duracionViaje;
+    private JTextField precioViaje;
+    private JComboBox<String> listaBuses;
+    private JComboBox<String> listaAuxiliares;
+    private JComboBox<String> listaConductores;
 
+    private static CreacionViaje instance = null;
+
+    public static CreacionViaje getInstance() {
+        if (instance == null) {
+            instance = new CreacionViaje();
+        }
+        return instance;
+
+    }
     public CreacionViaje() {
         setContentPane(contentPane);
         setModal(true);
-        getRootPane().setDefaultButton(buttonOK);
-
-        buttonOK.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onOK();
-            }
-        });
-
-        buttonCancel.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        });
-
-        // call onCancel() when cross is clicked
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
-                onCancel();
-            }
-        });
+        pack();
 
         // call onCancel() on ESCAPE
         contentPane.registerKeyboardAction(new ActionListener() {
@@ -41,13 +44,58 @@ public class CreacionViaje extends JDialog {
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
-    private void onOK() {
-        // add your code here
-        dispose();
+    public void leerConductores() {
+        try {
+            Scanner sc = new Scanner(new File("untitled/datos/tripulantes.txt"));
+
+            listaConductores.removeAllItems();
+
+            while (sc.hasNextLine()) {
+                listaConductores.addItem(sc.nextLine());
+            }
+
+            sc.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void leerAuxiliares() {
+        try {
+            Scanner sc = new Scanner(new File("untitled/datos/tripulantes.txt"));
+
+            listaAuxiliares.removeAllItems();
+
+            while (sc.hasNextLine()) {
+                listaAuxiliares.addItem(sc.nextLine());
+            }
+
+            sc.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void leerBuses() {
+        try {
+            Scanner sc = new Scanner(new File("untitled/datos/buses.txt"));
+
+            listaBuses.removeAllItems();
+
+            while (sc.hasNextLine()) {
+                listaBuses.addItem(sc.nextLine());
+            }
+
+            sc.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void onCancel() {
-        // add your code here if necessary
         dispose();
     }
 

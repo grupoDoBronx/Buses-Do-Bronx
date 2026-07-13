@@ -1,0 +1,3 @@
+El Pinar;Los Alamos;450;Pinto
+El Nevado Alto;Las Violetas;1830;Talcahuano
+Sofia III;San Jerónimo;169;Alhué

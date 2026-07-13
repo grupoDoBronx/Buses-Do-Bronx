@@ -1,0 +1,4 @@
+CP;11.111.111-1;SR;José Esteban;Cid;Aedo;(+569) 1122 3344;jose@fake.email.cl;SRA;Lidia Andrea;Solis;Robles;(+569) 9777 4432
+CP;22.222.222-2;SRA;María Paz;Daza;Barrera;(+569) 1672 3421;maria@fake.email.cl;SR;Rafael Alonso;Flores;Caro;(+569) 8070 1641
+C;33.333.333-3;SRA;Ángela Eugenia;Muñoz;Naranjo;(+569) 6172 3323;angela@fake.email.cl
+P;44.444.444-4;SR;Carlos Patricio;Orellana;Godoy;(+569) 9872 6472;SRA;Karen Ana;Leon;Pino;(+569) 4734 4111

@@ -22,7 +22,7 @@ public class IOISVP {
     }
     public Object[] readDatosIniciales(){
         ArrayList<Object> datosIniciales = new ArrayList<>();
-        try(BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\topph\\OneDrive\\Desktop\\U\\POO\\Buses-Do-Bronx\\untitled\\SVPDatosIniciales.txt"))){
+        try(BufferedReader br = new BufferedReader(new FileReader("untitled/datos/SVPDatosIniciales.txt"))){
             String linea;
             while ((linea = br.readLine()) != null){
                 datosIniciales.add(linea);
@@ -34,14 +34,14 @@ public class IOISVP {
         return datosIniciales.toArray();
     }
     public void saveControladores(Object[] controladores)throws SVPException{
-            try (ObjectOutputStream guardado = new ObjectOutputStream(new FileOutputStream("SVPObjetos.obj"))){
-                guardado.writeObject(controladores);
-                guardado.close();
-            } catch (FileNotFoundException e) {
-                throw new SVPException("No se puede grabar en el archivo SVPObjetos.obj");
-            }catch (IOException e){
-                throw new SVPException("No se puede abrir o crear el archivo SVPObjetos.obj");
-            }
+        try (ObjectOutputStream guardado = new ObjectOutputStream(new FileOutputStream("SVPObjetos.obj"))){
+            guardado.writeObject(controladores);
+            guardado.close();
+        } catch (FileNotFoundException e) {
+            throw new SVPException("No se puede grabar en el archivo SVPObjetos.obj");
+        }catch (IOException e){
+            throw new SVPException("No se puede abrir o crear el archivo SVPObjetos.obj");
+        }
     }
     public Object[] readControladores()throws SVPException{
         try (ObjectInputStream leido = new ObjectInputStream(new FileInputStream("SVPObjetos.obj"))){
