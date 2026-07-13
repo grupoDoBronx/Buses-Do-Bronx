@@ -5,36 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3761bfaa-1dd7-4017-89ff-f96a4653b510" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_25-04-2026_22_25_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_25-04-2026_22_25__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/controlador/ControladorEmpresas.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/controlador/SistemaVentaPasajes.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/excepciones/SistemaVentaPasajesException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/Auxiliar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/Bus.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/Cliente.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/Conductor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/Empresa.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/Pago.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/PagoEfectivo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/PagoTarjeta.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/Pasaje.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/Pasajero.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/Persona.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/Terminal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/TipoDocumento.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/Tripulante.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/Venta.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/Viaje.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/modelo/ViajesPorFecha.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/utilidades/Direccion.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/utilidades/IdPersona.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/utilidades/Nombre.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/utilidades/Pasaporte.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/utilidades/Rut.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/utilidades/Tratamiento.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/vista/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/vista/UISVP.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled/src/controlador/ControladorEmpresas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ControladorEmpresas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled/src/controlador/SistemaVentaPasajes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SistemaVentaPasajes.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,12 +31,12 @@
     &quot;assignee&quot;: &quot;brooklex&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/grupoDoBronx/Buses-Do-Bronx.git",
-    "accountId": "337a45f5-4c4f-475c-a69d-5a44a55d751c"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/grupoDoBronx/Buses-Do-Bronx.git&quot;,
+    &quot;accountId&quot;: &quot;d4ffa85d-1c36-4d49-80f1-6ac2a17890eb&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0,
   &quot;fromUser&quot;: false
@@ -78,6 +54,7 @@
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;RamaJavier&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -85,6 +62,9 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
     &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
@@ -96,6 +76,14 @@
       <recent name="C:\Users\sepul\IdeaProjects\Buses-Do-Bronx\src\Figura1" />
     </key>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-37e91769500f-intellij.indexing.shared.core-IU-261.26222.65" />
+        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-IU-261.26222.65" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="3761bfaa-1dd7-4017-89ff-f96a4653b510" name="Changes" comment="" />
@@ -104,6 +92,8 @@
       <option name="presentableId" value="Default" />
       <updated>1777319742187</updated>
       <workItem from="1777319743847" duration="2616000" />
+      <workItem from="1783909370993" duration="228000" />
+      <workItem from="1783909613888" duration="1506000" />
     </task>
     <servers />
   </component>
